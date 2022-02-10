@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login',[AuthController::class, 'index']);
+Route::get('/login',[AuthController::class, 'index'])->name('login');
 Route::post('/login',[AuthController::class, 'authenticate']);
 Route::middleware(['auth','admin'])->group(function () {
     Route::get('/admin', function () {
@@ -28,4 +28,5 @@ Route::middleware(['auth','admin'])->group(function () {
 });
 Route::get('/dashboard', function () {
     return view('member');
-});
+})->middleware('auth');
+Route::get('/logout',[AuthController::class, 'logout']);
