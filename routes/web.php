@@ -21,7 +21,7 @@ Route::post('/login',[AuthController::class, 'authenticate']);
 
 Route::middleware(['auth','admin'])->group(function () {
     Route::get('/admin', function () {
-        return view('admin');
+        return view('admin.admin');
     });
 });
 
