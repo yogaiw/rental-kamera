@@ -29,5 +29,20 @@ class DatabaseSeeder extends Seeder
                 'isAdmin' => false
             ]
         ]);
+
+        DB::table('categories')->insert([
+            [
+                'nama' => 'Uncategorized'
+            ],
+            [
+                'nama' => 'Kamera'
+            ],
+            [
+                'nama' => 'Lensa'
+            ],
+            [
+                'nama' => 'Lighting'
+            ]
+        ]);
     }
 }
