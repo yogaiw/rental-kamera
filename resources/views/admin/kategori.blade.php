@@ -17,7 +17,7 @@
                         <form action="{{ route('kategori.store') }}" method="POST">
                             @csrf
                             <div class="form-group mb-3">
-                                <input type="text" name="nama" class="form-control" placeholder="Nama Kategori Baru">
+                                <input type="text" name="nama" class="form-control" placeholder="Nama Kategori Baru" required>
                             </div>
                             <button type="submit" name="tambah" class="btn btn-primary d-flex fa-pull-right">Tambah</button></a>
                         </form>
