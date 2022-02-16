@@ -15,7 +15,7 @@ class CreateAlatsTable extends Migration
     {
         Schema::create('alats', function (Blueprint $table) {
             $table->id();
-            $table->integer('idKategori');
+            $table->integer('kategori_id');
             $table->string('nama');
             $table->text('deskripsi')->nullable();
             $table->integer('harga24');
