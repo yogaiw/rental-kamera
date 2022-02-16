@@ -23,7 +23,7 @@ class AuthController extends Controller
             if(Auth::user()->isAdmin == true) {
                 return redirect()->intended('admin');
             } else {
-                return redirect()->intended('dashboard');
+                return redirect()->intended('memberarea');
             }
         }
         return back()->withErrors('GAGAL');
