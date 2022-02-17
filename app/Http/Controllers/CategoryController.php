@@ -24,4 +24,9 @@ class CategoryController extends Controller
         return redirect(route('kategori.index'));
     }
 
+    public function destroy($id) {
+        $kategori = Category::find($id);
+        $kategori->delete();
+        return redirect(route('kategori.index'));
+    }
 }

@@ -24,6 +24,7 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::get('/admin', [AdminController::class,'index'])->name('admin.index');
     Route::get('/admin/kategori',[CategoryController::class,'index'])->name('kategori.index');
     Route::post('/admin/kategori',[CategoryController::class,'store'])->name('kategori.store');
+    Route::delete('/admin/kategori/{id}',[CategoryController::class,'destroy'])->name('kategori.destroy');
 });
 
 Route::get('/memberarea', function () {

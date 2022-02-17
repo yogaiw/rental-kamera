@@ -46,7 +46,14 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $cat->nama }}</td>
                                     <td>-</td>
-                                    <td>-</td>
+                                    <td>
+                                        <a href="" type="button" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                                        <form action="{{ route('kategori.destroy',['id'=>$cat->id]) }}" method="POST" style="display: inline-block">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
