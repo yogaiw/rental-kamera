@@ -22,8 +22,12 @@ Route::post('/login',[AuthController::class, 'authenticate']);
 
 Route::middleware(['auth','admin'])->group(function () {
     Route::get('/admin', [AdminController::class,'index'])->name('admin.index');
+
+    // Kategori
     Route::get('/admin/kategori',[CategoryController::class,'index'])->name('kategori.index');
     Route::post('/admin/kategori',[CategoryController::class,'store'])->name('kategori.store');
+    Route::get('admin/kategori/{id}/edit',[CategoryController::class,'edit'])->name('kategori.edit');
+    Route::patch('admin/kategori/{id}',[CategoryController::class,'update'])->name('kategori.update');
     Route::delete('/admin/kategori/{id}',[CategoryController::class,'destroy'])->name('kategori.destroy');
 });
 

@@ -47,7 +47,7 @@
                                     <td>{{ $cat->nama }}</td>
                                     <td>-</td>
                                     <td>
-                                        <a href="" type="button" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('kategori.edit',['id'=>$cat->id]) }}" type="button" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                                         <form action="{{ route('kategori.destroy',['id'=>$cat->id]) }}" method="POST" style="display: inline-block">
                                             @method('DELETE')
                                             @csrf

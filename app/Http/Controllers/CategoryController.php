@@ -13,13 +13,30 @@ class CategoryController extends Controller
         ]);
     }
 
+    public function edit($id) {
+        $kategori = Category::findOrFail($id);
+        return view('admin.editkategori',[
+            'kategori' => $kategori
+        ]);
+    }
+
     public function store(Request $request) {
-        $validateData = $request->validate([
+        $this->validate($request, [
             'nama' => 'required'
         ]);
 
         $kategori = new Category();
-        $kategori->nama = $validateData['nama'];
+        $kategori->nama = $request['nama'];
+        $kategori->save();
+        return redirect(route('kategori.index'));
+    }
+
+    public function update(Request $request, $id) {
+        $this->validate($request,[
+            'nama' => 'required'
+        ]);
+        $kategori = Category::find($id);
+        $kategori->nama = $request['nama'];
         $kategori->save();
         return redirect(route('kategori.index'));
     }
