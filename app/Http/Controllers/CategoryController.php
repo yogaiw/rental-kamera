@@ -26,7 +26,7 @@ class CategoryController extends Controller
         ]);
 
         $kategori = new Category();
-        $kategori->nama = $request['nama'];
+        $kategori->nama_kategori = $request['nama'];
         $kategori->save();
         return redirect(route('kategori.index'));
     }
@@ -36,7 +36,7 @@ class CategoryController extends Controller
             'nama' => 'required'
         ]);
         $kategori = Category::find($id);
-        $kategori->nama = $request['nama'];
+        $kategori->nama_kategori = $request['nama'];
         $kategori->save();
         return redirect(route('kategori.index'));
     }

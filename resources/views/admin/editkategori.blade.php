@@ -2,7 +2,7 @@
 @section('content')
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4 mb-4">Edit Untuk Kategori "{{ $kategori->nama }}"</h1>
+        <h1 class="mt-4 mb-4">Edit Untuk Kategori "{{ $kategori->nama_kategori }}"</h1>
         <div class="row">
             <form action="{{ route('kategori.update',['id'=>$kategori->id]) }}" method="POST">
                 @method('PATCH')

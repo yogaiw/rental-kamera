@@ -16,12 +16,12 @@ class CreateAlatsTable extends Migration
         Schema::create('alats', function (Blueprint $table) {
             $table->id();
             $table->integer('kategori_id');
-            $table->string('nama');
+            $table->string('nama_alat');
             $table->text('deskripsi')->nullable();
-            $table->integer('harga24');
-            $table->integer('harga12');
-            $table->integer('harga6');
-            $table->string('gambar');
+            // $table->integer('harga24');
+            // $table->integer('harga12');
+            // $table->integer('harga6');
+            // $table->string('gambar');
             $table->timestamps();
         });
     }

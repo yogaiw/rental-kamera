@@ -55,9 +55,8 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
                                 Daftar Penyewa
                             </a>
-
                             <div class="sb-sidenav-menu-heading">Manajemen Alat</div>
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="{{ route('alat.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Alat
                             </a>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AlatController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
@@ -26,9 +27,12 @@ Route::middleware(['auth','admin'])->group(function () {
     // Kategori
     Route::get('/admin/kategori',[CategoryController::class,'index'])->name('kategori.index');
     Route::post('/admin/kategori',[CategoryController::class,'store'])->name('kategori.store');
-    Route::get('admin/kategori/{id}/edit',[CategoryController::class,'edit'])->name('kategori.edit');
-    Route::patch('admin/kategori/{id}',[CategoryController::class,'update'])->name('kategori.update');
+    Route::get('/admin/kategori/{id}/edit',[CategoryController::class,'edit'])->name('kategori.edit');
+    Route::patch('/admin/kategori/{id}',[CategoryController::class,'update'])->name('kategori.update');
     Route::delete('/admin/kategori/{id}',[CategoryController::class,'destroy'])->name('kategori.destroy');
+
+    // Alat
+    Route::get('/admin/alat',[AlatController::class, 'index'])->name('alat.index');
 });
 
 Route::get('/memberarea', function () {

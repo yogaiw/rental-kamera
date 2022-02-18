@@ -32,16 +32,35 @@ class DatabaseSeeder extends Seeder
 
         DB::table('categories')->insert([
             [
-                'nama' => 'Uncategorized'
+                'nama_kategori' => 'Uncategorized'
             ],
             [
-                'nama' => 'Kamera'
+                'nama_kategori' => 'Kamera'
             ],
             [
-                'nama' => 'Lensa'
+                'nama_kategori' => 'Lensa'
             ],
             [
-                'nama' => 'Lighting'
+                'nama_kategori' => 'Lighting'
+            ]
+        ]);
+
+        DB::table('alats')->insert([
+            [
+                'nama_alat' => 'Sony a7ii',
+                'kategori_id' => '2'
+            ],
+            [
+                'nama_alat' => 'Sony a6000',
+                'kategori_id' => '2'
+            ],
+            [
+                'nama_alat' => 'Sigma 30mm 1.4',
+                'kategori_id' => '3'
+            ],
+            [
+                'nama_alat' => 'Canon EF 24-70mm 2.8',
+                'kategori_id' => '3'
             ]
         ]);
     }

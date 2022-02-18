@@ -44,7 +44,7 @@
                                 @foreach ($categories as $cat)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $cat->nama }}</td>
+                                    <td>{{ $cat->nama_kategori }}</td>
                                     <td>-</td>
                                     <td>
                                         <a href="{{ route('kategori.edit',['id'=>$cat->id]) }}" type="button" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
