@@ -48,19 +48,19 @@ class DatabaseSeeder extends Seeder
         DB::table('alats')->insert([
             [
                 'nama_alat' => 'Sony a7ii',
-                'category_id' => '2'
+                'kategori_id' => '2'
             ],
             [
                 'nama_alat' => 'Sony a6000',
-                'category_id' => '2'
+                'kategori_id' => '2'
             ],
             [
                 'nama_alat' => 'Sigma 30mm 1.4',
-                'category_id' => '3'
+                'kategori_id' => '3'
             ],
             [
                 'nama_alat' => 'Canon EF 24-70mm 2.8',
-                'category_id' => '3'
+                'kategori_id' => '3'
             ]
         ]);
     }
