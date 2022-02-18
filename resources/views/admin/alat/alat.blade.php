@@ -31,7 +31,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td></td>
                                     <td> {{ $alat->nama_alat }} </td>
-                                    <td> {{ $alat->nama_kategori }} </td>
+                                    <td> {{ $alat->category->nama_kategori }} </td>
                                     <td>
                                         <a href="" type="button" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                                         <form action="" method="POST" style="display: inline-block">

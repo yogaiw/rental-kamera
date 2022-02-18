@@ -10,10 +10,8 @@ class AlatController extends Controller
 {
     public function index() {
 
-        $alats = DB::table('alats')->leftJoin('categories','alats.kategori_id','=','categories.id')->get();
-
         return view('admin.alat.alat',[
-            'alats' => $alats
+            'alats' => Alat::all()
         ]);
     }
 }

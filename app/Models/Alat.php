@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Alat extends Model
 {
     use HasFactory;
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
 }
