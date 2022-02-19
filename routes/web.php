@@ -33,6 +33,7 @@ Route::middleware(['auth','admin'])->group(function () {
 
     // Alat
     Route::get('/admin/alat',[AlatController::class, 'index'])->name('alat.index');
+    Route::get('/admin/alat/filter/{id}',[AlatController::class, 'filter'])->name('alat.filter');
 });
 
 Route::get('/memberarea', function () {
