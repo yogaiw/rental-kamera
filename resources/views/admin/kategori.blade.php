@@ -45,7 +45,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $cat->nama_kategori }}</td>
-                                    <td>-</td>
+                                    <td> {{ $cat->alat->count() }}</td>
                                     <td>
                                         <a href="{{ route('kategori.edit',['id'=>$cat->id]) }}" type="button" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                                         <form action="{{ route('kategori.destroy',['id'=>$cat->id]) }}" method="POST" style="display: inline-block">
