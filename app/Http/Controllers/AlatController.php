@@ -9,16 +9,17 @@ use Illuminate\Support\Facades\DB;
 
 class AlatController extends Controller
 {
-    public function index() {
-        return view('admin.alat.alat',[
-            'alats' => Alat::all(),
-            'categories' => Category::all()
-        ]);
-    }
+    public function index($id = null) {
 
-    public function filter($id) {
-        return view('admin.alat.alat', [
-            'alats' => Alat::all()->where('kategori_id','=',$id),
+        if($id != null) {
+            $alats = Alat::all()->where('kategori_id','=',$id);
+        }
+        else {
+            $alats = Alat::all();
+        }
+
+        return view('admin.alat.alat',[
+            'alats' => $alats,
             'categories' => Category::all()
         ]);
     }

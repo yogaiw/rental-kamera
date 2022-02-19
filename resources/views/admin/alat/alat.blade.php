@@ -21,7 +21,7 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li><a class="dropdown-item" href="{{ route('alat.index') }}">Semua</a></li>
                                 @foreach ($categories as $cat)
-                                <li><a class="dropdown-item" href="{{ route('alat.filter',['id'=>$cat->id]) }}">{{ $cat->nama_kategori }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('alat.index',['id'=>$cat->id]) }}">{{ $cat->nama_kategori }}</a></li>
                                 @endforeach
                             </ul>
                         </div>

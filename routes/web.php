@@ -32,8 +32,7 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::delete('/admin/kategori/{id}',[CategoryController::class,'destroy'])->name('kategori.destroy');
 
     // Alat
-    Route::get('/admin/alat',[AlatController::class, 'index'])->name('alat.index');
-    Route::get('/admin/alat/filter/{id}',[AlatController::class, 'filter'])->name('alat.filter');
+    Route::get('/admin/alat/{id?}',[AlatController::class, 'index'])->name('alat.index');
 });
 
 Route::get('/memberarea', function () {
