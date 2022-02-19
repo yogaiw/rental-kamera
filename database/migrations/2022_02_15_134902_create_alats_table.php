@@ -18,9 +18,9 @@ class CreateAlatsTable extends Migration
             $table->foreignId('kategori_id');
             $table->string('nama_alat');
             $table->text('deskripsi')->nullable();
-            // $table->integer('harga24');
-            // $table->integer('harga12');
-            // $table->integer('harga6');
+            $table->integer('harga24');
+            $table->integer('harga12');
+            $table->integer('harga6');
             // $table->string('gambar');
             $table->timestamps();
         });

@@ -25,15 +25,20 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="row row-cols-3 row-cols-md-6 g-4">
+                        <div class="row row-cols-2 row-cols-md-6 g-4">
                             @foreach ($alats as $alat)
                             <div class="col">
                                 <div class="card">
                                     <img src="/images/noimage.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <span class="badge bg-primary">{{ $alat->category->nama_kategori }}</span>
+                                        <span class="badge bg-warning">{{ $alat->category->nama_kategori }}</span>
                                         <h6 class="card-title">{{ $alat->nama_alat }}</h6>
                                     </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">@money($alat->harga24)<span class="badge bg-primary" style="float: right;">24 Jam</span></li>
+                                        <li class="list-group-item">@money($alat->harga12)<span class="badge bg-primary" style="float: right;">12 Jam</span></li>
+                                        <li class="list-group-item">@money($alat->harga6)<span class="badge bg-primary" style="float: right;">6 Jam</span></li>
+                                    </ul>
                                     <div class="card-body">
                                         <div class="btn-group" role="group">
                                             <a href="" class="btn btn-sm btn-primary">Detail</a>
