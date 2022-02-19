@@ -7,6 +7,48 @@
             <li class="breadcrumb-item active">Manajemen Alat</li>
         </ol>
         <div class="row">
+            <div class="col-lg">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Alat
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="btn btn-primary mb-4">Tambah Alat</a>
+                        <div class="dropdown" style="float: right;">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                              Filter Kategori
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="">Semua</a></li>
+                                @foreach ($categories as $cat)
+                                <li><a class="dropdown-item" href="#">{{ $cat->nama_kategori }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="row row-cols-3 row-cols-md-6 g-4">
+                            @foreach ($alats as $alat)
+                            <div class="col">
+                                <div class="card">
+                                    <img src="/images/noimage.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <span class="badge bg-primary">{{ $alat->category->nama_kategori }}</span>
+                                        <h6 class="card-title">{{ $alat->nama_alat }}</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="btn-group" role="group">
+                                            <a href="" class="btn btn-sm btn-primary">Detail</a>
+                                            <a href="" class="btn btn-sm btn-danger">Hapus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card mb-4">
                     <div class="card-header">
@@ -14,7 +56,6 @@
                         Alat
                     </div>
                     <div class="card-body">
-                        <a href="" class="btn btn-primary mb-4">Tambah Alat</a>
                         <table id="dataTable">
                             <thead>
                                 <tr>
