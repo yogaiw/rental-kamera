@@ -25,6 +25,14 @@
                                 @endforeach
                             </ul>
                         </div>
+                        <form action="">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" width="25%" placeholder="Cari Alat" name="search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Cari</button>
+                                </div>
+                            </div>
+                        </form>
                         <div class="row row-cols-2 row-cols-md-6 g-4">
                             @foreach ($alats as $alat)
                             <div class="col">

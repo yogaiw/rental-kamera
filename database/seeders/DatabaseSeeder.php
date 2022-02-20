@@ -73,7 +73,28 @@ class DatabaseSeeder extends Seeder
                 'harga24' => '125000',
                 'harga12' => '90000',
                 'harga6' => '75000'
-            ]
+            ],
+            [
+                'nama_alat' => 'Canon EOS 6D',
+                'kategori_id' => '2',
+                'harga24' => '125000',
+                'harga12' => '90000',
+                'harga6' => '75000'
+            ],
+            [
+                'nama_alat' => 'Yongnuo 560 IV',
+                'kategori_id' => '4',
+                'harga24' => '125000',
+                'harga12' => '90000',
+                'harga6' => '75000'
+            ],
+            [
+                'nama_alat' => 'Godox AD600BM',
+                'kategori_id' => '4',
+                'harga24' => '125000',
+                'harga12' => '90000',
+                'harga6' => '75000'
+            ],
         ]);
     }
 }
