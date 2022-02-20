@@ -33,10 +33,10 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="row row-cols-md-3 row-cols-lg-6 g-4">
+                        <div class="row row-cols-md-2 row-cols-lg-6 g-4">
                             @foreach ($alats as $alat)
                             <div class="col">
-                                <div class="card">
+                                <div class="card h-100">
                                     <img src="/images/noimage.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <span class="badge bg-warning">{{ $alat->category->nama_kategori }}</span>
@@ -47,10 +47,9 @@
                                         <li class="list-group-item">@money($alat->harga12)<span class="badge bg-light text-dark" style="float: right;">12 Jam</span></li>
                                         <li class="list-group-item">@money($alat->harga6)<span class="badge bg-light text-dark" style="float: right;">6 Jam</span></li>
                                     </ul>
-                                    <div class="card-body">
+                                    <div class="card-footer">
                                         <div class="btn-group" role="group">
                                             <a href="" class="btn btn-sm btn-primary">Detail</a>
-                                            <a href="" class="btn btn-sm btn-danger">Hapus</a>
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +128,7 @@
                 </div>
                 <div class="mb-3">
                     <div class="row">
-                        <span class="form-text">Harga ditulis angka saja, tidak perlu tanda titik</span>
+                        <span class="form-text mb-2">Harga ditulis angka saja, tidak perlu tanda titik</span>
                         <div class="col col-4"><input type="number" name="harga24" class="form-control" placeholder="Harga 24jam" required></div>
                         <div class="col col-4"><input type="number" name="harga12" class="form-control" placeholder="Harga 12Jam" required></div>
                         <div class="col col-4"><input type="number" name="harga6" class="form-control" placeholder="Harga 6jam" required></div>
