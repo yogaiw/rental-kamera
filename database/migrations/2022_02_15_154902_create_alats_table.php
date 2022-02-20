@@ -15,7 +15,7 @@ class CreateAlatsTable extends Migration
     {
         Schema::create('alats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kategori_id');
+            $table->foreignId('kategori_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('nama_alat');
             $table->text('deskripsi')->nullable();
             $table->integer('harga24');

@@ -121,7 +121,7 @@
                 </div>
                 <div class="mb-3">
                     <select class="form-select" name="kategori" required>
-                        <option value="" disabled selected>Pilih Kategori Alat</option>
+                        <option value="1" disabled selected>Pilih Kategori</option>
                         @foreach ($categories as $cat)
                             <option value="{{ $cat->id }}">{{ $cat->nama_kategori }}</option>
                         @endforeach
