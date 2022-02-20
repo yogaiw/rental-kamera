@@ -4,23 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Alat;
 use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AlatController extends Controller
 {
     public function index($id = null) {
 
         if($id != null) {
-            $alats = Alat::all()->where('kategori_id','=',$id);
+            $alats = Alat::where('kategori_id','=',$id)->get();
         }
         else {
-            $alats = Alat::all();
+            $alats = Alat::with(['category'])->get();
         }
 
         if(request('search')) {
             $key = request('search');
-            $alats =  Alat::where('nama_alat','LIKE','%'.$key.'%')->get();
+            $alats =  Alat::with(['category'])->where('nama_alat','LIKE','%'.$key.'%')->get();
         }
 
         return view('admin.alat.alat',[
