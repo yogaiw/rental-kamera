@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alat;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class AlatController extends Controller
 {
@@ -25,5 +26,26 @@ class AlatController extends Controller
             'alats' => $alats,
             'categories' => Category::all()
         ]);
+    }
+
+    public function store(Request $request) {
+        $this->validate($request,[
+            'nama' => 'required',
+            'kategori' => 'required',
+            'harga24' => 'required|numeric',
+            'harga12' => 'required|numeric',
+            'harga6' => 'required|numeric',
+            // 'gambar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+        ]);
+
+        $alat = new Alat();
+        $alat->nama_alat = $request['nama'];
+        $alat->kategori_id = $request['kategori'];
+        $alat->harga24 = $request['harga24'];
+        $alat->harga12 = $request['harga12'];
+        $alat->harga6 = $request['harga6'];
+        $alat->save();
+
+        return redirect(route('alat.index'));
     }
 }

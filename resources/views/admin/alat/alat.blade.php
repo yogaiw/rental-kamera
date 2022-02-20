@@ -13,7 +13,7 @@
                         Alat
                     </div>
                     <div class="card-body">
-                        <a href="" class="btn btn-primary mb-4">Tambah Alat</a>
+                        <a type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#tambahAlat">Tambah Alat</a>
                         <div class="dropdown" style="float: right;">
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                               Filter Kategori
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="row row-cols-2 row-cols-md-6 g-4">
+                        <div class="row row-cols-md-3 row-cols-lg-6 g-4">
                             @foreach ($alats as $alat)
                             <div class="col">
                                 <div class="card">
@@ -104,4 +104,47 @@
         </div>
     </div>
 </main>
+
+<!-- Modal -->
+<div class="modal fade" id="tambahAlat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tambah Alat</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="{{ route('alat.store') }}" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Alat" required>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" name="kategori" required>
+                        <option value="" disabled selected>Pilih Kategori Alat</option>
+                        @foreach ($categories as $cat)
+                            <option value="{{ $cat->id }}">{{ $cat->nama_kategori }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <span class="form-text">Harga ditulis angka saja, tidak perlu tanda titik</span>
+                        <div class="col col-4"><input type="number" name="harga24" class="form-control" placeholder="Harga 24jam" required></div>
+                        <div class="col col-4"><input type="number" name="harga12" class="form-control" placeholder="Harga 12Jam" required></div>
+                        <div class="col col-4"><input type="number" name="harga6" class="form-control" placeholder="Harga 6jam" required></div>
+                    </div>
+                </div>
+                {{-- <div class="mb-3">
+                    <span class="form-text">Upload Gambar Alat</span>
+                    <input type="file" name="gambar" class="form-control">
+                </div> --}}
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
