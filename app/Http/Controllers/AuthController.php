@@ -21,7 +21,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if(Auth::user()->isAdmin == true) {
-                return redirect()->intended('admin');
+                return redirect(route('admin.index'));
             } else {
                 return redirect()->intended('memberarea');
             }

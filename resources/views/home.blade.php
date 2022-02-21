@@ -13,49 +13,62 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <div class="container px-4">
-                <a class="navbar-brand" href="#page-top">Kancil Rental Kamera Purwokerto</a>
+                <a class="navbar-brand" href="/">Kancil Rental Kamera Purwokerto</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <!-- Header-->
-        <header class="bg-primary bg-gradient text-white">
-            <div class="container px-4 text-center">
-                <h1 class="fw-bolder">Mulai Sewa untuk Kebutuhan Anda</h1>
-                <p class="lead">cocok untuk digunakan dalam projek yang terbatas waktu</p>
-                <a class="btn btn-lg btn-light" href="#login">Mulai Menyewa</a>
-            </div>
-        </header>
-        <!-- About section-->
-        <section id="about">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2>About this page</h2>
-                        <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
-                        <ul>
-                            <li>Clickable nav links that smooth scroll to page sections</li>
-                            <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-                            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-                            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Services section-->
-        <section class="bg-light" id="services">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2>Services we offer</h2>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+        <section id="katalog">
+            <div class="container px-2">
+                <div class="row justify-content-center">
+                    <div class="col-lg-11">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Lihat Katalog
+                            </div>
+                            <div class="card-body">
+                                <div class="btn-group mb-4" role="group" aria-label="Basic example">
+                                    @foreach ($categories as $cat)
+                                    <a href="?kategori={{ $cat->id }}"  class="btn btn-primary" >{{ $cat->nama_kategori }}</a>
+                                    @endforeach
+                                </div>
+                                <form action="">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" width="25%" placeholder="Cari Alat" name="search">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="submit">Cari</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="row row-cols-md-2 row-cols-lg-6 g-4">
+                                    @foreach ($alats as $alat)
+                                    <div class="col">
+                                        <div class="card h-100">
+                                            <img src="/images/noimage.jpg" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <span class="badge bg-warning">{{ $alat->category->nama_kategori }}</span>
+                                                <h6 class="card-title">{{ $alat->nama_alat }}</h6>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">@money($alat->harga24)<span class="badge bg-light text-dark" style="float: right;">24 Jam</span></li>
+                                                <li class="list-group-item">@money($alat->harga12)<span class="badge bg-light text-dark" style="float: right;">12 Jam</span></li>
+                                                <li class="list-group-item">@money($alat->harga6)<span class="badge bg-light text-dark" style="float: right;">6 Jam</span></li>
+                                            </ul>
+                                            <div class="card-footer">
+                                                <div class="btn-group" role="group">
+                                                    <a href="" class="btn btn-sm btn-primary">Detail</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
