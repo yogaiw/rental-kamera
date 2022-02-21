@@ -28,10 +28,12 @@
                     <div class="col-lg-11">
                         <div class="card mb-4">
                             <div class="card-header">
-                                Lihat Katalog
+                                <p style="float: left">Lihat Katalog</p>
+                                <p style="float: right"><a class="link-dark" href="#login">Login</a> untuk penyewaan secara online</p>
                             </div>
                             <div class="card-body">
                                 <div class="btn-group mb-4" role="group" aria-label="Basic example">
+                                    <a href="/" class="btn btn-success">Semua</a>
                                     @foreach ($categories as $cat)
                                     <a href="?kategori={{ $cat->id }}"  class="btn btn-primary" >{{ $cat->nama_kategori }}</a>
                                     @endforeach
@@ -44,6 +46,8 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                            <div class="card-body" style="max-height: 500px; overflow:scroll;">
                                 <div class="row row-cols-md-2 row-cols-lg-6 g-4">
                                     @foreach ($alats as $alat)
                                     <div class="col">
@@ -69,17 +73,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Login section-->
-        <section id="login">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2>Login terlebih dahulu</h2>
-                        @include('partials.login')
+
+                        <div class="card mb-4" id="login">
+                            <div class="card-header">Login</div>
+                            <div class="card-body">
+                                @include('partials.login')
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

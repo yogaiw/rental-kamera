@@ -33,6 +33,8 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                    <div class="card-body" style="max-height: 500px; overflow:scroll;">
                         <div class="row row-cols-md-2 row-cols-lg-6 g-4">
                             @foreach ($alats as $alat)
                             <div class="col">
