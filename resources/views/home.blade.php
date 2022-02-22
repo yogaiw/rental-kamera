@@ -13,7 +13,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <div class="container px-4">
-                <a class="navbar-brand" href="/">Kancil Rental Kamera Purwokerto</a>
+                <a class="navbar-brand" href="/">Kancil Rental Kamera</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
@@ -35,7 +35,7 @@
                                 <div class="btn-group mb-4" role="group" aria-label="Basic example">
                                     <a href="/" class="btn btn-success">Semua</a>
                                     @foreach ($categories as $cat)
-                                    <a href="?kategori={{ $cat->id }}"  class="btn btn-primary" >{{ $cat->nama_kategori }}</a>
+                                    <a href="?kategori={{ $cat->id }}" class="btn btn-primary">{{ $cat->nama_kategori }}</a>
                                     @endforeach
                                 </div>
                                 <form action="">
@@ -64,7 +64,7 @@
                                             </ul>
                                             <div class="card-footer">
                                                 <div class="btn-group" role="group">
-                                                    <a href="" class="btn btn-sm btn-primary">Detail</a>
+                                                    <a href="{{ route('home.detail',['id' => $alat->id]) }}" class="btn btn-sm btn-primary">Detail</a>
                                                 </div>
                                             </div>
                                         </div>

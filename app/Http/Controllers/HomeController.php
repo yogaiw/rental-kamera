@@ -22,4 +22,12 @@ class HomeController extends Controller
             'categories' => Category::all()
         ]);
     }
+
+    public function detail($id) {
+        $detail = Alat::with(['category'])->find($id);
+
+        return view('detail',[
+            'detail' => $detail
+        ]);
+    }
 }

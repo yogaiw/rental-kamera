@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[HomeController::class, 'index'])->name('home');
+Route::get('/detail/{id}',[HomeController::class, 'detail'])->name('home.detail');
 Route::post('/login',[AuthController::class, 'authenticate']);
 
 Route::middleware(['auth','admin'])->group(function () {
