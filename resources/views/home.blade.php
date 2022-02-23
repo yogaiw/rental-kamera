@@ -32,11 +32,16 @@
                                 <p style="float: right"><a class="link-dark" href="#login">Login</a> untuk penyewaan secara online</p>
                             </div>
                             <div class="card-body">
-                                <div class="btn-group mb-4" role="group" aria-label="Basic example">
-                                    <a href="/" class="btn btn-success">Semua</a>
-                                    @foreach ($categories as $cat)
-                                    <a href="?kategori={{ $cat->id }}" class="btn btn-primary">{{ $cat->nama_kategori }}</a>
-                                    @endforeach
+                                <div class="dropdown mb-4">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Kategori
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item" href="{{ route('home') }}">Semua</a></li>
+                                        @foreach ($categories as $cat)
+                                        <li><a class="dropdown-item" href="?kategori={{ $cat->id }}">{{ $cat->nama_kategori }}</a></li>
+                                        @endforeach
+                                    </ul>
                                 </div>
                                 <form action="">
                                     <div class="input-group mb-3">
