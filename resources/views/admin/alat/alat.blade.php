@@ -51,7 +51,7 @@
                                     </ul>
                                     <div class="card-footer">
                                         <div class="btn-group" role="group">
-                                            <a href="" class="btn btn-sm btn-primary">Detail</a>
+                                            <a href="{{ route('alat.edit',['id' => $alat->id]) }}" class="btn btn-sm btn-primary">Detail</a>
                                         </div>
                                     </div>
                                 </div>
@@ -88,12 +88,7 @@
                                     <td> {{ $alat->nama_alat }} </td>
                                     <td> {{ $alat->category->nama_kategori }} </td>
                                     <td>
-                                        <a href="" type="button" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                        <form action="" method="POST" style="display: inline-block">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-                                        </form>
+                                        <a href="{{ route('alat.edit',['id' => $alat->id]) }}" type="button" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -140,7 +135,7 @@
                     <input type="file" name="gambar" class="form-control">
                 </div> --}}
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
                 </div>
             </form>
         </div>

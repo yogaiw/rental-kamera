@@ -28,6 +28,15 @@ class AlatController extends Controller
         ]);
     }
 
+    public function edit($id) {
+        $alat = Alat::with(['category'])->find($id);
+
+        return view('admin.alat.editalat',[
+            'alat' => $alat,
+            'kategori' => Category::all()
+        ]);
+    }
+
     public function store(Request $request) {
         $this->validate($request,[
             'nama' => 'required',
@@ -46,6 +55,33 @@ class AlatController extends Controller
         $alat->harga6 = $request['harga6'];
         $alat->save();
 
+        return redirect(route('alat.index'));
+    }
+
+    public function update(Request $request, $id) {
+        $this->validate($request,[
+            'nama' => 'required',
+            'kategori' => 'required',
+            'harga24' => 'required|numeric',
+            'harga12' => 'required|numeric',
+            'harga6' => 'required|numeric',
+            // 'gambar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+        ]);
+
+        $alat = Alat::find($id);
+        $alat->nama_alat = $request['nama'];
+        $alat->kategori_id = $request['kategori'];
+        $alat->harga24 = $request['harga24'];
+        $alat->harga12 = $request['harga12'];
+        $alat->harga6 = $request['harga6'];
+        $alat->save();
+
+        return redirect(route('alat.index'));
+    }
+
+    public function destroy($id) {
+        $alat = Alat::find($id);
+        $alat->delete();
         return redirect(route('alat.index'));
     }
 }

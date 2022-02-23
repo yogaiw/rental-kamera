@@ -34,6 +34,9 @@ Route::middleware(['auth','admin'])->group(function () {
 
     // Alat
     Route::get('/admin/alat/{id?}',[AlatController::class, 'index'])->name('alat.index');
+    Route::get('/admin/alat/{id}/detail',[AlatController::class,'edit'])->name('alat.edit');
+    Route::patch('/admin/alat/{id}/detail',[AlatController::class,'update'])->name('alat.update');
+    Route::delete('/admin/alat/{id}/detail',[AlatController::class,'destroy'])->name('alat.destroy');
     Route::post('/admin/alat',[AlatController::class, 'store'])->name('alat.store');
 });
 
