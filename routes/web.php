@@ -41,7 +41,7 @@ Route::middleware(['auth','admin'])->group(function () {
 });
 
 Route::get('/memberarea', function () {
-    return view('member');
+    return view('member.member');
 })->middleware('auth');
 
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
