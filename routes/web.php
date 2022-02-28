@@ -5,6 +5,7 @@ use App\Http\Controllers\AlatController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,8 +41,6 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::post('/admin/alat',[AlatController::class, 'store'])->name('alat.store');
 });
 
-Route::get('/memberarea', function () {
-    return view('member.member');
-})->middleware('auth');
+Route::get('/memberarea',[MemberController::class,'index'])->middleware('auth')->name('member.index');
 
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
