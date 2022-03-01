@@ -57,7 +57,7 @@
                                     @foreach ($alats as $alat)
                                     <div class="col">
                                         <div class="card h-100">
-                                            <img src="/images/noimage.jpg" class="card-img-top" alt="...">
+                                            <img src="{{ url('') }}/images/{{ $alat->gambar }}" alt="">
                                             <div class="card-body">
                                                 <span class="badge bg-warning">{{ $alat->category->nama_kategori }}</span>
                                                 <h6 class="card-title">{{ $alat->nama_alat }}</h6>

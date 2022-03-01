@@ -39,7 +39,7 @@
                             @foreach ($alats as $alat)
                             <div class="col">
                                 <div class="card h-100">
-                                    <img src="/images/noimage.jpg" class="card-img-top" alt="...">
+                                    <img src="{{ url('') }}/images/{{ $alat->gambar }}" alt="">
                                     <div class="card-body">
                                         <span class="badge bg-warning">{{ $alat->category->nama_kategori }}</span>
                                         <h6 class="card-title">{{ $alat->nama_alat }}</h6>
@@ -110,7 +110,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{{ route('alat.store') }}" method="POST">
+            <form action="{{ route('alat.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Alat" required>
@@ -130,10 +130,10 @@
                         <div class="col col-4"><input type="number" name="harga6" class="form-control" placeholder="Harga 6jam" required></div>
                     </div>
                 </div>
-                {{-- <div class="mb-3">
+                <div class="mb-3">
                     <span class="form-text">Upload Gambar Alat</span>
                     <input type="file" name="gambar" class="form-control">
-                </div> --}}
+                </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </div>

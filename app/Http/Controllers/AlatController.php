@@ -44,7 +44,7 @@ class AlatController extends Controller
             'harga24' => 'required|numeric',
             'harga12' => 'required|numeric',
             'harga6' => 'required|numeric',
-            // 'gambar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+            'gambar' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ]);
 
         $alat = new Alat();
@@ -53,6 +53,14 @@ class AlatController extends Controller
         $alat->harga24 = $request['harga24'];
         $alat->harga12 = $request['harga12'];
         $alat->harga6 = $request['harga6'];
+
+        if($request->hasFile('gambar')) {
+            $gambar = $request->file('gambar');
+            $filename = time().'-'.$gambar->getClientOriginalName();
+            $gambar->move(public_path('images'), $filename);
+            $alat->gambar = $filename;
+        }
+
         $alat->save();
 
         return redirect(route('alat.index'));

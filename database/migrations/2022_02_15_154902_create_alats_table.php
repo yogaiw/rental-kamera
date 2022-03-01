@@ -21,7 +21,7 @@ class CreateAlatsTable extends Migration
             $table->integer('harga24');
             $table->integer('harga12');
             $table->integer('harga6');
-            // $table->string('gambar');
+            $table->string('gambar')->default('noimage.jpg');
             $table->timestamps();
         });
     }

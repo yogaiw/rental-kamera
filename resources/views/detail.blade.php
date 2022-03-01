@@ -14,7 +14,7 @@
                 <div class="col-md-12 col-lg-4">
                     <div class="card mb-4">
                         <div class="card-header"><i class="fas fa-arrow-left"></i> <a href="{{ route('home') }}" class="stretched-link link-dark">Kembali</a></div>
-                        <img src="/images/noimage.jpg" class="card-img-top" alt="...">
+                        <img src="{{ url('') }}/images/{{ $detail->gambar }}" alt="">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">@money( $detail->harga24 )<span class="badge bg-light text-dark" style="float: right;">24 Jam</span></li>
                             <li class="list-group-item">@money( $detail->harga12 )<span class="badge bg-light text-dark" style="float: right;">12 Jam</span></li>
