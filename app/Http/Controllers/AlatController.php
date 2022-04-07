@@ -98,8 +98,10 @@ class AlatController extends Controller
     public function destroy($id) {
         $alat = Alat::find($id);
 
-        $filepath = public_path('images'). '/' . $alat->gambar;
-        unlink($filepath);
+        if($alat->gambar != 'noimage.jpg') {
+            $filepath = public_path('images'). '/' . $alat->gambar;
+            unlink($filepath);
+        }
 
         $alat->delete();
         return redirect(route('alat.index'));
