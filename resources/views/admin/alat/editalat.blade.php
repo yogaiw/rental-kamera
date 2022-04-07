@@ -9,7 +9,7 @@
                         <a class="link-dark" href="{{ route('alat.index') }}"><i class="fas fa-arrow-left"></i> Kembali</a> | Detail untuk Alat "{{ $alat->nama_alat }}"
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('alat.update',['id' => $alat->id]) }}" method="POST">
+                        <form action="{{ route('alat.update',['id' => $alat->id]) }}" method="POST" enctype="multipart/form-data">
                             @method('PATCH')
                             @csrf
                             <input class="form-control form-control-lg mb-4" type="text" name="nama" value="{{ $alat->nama_alat }}" required>
@@ -45,6 +45,10 @@
                                             <span class="input-group-text"><b>/6jam</b></span>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="mt-3">
+                                    <span class="form-text">Upload Gambar Alat</span>
+                                    <input type="file" name="gambar" class="form-control">
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-lg-8"></div>
