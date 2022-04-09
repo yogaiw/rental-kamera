@@ -26,7 +26,7 @@ class CartController extends Controller
         $cart->user_id = Auth::id();
         $cart->alat_id = $alat->id;
         $cart->harga = $harga;
-        $cart->durasi =  $request['btn'];
+        $cart->durasi = $request['btn'];
 
         $cart->save();
 

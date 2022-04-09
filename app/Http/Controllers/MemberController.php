@@ -11,7 +11,7 @@ class MemberController extends Controller
 {
     public function index() {
         $alat = Alat::with(['category'])->get();
-        $carts = Carts::all();
+        $carts = Carts::where('user_id','=',Auth::id())->get();
 
         return view('member.member',[
             'alat' => $alat,
