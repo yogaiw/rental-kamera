@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AlatController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
@@ -42,5 +43,8 @@ Route::middleware(['auth','admin'])->group(function () {
 });
 
 Route::get('/memberarea',[MemberController::class,'index'])->middleware('auth')->name('member.index');
+
+// Carts
+Route::post('/memberarea/store/{id}',[CartController::class,'store'])->middleware('auth')->name('cart.store');
 
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
