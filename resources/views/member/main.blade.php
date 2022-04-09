@@ -27,10 +27,10 @@
             </div>
         </nav>
         <div class="container-fluid px-4 mt-4">
-            <div class="alert alert-success" role="alert">
+            {{-- <div class="alert alert-success" role="alert">
                 <p>Selamat datang di member area, sekarang kamu dapat memesan dengan menambahkan alat ke dalam keranjang</p>
                 <p>Baru pernah menyewa disini? simak panduan penyewaan <a href="" class="link-dark">disini</a></p>
-            </div>
+            </div> --}}
             @yield('container')
         </div>
 

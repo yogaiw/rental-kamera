@@ -1,10 +1,19 @@
 @extends('member.main')
 @section('container')
+<div class="row mb-4">
+    <div class="col col-sm-12">
+        <div class="d-flex w-100 justify-content-start">
+            <a class="btn btn-primary mx-1" href="{{ route('member.index') }}">Semua</a>
+            @foreach ($kategori as $cat)
+                <a class="btn btn-primary mx-1" href="?kategori={{ $cat->id }}">{{ $cat->nama_kategori }}</a>
+            @endforeach
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col col-md-8 col-sm-12">
         <div class="card h-100">
             <div class="card-header"><b>Alat</b></div>
-
             <div class="card-body">
                 <div style="height: 500px; overflow:scroll">
                     <div class="list-group">
