@@ -46,5 +46,6 @@ Route::get('/memberarea',[MemberController::class,'index'])->middleware('auth')-
 
 // Carts
 Route::post('/memberarea/store/{id}',[CartController::class,'store'])->middleware('auth')->name('cart.store');
+Route::delete('/memberarea/delete/{id}',[CartController::class,'destroy'])->middleware('auth')->name('cart.destroy');
 
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');

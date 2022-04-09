@@ -32,4 +32,11 @@ class CartController extends Controller
 
         return redirect(route('member.index'));
     }
+
+    public function destroy($id) {
+        $alat = Carts::find($id);
+        $alat->delete();
+
+        return redirect(route('member.index'));
+    }
 }
