@@ -41,16 +41,9 @@
         </div>
     </div>
     <div class="col col-md-4 col-sm-12">
-        <div>
+        <div id="keranjang">
             <div class="card-header" id="keranjang">
                 <b>Keranjang</b> <span class="badge bg-secondary">{{ Auth::user()->cart->count() }}</span>
-            </div>
-            <div class="card-body">
-                <small>Tanggal Ambil</small>
-                <div class="d-flex w-100 justify-content-center">
-                    <input type="date" class="forn-control">
-                    <input type="time" class="form-control">
-                </div>
             </div>
             <div class="card-body">
                 <div>
@@ -79,7 +72,12 @@
                     <b>Total</b>
                     <b>@money($total)</b>
                 </div>
-                    <a href="" style="width:100%" class="btn btn-success">Checkout</a>
+                <small>Tanggal Ambil</small>
+                <div class="d-flex w-100 justify-content-center mb-4">
+                    <input type="date" class="forn-control">
+                    <input type="time" class="form-control">
+                </div>
+                <a href="" style="width:100%" class="btn btn-success">Checkout</a>
             </div>
         </div>
     </div>
