@@ -43,7 +43,7 @@
     <div class="col col-md-4 col-sm-12">
         <div>
             <div class="card-header" id="keranjang">
-                <b>Keranjang</b>
+                <b>Keranjang</b> <span class="badge bg-secondary">{{ Auth::user()->cart->count() }}</span>
             </div>
             <div class="card-body">
                 <small>Tanggal Ambil</small>
