@@ -22,28 +22,22 @@
                                 @endforeach
                             </select>
                             <div class="mb-3">
-                                <div class="row">
-                                    <span class="form-text mb-2">Harga ditulis angka saja, tidak perlu tanda titik</span>
-                                    <div class="col col-lg-4">
-                                        <div class="input-group">
-                                            <span class="input-group-text">Rp</span>
-                                            <input type="number" value="{{ $alat->harga24 }}" name="harga24" class="form-control" placeholder="Harga 24jam" required>
-                                            <span class="input-group-text"><b>/24jam</b></span>
-                                        </div>
+                                <span class="form-text mb-2">Harga ditulis angka saja, tidak perlu tanda titik</span>
+                                <div class="row d-flex w-100 justify-content-start">
+                                    <div class="input-group">
+                                        <span class="input-group-text">Rp</span>
+                                        <input type="number" value="{{ $alat->harga24 }}" name="harga24" class="form-control" placeholder="Harga 24jam" required>
+                                        <span class="input-group-text"><b>/24jam</b></span>
                                     </div>
-                                    <div class="col col-lg-4">
-                                        <div class="input-group">
-                                            <span class="input-group-text">Rp</span>
-                                            <input type="number" value="{{ $alat->harga12 }}" name="harga12" class="form-control" placeholder="Harga 24jam" required>
-                                            <span class="input-group-text"><b>/12jam</b></span>
-                                        </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Rp</span>
+                                        <input type="number" value="{{ $alat->harga12 }}" name="harga12" class="form-control" placeholder="Harga 24jam" required>
+                                        <span class="input-group-text"><b>/12jam</b></span>
                                     </div>
-                                    <div class="col col-lg-4">
-                                        <div class="input-group">
-                                            <span class="input-group-text">Rp</span>
-                                            <input type="number" value="{{ $alat->harga6 }}" name="harga6" class="form-control" placeholder="Harga 24jam" required>
-                                            <span class="input-group-text"><b>/6jam</b></span>
-                                        </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Rp</span>
+                                        <input type="number" value="{{ $alat->harga6 }}" name="harga6" class="form-control" placeholder="Harga 24jam" required>
+                                        <span class="input-group-text"><b>/6jam</b></span>
                                     </div>
                                 </div>
                                 <div class="mt-3">
