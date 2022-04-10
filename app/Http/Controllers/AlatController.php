@@ -73,7 +73,7 @@ class AlatController extends Controller
             'harga24' => 'required|numeric',
             'harga12' => 'required|numeric',
             'harga6' => 'required|numeric',
-            'gambar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+            'gambar' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ]);
 
         $alat = Alat::find($id);
