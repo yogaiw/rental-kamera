@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="col col-md-4 col-sm-12">
-        <div id="keranjang">
+        <div class="card" id="keranjang">
             <div class="card-header" id="keranjang">
                 <b>Keranjang</b> <span class="badge bg-secondary">{{ Auth::user()->cart->count() }}</span>
             </div>
