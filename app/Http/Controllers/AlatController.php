@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alat;
 use App\Models\Category;
+use App\Models\Carts;
 use Illuminate\Http\Request;
 
 class AlatController extends Controller
@@ -91,6 +92,21 @@ class AlatController extends Controller
         }
 
         $alat->save();
+
+        // Agar harga pada cart mengikuti saat harga alat di-update oleh Admin
+        $cart = Carts::where('alat_id','=',$id)->first();
+
+        if($cart->durasi === 24) {
+            $cart->harga = $alat->harga24;
+        }
+        if($cart->durasi === 12) {
+            $cart->harga = $alat->harga12;
+        }
+        if($cart->durasi === 6) {
+            $cart->harga = $alat->harga6;
+        }
+
+        $cart->save();
 
         return redirect(route('alat.index'));
     }
