@@ -25,11 +25,16 @@
         <section id="katalog">
             <div class="container px-2">
                 <div class="row justify-content-center">
+                    @if (session()->has('registrasi'))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{ session('registrasi') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                     <div class="col-lg-11">
                         <div class="card mb-4">
                             <div class="card-header">
-                                <p style="float: left">Lihat Katalog</p>
-                                <p style="float: right"><a class="link-dark" href="#login">Login</a> untuk penyewaan secara online</p>
+                                <a class="link-dark" href="#login">Login</a> untuk penyewaan secara online
                             </div>
                             <div class="card-body">
                                 <div class="dropdown mb-4">
@@ -53,9 +58,9 @@
                                 </form>
                             </div>
                             <div class="card-body" style="max-height: 500px; overflow:scroll;">
-                                <div class="row row-cols-md-2 row-cols-lg-6 g-4">
+                                <div class="row row-cols-sm-2 row-cols-lg-6 g-2">
                                     @foreach ($alats as $alat)
-                                    <div class="col">
+                                    <div class="col-6">
                                         <div class="card h-100">
                                             <img src="{{ url('') }}/images/{{ $alat->gambar }}" alt="">
                                             <div class="card-body">

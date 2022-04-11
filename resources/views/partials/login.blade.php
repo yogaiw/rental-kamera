@@ -8,5 +8,8 @@
         <label class="form-label">Password</label>
         <input type="password" class="form-control" id="password" name="password">
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
+    <div class="d-flex">
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a class="btn btn-link link-dark" href="{{ route('daftar') }}">Saya belum memiliki akun</a>
+    </div>
 </form>

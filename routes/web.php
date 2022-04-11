@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/detail/{id}',[HomeController::class, 'detail'])->name('home.detail');
 Route::post('/login',[AuthController::class, 'authenticate']);
+Route::get('/daftar',[RegisterController::class,'index'])->name('daftar');
+Route::post('/daftar',[RegisterController::class,'store'])->name('register.store');
 
 Route::middleware(['auth','admin'])->group(function () {
     Route::get('/admin', [AdminController::class,'index'])->name('admin.index');
