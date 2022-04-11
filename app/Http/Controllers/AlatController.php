@@ -94,19 +94,10 @@ class AlatController extends Controller
         $alat->save();
 
         // Agar harga pada cart mengikuti saat harga alat di-update oleh Admin
-        $cart = Carts::where('alat_id','=',$id)->first();
-
-        if($cart->durasi === 24) {
-            $cart->harga = $alat->harga24;
-        }
-        if($cart->durasi === 12) {
-            $cart->harga = $alat->harga12;
-        }
-        if($cart->durasi === 6) {
-            $cart->harga = $alat->harga6;
-        }
-
-        $cart->save();
+        $cart = new Carts();
+        $cart->where('alat_id',$id)->where('durasi',24)->update(['harga' => $alat->harga24]);
+        $cart->where('alat_id',$id)->where('durasi',12)->update(['harga' => $alat->harga12]);
+        $cart->where('alat_id',$id)->where('durasi',6)->update(['harga' => $alat->harga6]);
 
         return redirect(route('alat.index'));
     }
