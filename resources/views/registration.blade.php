@@ -22,16 +22,20 @@
                     <form action="{{ route('register.store') }}" method="POST">
                         @csrf
                         <div class="form-floating mb-1">
-                            <input type="text" name="name" class="form-control" id="floatingName" placeholder="name@example.com">
+                            <input type="text" name="name" class="form-control" id="floatingName" placeholder="Nama" required>
                             <label for="floatingName">Nama Lengkap</label>
                         </div>
                         <div class="form-floating mb-1">
-                            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                             <label for="floatingInput">Email</label>
                         </div>
                         <div class="form-floating">
-                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                             <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" name="telepon" class="form-control" id="floatingtelp" placeholder="Nomor Telepon" required>
+                            <label for="floatingtelp">No Telepon</label>
                         </div>
                         <button type="submit" class="btn btn-success w-100 mt-4">Daftar</button>
                     </form>
