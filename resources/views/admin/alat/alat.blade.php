@@ -35,9 +35,9 @@
                         </form>
                     </div>
                     <div class="card-body" style="max-height: 500px; overflow:scroll;">
-                        <div class="row row-cols-md-2 row-cols-lg-6 g-4">
+                        <div class="row row-cols-sm-2 row-cols-lg-6 g-2">
                             @foreach ($alats as $alat)
-                            <div class="col">
+                            <div class="col-6">
                                 <div class="card h-100">
                                     <img src="{{ url('') }}/images/{{ $alat->gambar }}" alt="">
                                     <div class="card-body">
