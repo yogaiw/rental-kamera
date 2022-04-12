@@ -17,7 +17,11 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
+                        @if (!Auth::check())
+                            <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
+                        @else
+                            <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -29,6 +33,11 @@
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             {{ session('registrasi') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if (Auth::check() && Auth::user()->isAdmin == false)
+                        <div class="alert alert-warning" role="alert">
+                            Anda telah login sebagai <b>{{ Auth::user()->name }}</b>&nbsp; <a class="btn btn-success" href="{{ route('member.index') }}">Mulai Menyewa</a>
                         </div>
                     @endif
                     <div class="col-lg-11">
@@ -84,19 +93,21 @@
                             </div>
                         </div>
 
-                        <div class="card mb-4" id="login">
-                            <div class="card-header">Login</div>
-                            <div class="card-body">
-                                @include('partials.login')
+                        @if (!Auth::check())
+                            <div class="card mb-4" id="login">
+                                <div class="card-header">Login</div>
+                                <div class="card-body">
+                                    @include('partials.login')
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
+            <div class="container px-4"><p class="m-0 text-center text-white">&copy; 2022 Kancil Rental Kamera</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
