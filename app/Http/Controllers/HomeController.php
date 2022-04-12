@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Alat;
 use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {

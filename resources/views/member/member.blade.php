@@ -24,13 +24,12 @@
                             <small><span class="badge bg-warning">{{ $item->category->nama_kategori }}</span></small>
                           </div>
                           <p class="mb-1">Deskripsi</p>
-                          <small class="mb-1">klik untuk menambahkan ke keranjang</small><br>
                           <form action="{{ route('cart.store',['id' => $item->id]) }}" method="POST">
                             @csrf
                             <div class="d-grid gap-2 d-md-block">
-                                <button type="submit" class="btn btn-sm btn-primary" name="btn" value="24">@money($item->harga24) <b>24jam</b></button>
-                                <button type="submit" class="btn btn-sm btn-primary" name="btn" value="12">@money($item->harga12) <b>12jam</b></button>
-                                <button type="submit" class="btn btn-sm btn-primary" name="btn" value="6">@money($item->harga6) <b>6jam</b></button>
+                                <button type="submit" class="btn btn-sm btn-primary" name="btn" value="24"><i class="fas fa-shopping-cart"></i> @money($item->harga24) <b>24jam</b></button>
+                                <button type="submit" class="btn btn-sm btn-primary" name="btn" value="12"><i class="fas fa-shopping-cart"></i> @money($item->harga12) <b>12jam</b></button>
+                                <button type="submit" class="btn btn-sm btn-primary" name="btn" value="6"><i class="fas fa-shopping-cart"></i> @money($item->harga6) <b>6jam</b></button>
                             </div>
                           </form>
                         </div>
