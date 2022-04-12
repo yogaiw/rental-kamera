@@ -13,7 +13,7 @@
             <div class="row justify-content-center mt-4">
                 <div class="col-md-12 col-lg-4">
                     <div class="card mb-4">
-                        <div class="card-header"><i class="fas fa-arrow-left"></i> <a href="{{ route('home') }}" class="stretched-link link-dark">Kembali</a></div>
+                        <div class="card-header"><i class="fas fa-arrow-left"></i> <a href="{{ url()->previous() }}" class="stretched-link link-dark">Kembali</a></div>
                         <img src="{{ url('') }}/images/{{ $detail->gambar }}" alt="">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">@money( $detail->harga24 )<span class="badge bg-light text-dark" style="float: right;">24 Jam</span></li>
@@ -46,6 +46,18 @@
                                 </tbody>
                             </table>
                         </div>
+                        @if (Auth::check())
+                            <div class="card-body">
+                                <form action="{{ route('cart.store',['id' => $detail->id]) }}" method="POST">
+                                    @csrf
+                                    <div class="d-grid gap-2 d-md-block">
+                                        <button type="submit" class="btn btn-sm btn-primary" name="btn" value="24"><i class="fas fa-shopping-cart"></i> @money($detail->harga24) <b>24jam</b></button>
+                                        <button type="submit" class="btn btn-sm btn-primary" name="btn" value="12"><i class="fas fa-shopping-cart"></i> @money($detail->harga12) <b>12jam</b></button>
+                                        <button type="submit" class="btn btn-sm btn-primary" name="btn" value="6"><i class="fas fa-shopping-cart"></i> @money($detail->harga6) <b>6jam</b></button>
+                                    </div>
+                                </form>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

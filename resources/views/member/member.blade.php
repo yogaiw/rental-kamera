@@ -2,7 +2,7 @@
 @section('container')
 <div class="row mb-4">
     <div class="col col-sm-12">
-        <div class="d-flex w-100 justify-content-start">
+        <div class="d-flex w-100 justify-content-start" style="overflow: auto">
             <a class="btn btn-primary mx-1" href="{{ route('member.index') }}">Semua</a>
             @foreach ($kategori as $cat)
                 <a class="btn btn-primary mx-1" href="?kategori={{ $cat->id }}">{{ $cat->nama_kategori }}</a>
@@ -20,7 +20,7 @@
                         @foreach ($alat as $item)
                         <div class="list-group-item list-group-item-action" aria-current="true">
                           <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">{{ $item->nama_alat }}</h6>
+                            <b><a href="{{ route('home.detail',['id' => $item->id]) }}" class="mb-1 link-dark">{{ $item->nama_alat }}</a></b>
                             <small><span class="badge bg-warning">{{ $item->category->nama_kategori }}</span></small>
                           </div>
                           <p class="mb-1">Deskripsi</p>
