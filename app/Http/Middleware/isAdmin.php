@@ -20,7 +20,7 @@ class isAdmin
         if(Auth::user()->isAdmin == true) {
             return $next($request);
         } else {
-            dd('bukan admin');
+            return redirect(route('member.index'));
         }
     }
 }
