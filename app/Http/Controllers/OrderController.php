@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+
+    public function show() {
+        return view('member.reservasi',[
+            'reservasi' => Order::where('user_id', Auth::id())->get(),
+        ]);
+    }
+
     public function create(Request $request) {
         $cart = Carts::where('user_id', Auth::id())->get();
 
@@ -27,6 +34,6 @@ class OrderController extends Controller
             $c->delete();
         }
 
-        return redirect(route('member.index'));
+        return redirect(route('order.show'));
     }
 }
