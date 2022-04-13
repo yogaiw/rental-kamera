@@ -72,11 +72,14 @@
                     <b>@money($total)</b>
                 </div>
                 <small>Tanggal Ambil</small>
-                <div class="d-flex w-100 justify-content-center mb-4">
-                    <input type="date" class="forn-control">
-                    <input type="time" class="form-control">
-                </div>
-                <a href="" style="width:100%" class="btn btn-success">Checkout</a>
+                <form action="{{ route('order.create') }}" method="POST">
+                    @csrf
+                    <div class="d-flex w-100 justify-content-center mb-4">
+                        <input type="date" name="start_date" class="forn-control" required>
+                        <input type="time" name="start_time" class="form-control" required>
+                    </div>
+                    <button type="submit" style="width:100%" class="btn btn-success">Checkout</a>
+                </form>
             </div>
         </div>
     </div>

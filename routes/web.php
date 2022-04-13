@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,5 +51,8 @@ Route::get('/memberarea',[MemberController::class,'index'])->middleware('auth')-
 // Carts
 Route::post('/memberarea/store/{id}',[CartController::class,'store'])->middleware('auth')->name('cart.store');
 Route::delete('/memberarea/delete/{id}',[CartController::class,'destroy'])->middleware('auth')->name('cart.destroy');
+
+// Orders
+Route::post('/checkout',[OrderController::class,'create'])->middleware('auth')->name('order.create');
 
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
