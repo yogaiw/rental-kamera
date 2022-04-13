@@ -9,7 +9,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
     public function alat() {
         return $this->belongsTo(Alat::class,'alat_id');

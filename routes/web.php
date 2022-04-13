@@ -55,5 +55,6 @@ Route::delete('/memberarea/delete/{id}',[CartController::class,'destroy'])->midd
 // Orders
 Route::post('/checkout',[OrderController::class,'create'])->middleware('auth')->name('order.create');
 Route::get('/reservasi',[OrderController::class,'show'])->middleware('auth')->name('order.show');
+Route::get('/reservasi/detail/{id}',[OrderController::class,'detail'])->middleware('auth')->name('order.detail');
 
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
