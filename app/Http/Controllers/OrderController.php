@@ -17,6 +17,7 @@ class OrderController extends Controller
                 'no_invoice' => "test aja",
                 'alat_id' => $c->alat_id,
                 'user_id' => $c->user_id,
+                'durasi' => $c->durasi,
                 'start_date' => $request['start_date'],
                 'start_time' => $request['start_time'],
                 'end_date' => date('Y-m-d', strtotime($request['start_date'] . "+".$c->durasi." hours")),

@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->string('no_invoice');
             $table->foreignId('alat_id')->references('id')->on('alats')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('durasi');
             $table->date('start_date');
             $table->date('end_date');
             $table->string('start_time');
