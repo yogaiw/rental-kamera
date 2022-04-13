@@ -12,22 +12,27 @@ class OrderController extends Controller
 {
 
     public function show() {
-        $sesi = Payment::where('user_id', Auth::id())->get();
+        $pembayaran = Payment::where('user_id', Auth::id())->get();
         return view('member.reservasi',[
             'reservasi' => Order::where('user_id', Auth::id())->get(),
-            'sesi' => $sesi,
+            'sesi' => $pembayaran,
         ]);
     }
 
     public function create(Request $request) {
         $cart = Carts::where('user_id', Auth::id())->get();
-        $sesi = new Payment();
+        $pembayaran = new Payment();
+
+        $pembayaran->user_id = Auth::id();
+        $pembayaran->total = $cart->sum('harga');
+        $pembayaran->save();
 
         foreach($cart as $c) {
             Order::create([
                 'no_invoice' => "test aja",
                 'alat_id' => $c->alat_id,
                 'user_id' => $c->user_id,
+                'payment_id' => Payment::where('user_id',Auth::id())->orderBy('id','desc')->first()->id,
                 'durasi' => $c->durasi,
                 'start_date' => $request['start_date'],
                 'start_time' => $request['start_time'],
@@ -37,12 +42,6 @@ class OrderController extends Controller
             ]);
             $c->delete();
         }
-
-        // untuk mencatat sesi tiap checkout
-        $sesi->user_id = Auth::id();
-        $sesi->sesi = Order::where('user_id', Auth::id())->orderBy('id','desc')->first()->created_at;
-        $sesi->total = Order::where('user_id', Auth::id())->where('created_at', $sesi->sesi)->sum('harga');
-        $sesi->save();
 
         return redirect(route('order.show'));
     }

@@ -43,7 +43,6 @@
                     <tbody>
                         @foreach ($sesi as $item)
                         <tr>
-                            <td>{{ date('dmy h:i:s', strtotime($item->sesi)) }}</td>
                             <td>@money($item->total)</td>
                         </tr>
                         @endforeach
