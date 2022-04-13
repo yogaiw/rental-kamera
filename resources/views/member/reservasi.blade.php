@@ -35,4 +35,22 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-bosy">
+                <table class="table">
+                    <tbody>
+                        @foreach ($sesi as $item)
+                        <tr>
+                            <td>{{ date('dmy h:i:s', strtotime($item->sesi)) }}</td>
+                            <td>@money($item->total)</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

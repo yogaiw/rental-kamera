@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carts;
 use App\Models\Order;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,13 +12,16 @@ class OrderController extends Controller
 {
 
     public function show() {
+        $sesi = Payment::where('user_id', Auth::id())->get();
         return view('member.reservasi',[
             'reservasi' => Order::where('user_id', Auth::id())->get(),
+            'sesi' => $sesi,
         ]);
     }
 
     public function create(Request $request) {
         $cart = Carts::where('user_id', Auth::id())->get();
+        $sesi = new Payment();
 
         foreach($cart as $c) {
             Order::create([
@@ -33,6 +37,12 @@ class OrderController extends Controller
             ]);
             $c->delete();
         }
+
+        // untuk mencatat sesi tiap checkout
+        $sesi->user_id = Auth::id();
+        $sesi->sesi = Order::where('user_id', Auth::id())->orderBy('id','desc')->first()->created_at;
+        $sesi->total = Order::where('user_id', Auth::id())->where('created_at', $sesi->sesi)->sum('harga');
+        $sesi->save();
 
         return redirect(route('order.show'));
     }
