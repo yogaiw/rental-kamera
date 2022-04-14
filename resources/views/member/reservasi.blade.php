@@ -6,11 +6,10 @@
             <div class="card-header">
                 <h5>Reservasi Anda</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="overflow: auto">
                 <table id="dataTable">
                     <thead>
                         <tr>
-                            <th>No</th>
                             <th>Tanggal</th>
                             <th>Total</th>
                             <th>Detail</th>
@@ -19,7 +18,6 @@
                     <tbody>
                         @foreach ($reservasi as $item)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->created_at }}</td>
                                 <td>@money($item->total)</td>
                                 <td><a class="btn btn-primary" href="{{ route('order.detail',['id' => $item->id]) }}">Detail</a></td>

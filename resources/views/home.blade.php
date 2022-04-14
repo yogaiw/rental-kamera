@@ -43,7 +43,9 @@
                     <div class="col-lg-11">
                         <div class="card mb-4">
                             <div class="card-header">
-                                <a class="link-dark" href="#login">Login</a> untuk penyewaan secara online
+                                @if (!Auth::check())
+                                    <a class="link-dark" href="#login">Login</a> untuk penyewaan secara online
+                                @endif
                             </div>
                             <div class="card-body">
                                 <div class="dropdown mb-4">

@@ -7,13 +7,13 @@
                 <a href="{{ url()->previous() }}"><i class="fas fa-arrow-left"></i></a> &nbsp;
                 <h5>Detail Reservasi</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="overflow: auto">
+                <b>Tanggal Pengambilan :</b> {{ date('d M Y', strtotime($detail->first()->start_date)) }} {{ date('H:i', strtotime($detail->first()->start_time)) }}
                 <table class="table">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Alat</th>
-                            <th>Pengambilan</th>
                             <th>Pengembalian</th>
                             <th>Harga</th>
                         </tr>
@@ -24,22 +24,30 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
                                     <div class="d-flex justify-content-between"></div>
-                                    <span class="badge bg-warning">{{ $item->alat->category->nama_kategori }}</span>
                                     {{ $item->alat->nama_alat }}
+                                    <span class="badge bg-warning">{{ $item->alat->category->nama_kategori }}</span>
                                     <span class="badge bg-secondary">{{ $item->durasi }} Jam</span>
                                 </td>
-                                <td>{{ date('d M Y', strtotime($item->start_date)) }} {{ date('H:i', strtotime($item->start_time)) }}</td>
                                 <td>{{ date('d M Y', strtotime($item->end_date)) }} {{ date('H:i', strtotime($item->end_time)) }}</td>
                                 <td style="text-align: right"><b>@money($item->harga)</b></td>
                             </tr>
                         @endforeach
                         <tr>
-                            <td colspan="3"></td>
+                            <td colspan="2"></td>
                             <td style="text-align: right"><b>Total</b></td>
                             <td style="text-align: right"><b>@money($total)</b></td>
                         </tr>
                     </tbody>
                 </table>
+                <div class="alert alert-primary">
+                    Cara pembayaran akan dijelaskan disini.
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-end">
+                    <input class="form-control w-50 mx-2" type="file" name="bukti">
+                    <button class="btn btn-success">Upload Bukti Bayar</a>
+                </div>
             </div>
         </div>
     </div>

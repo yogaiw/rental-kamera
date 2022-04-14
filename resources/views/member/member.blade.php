@@ -3,10 +3,12 @@
 <div class="row mb-4">
     <div class="col col-sm-12">
         <div class="d-flex w-100 justify-content-start" style="overflow: auto">
-            <a class="btn btn-primary mx-1" href="{{ route('member.index') }}">Semua</a>
-            @foreach ($kategori as $cat)
-                <a class="btn btn-primary mx-1" href="?kategori={{ $cat->id }}">{{ $cat->nama_kategori }}</a>
-            @endforeach
+            <div class="btn-group" role="group">
+                <a class="btn btn-outline-primary" href="{{ route('member.index') }}">Semua</a>
+                @foreach ($kategori as $cat)
+                    <a class="btn btn-outline-primary" href="?kategori={{ $cat->id }}">{{ $cat->nama_kategori }}</a>
+                @endforeach
+            </div>
         </div>
     </div>
 </div>
@@ -27,9 +29,9 @@
                           <form action="{{ route('cart.store',['id' => $item->id]) }}" method="POST">
                             @csrf
                             <div class="d-grid gap-2 d-md-block">
-                                <button type="submit" class="btn btn-sm btn-primary" name="btn" value="24"><i class="fas fa-shopping-cart"></i> @money($item->harga24) <b>24jam</b></button>
-                                <button type="submit" class="btn btn-sm btn-primary" name="btn" value="12"><i class="fas fa-shopping-cart"></i> @money($item->harga12) <b>12jam</b></button>
-                                <button type="submit" class="btn btn-sm btn-primary" name="btn" value="6"><i class="fas fa-shopping-cart"></i> @money($item->harga6) <b>6jam</b></button>
+                                <button type="submit" class="btn btn-sm btn-outline-primary" name="btn" value="24"><i class="fas fa-shopping-cart"></i> @money($item->harga24) <b>24jam</b></button>
+                                <button type="submit" class="btn btn-sm btn-outline-primary" name="btn" value="12"><i class="fas fa-shopping-cart"></i> @money($item->harga12) <b>12jam</b></button>
+                                <button type="submit" class="btn btn-sm btn-outline-primary" name="btn" value="6"><i class="fas fa-shopping-cart"></i> @money($item->harga6) <b>6jam</b></button>
                             </div>
                           </form>
                         </div>
