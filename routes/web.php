@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,9 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::patch('/admin/alat/{id}/detail',[AlatController::class,'update'])->name('alat.update');
     Route::delete('/admin/alat/{id}/detail',[AlatController::class,'destroy'])->name('alat.destroy');
     Route::post('/admin/alat',[AlatController::class, 'store'])->name('alat.store');
+
+    //Penyewaan
+    Route::get('/admin/penyewaan',[RentController::class, 'index'])->name('penyewaan.index');
 });
 
 Route::get('/memberarea',[MemberController::class,'index'])->middleware('auth')->name('member.index');

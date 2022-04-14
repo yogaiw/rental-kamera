@@ -1,26 +1,25 @@
-@extends('member.main')
-@section('container')
+@extends('admin.main')
+@section('content')
 <div class="row">
-    <div class="col-md-12">
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5>Reservasi Anda</h5>
-            </div>
-            <div class="card-body" style="overflow: auto">
+    <div class="col-md-12 mx-4 mt-4">
+        <div class="card">
+            <div class="card-body">
                 <table id="dataTable">
                     <thead>
                         <tr>
                             <th>Tanggal</th>
+                            <th>User</th>
                             <th>Total</th>
                             <th>Detail</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($reservasi as $item)
+                        @foreach ($penyewaan as $item)
                             <tr>
                                 <td>{{ $item->created_at }}</td>
+                                <td>{{ $item->user->name }}</td>
                                 <td>@money($item->total) &nbsp; <span class="badge bg-secondary">{{ $item->order->count() }} Alat</span></td>
-                                <td><a class="btn btn-primary" href="{{ route('order.detail',['id' => $item->id]) }}">Detail</a></td>
+                                <td><a href="" class="btn btn-outline-primary">Detail</a></td>
                             </tr>
                         @endforeach
                     </tbody>

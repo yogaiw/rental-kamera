@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header d-flex">
-                <a href="{{ url()->previous() }}"><i class="fas fa-arrow-left"></i></a> &nbsp;
+                <a href="{{ route('order.show') }}"><i class="fas fa-arrow-left"></i></a> &nbsp;
                 <h5>Detail Reservasi</h5>
             </div>
             <div class="card-body" style="overflow: auto">
