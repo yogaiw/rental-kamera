@@ -20,10 +20,8 @@ class CreateOrdersTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('payment_id')->references('id')->on('payments')->onDelete('cascade');
             $table->integer('durasi');
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->string('start_time');
-            $table->string('end_time');
+            $table->dateTime('starts');
+            $table->dateTime('ends');
             $table->integer('harga');
             $table->integer('status')->default(1);
             $table->timestamps();

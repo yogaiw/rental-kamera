@@ -8,7 +8,7 @@
                 <h5>Detail Reservasi</h5>
             </div>
             <div class="card-body" style="overflow: auto">
-                <b>Tanggal Pengambilan :</b> {{ date('d M Y', strtotime($detail->first()->start_date)) }} {{ date('H:i', strtotime($detail->first()->start_time)) }}
+                <b>Tanggal Pengambilan :</b> {{ date('d M Y H:i', strtotime($detail->first()->starts)) }}
                 <table class="table">
                     <thead>
                         <tr>
@@ -28,7 +28,7 @@
                                     <span class="badge bg-warning">{{ $item->alat->category->nama_kategori }}</span>
                                     <span class="badge bg-secondary">{{ $item->durasi }} Jam</span>
                                 </td>
-                                <td>{{ date('d M Y', strtotime($item->end_date)) }} {{ date('H:i', strtotime($item->end_time)) }}</td>
+                                <td>{{ date('d M Y H:i', strtotime($item->ends)) }}</td>
                                 <td style="text-align: right"><b>@money($item->harga)</b></td>
                             </tr>
                         @endforeach

@@ -40,10 +40,8 @@ class OrderController extends Controller
                 'user_id' => $c->user_id,
                 'payment_id' => Payment::where('user_id',Auth::id())->orderBy('id','desc')->first()->id,
                 'durasi' => $c->durasi,
-                'start_date' => $request['start_date'],
-                'start_time' => $request['start_time'],
-                'end_date' => date('Y-m-d', strtotime($request['start_date'] . "+".$c->durasi." hours")),
-                'end_time' => date('H:i', strtotime($request['start_time'] . "+".$c->durasi." hours")),
+                'starts' => date('Y-m-d H:i', strtotime($request['start_date'].$request['start_time'])),
+                'ends' => date('Y-m-d H:i', strtotime($request['start_date'].$request['start_time']."+".$c->durasi." hours")),
                 'harga' => $c->harga,
             ]);
             $c->delete();
