@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Alat;
 use App\Models\Category;
 use App\Models\Carts;
+use App\Models\Order;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class AlatController extends Controller
@@ -108,6 +110,13 @@ class AlatController extends Controller
         if($alat->gambar != 'noimage.jpg') {
             $filepath = public_path('images'). '/' . $alat->gambar;
             unlink($filepath);
+        }
+
+        // Agar 'total' dalam Payment berkurang jika alat dihapus
+        $payment = new Payment();
+        $order = Order::where('alat_id', $id)->get();
+        foreach($order as $o) {
+            $payment->where('id', $o->payment_id)->decrement('total', $o->harga);
         }
 
         $alat->delete();
