@@ -8,6 +8,7 @@
                     <table id="dataTable">
                         <thead>
                             <tr>
+                                <th>No. Invoice</th>
                                 <th>Tanggal</th>
                                 <th>User</th>
                                 <th>Total</th>
@@ -17,6 +18,7 @@
                         <tbody>
                             @foreach ($penyewaan as $item)
                                 <tr>
+                                    <td> {{ $item->no_invoice }}</td>
                                     <td>{{ date('D, d M Y H:i', strtotime($item->created_at)) }}</td>
                                     <td><b>{{ $item->user->name }}</b> ({{ $item->user->email }})</td>
                                     <td>@money($item->total) &nbsp; <span class="badge bg-secondary">{{ $item->order->count() }} Alat</span></td>

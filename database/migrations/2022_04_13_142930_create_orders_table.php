@@ -15,7 +15,6 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('no_invoice');
             $table->foreignId('alat_id')->references('id')->on('alats')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('payment_id')->references('id')->on('payments')->onDelete('cascade');

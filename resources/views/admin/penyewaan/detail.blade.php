@@ -13,7 +13,7 @@
                         <tbody>
                             <tr>
                                 <th>No. Invoice</th>
-                                <td>soon</td>
+                                <td>{{ $detail->first()->payment->no_invoice }}</td>
                             </tr>
                             <tr>
                                 <th>Penyewa</th>

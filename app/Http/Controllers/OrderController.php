@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carts;
 use App\Models\Order;
 use App\Models\Payment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,13 +30,13 @@ class OrderController extends Controller
         $cart = Carts::where('user_id', Auth::id())->get();
         $pembayaran = new Payment();
 
+        $pembayaran->no_invoice = Auth::id()."/".Carbon::now()->timestamp;
         $pembayaran->user_id = Auth::id();
         $pembayaran->total = $cart->sum('harga');
         $pembayaran->save();
 
         foreach($cart as $c) {
             Order::create([
-                'no_invoice' => "test aja",
                 'alat_id' => $c->alat_id,
                 'user_id' => $c->user_id,
                 'payment_id' => Payment::where('user_id',Auth::id())->orderBy('id','desc')->first()->id,
