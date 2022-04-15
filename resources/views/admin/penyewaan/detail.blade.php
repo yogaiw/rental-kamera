@@ -9,8 +9,12 @@
                     Detail
                 </div>
                 <div class="card-body" style="overflow: auto">
-                    <table class="table table-dark">
+                    <table class="table table-success w-100">
                         <tbody>
+                            <tr>
+                                <th>No. Invoice</th>
+                                <td>soon</td>
+                            </tr>
                             <tr>
                                 <th>Penyewa</th>
                                 <td>{{ $detail->first()->user->name }} ({{ $detail->first()->user->email }})</td>

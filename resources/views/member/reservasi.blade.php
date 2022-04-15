@@ -18,7 +18,7 @@
                     <tbody>
                         @foreach ($reservasi as $item)
                             <tr>
-                                <td>{{ $item->created_at }}</td>
+                                <td>{{ date('D, d M Y H:i', strtotime($item->created_at)) }}</td>
                                 <td>@money($item->total) &nbsp; <span class="badge bg-secondary">{{ $item->order->count() }} Alat</span></td>
                                 <td><a class="btn btn-primary" href="{{ route('order.detail',['id' => $item->id]) }}">Detail</a></td>
                             </tr>

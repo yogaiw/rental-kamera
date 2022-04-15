@@ -10,10 +10,10 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-primary text-white mb-4">
                     <div class="card-body">
-                        <h1>0</h1> <p>Transaksi</p>
+                        <h1>{{ $total_penyewaan }}</h1> <p>Penyewaan</p>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">Kelola Penyewaan</a>
+                        <a class="small text-white stretched-link" href="{{ route('penyewaan.index') }}">Kelola Penyewaan</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-warning text-white mb-4">
                     <div class="card-body">
-                        <h1>0</h1> <p>Penyewa</p>
+                        <h1>{{ $total_user }}</h1> <p>Penyewa</p>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">Kelola Penyewa</a>

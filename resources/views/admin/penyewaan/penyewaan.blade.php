@@ -17,7 +17,7 @@
                         <tbody>
                             @foreach ($penyewaan as $item)
                                 <tr>
-                                    <td>{{ date('D, d M Y', strtotime($item->created_at)) }}</td>
+                                    <td>{{ date('D, d M Y H:i', strtotime($item->created_at)) }}</td>
                                     <td><b>{{ $item->user->name }}</b> ({{ $item->user->email }})</td>
                                     <td>@money($item->total) &nbsp; <span class="badge bg-secondary">{{ $item->order->count() }} Alat</span></td>
                                     <td><a href="{{ route('penyewaan.detail',['id' => $item->id]) }}" class="btn btn-outline-primary">Detail</a></td>
