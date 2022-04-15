@@ -48,6 +48,7 @@ Route::middleware(['auth','admin'])->group(function () {
 
     //Penyewaan
     Route::get('/admin/penyewaan',[RentController::class, 'index'])->name('penyewaan.index');
+    Route::get('/admin/penyewaan/detail/{id}',[RentController::class, 'detail'])->name('penyewaan.detail');
 });
 
 Route::get('/memberarea',[MemberController::class,'index'])->middleware('auth')->name('member.index');

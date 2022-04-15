@@ -18,6 +18,7 @@ class CreatePaymentsTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('total');
             $table->string('bukti')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

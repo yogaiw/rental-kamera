@@ -11,6 +11,10 @@ class Order extends Model
 
     protected $guarded = [];
 
+    public function user() {
+        return $this->belongsTo(User::class,'user_id');
+    }
+
     public function alat() {
         return $this->belongsTo(Alat::class,'alat_id');
     }
