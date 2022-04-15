@@ -10,7 +10,6 @@
                 <table id="dataTable">
                     <thead>
                         <tr>
-                            <th>No. Invoice</th>
                             <th>Tanggal</th>
                             <th>Total</th>
                             <th>Detail</th>
@@ -19,9 +18,12 @@
                     <tbody>
                         @foreach ($reservasi as $item)
                             <tr>
-                                <td>{{ $item->no_invoice }}</td>
                                 <td>{{ date('D, d M Y H:i', strtotime($item->created_at)) }}</td>
-                                <td>@money($item->total) &nbsp; <span class="badge bg-secondary">{{ $item->order->count() }} Alat</span></td>
+                                <td>@money($item->total) &nbsp; <span class="badge bg-secondary">{{ $item->order->count() }} Alat</span>
+                                    @if ($item->status == 1)
+                                        <span class="badge bg-warning">Sedang Ditinjau</span>
+                                    @endif
+                                </td>
                                 <td><a class="btn btn-primary" href="{{ route('order.detail',['id' => $item->id]) }}">Detail</a></td>
                             </tr>
                         @endforeach

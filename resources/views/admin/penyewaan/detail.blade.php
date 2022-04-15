@@ -5,8 +5,12 @@
         <div class="col-md-12 mt-4">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('penyewaan.index') }}"><i class="fas fa-arrow-left"></i></a> &nbsp;
-                    Detail
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ route('penyewaan.index') }}"><i class="fas fa-arrow-left"></i></a> Detail
+                        @if ($status == 1)
+                            <span class="badge bg-warning">Perlu Ditinjau</span>
+                        @endif
+                    </div>
                 </div>
                 <div class="card-body" style="overflow: auto">
                     <table class="table table-success w-100">
@@ -56,6 +60,12 @@
                         </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="card-footer">
+                    <div class="d-grid gap-2 d-md-block">
+                        <a href="" class="btn btn-success">Acc</a>
+                        <a href="" class="btn btn-danger">Hapus</a>
+                    </div>
                 </div>
             </div>
         </div>

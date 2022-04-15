@@ -16,10 +16,12 @@ class RentController extends Controller
 
     public function detail($id) {
         $detail = Order::where('payment_id', $id)->get();
+        $payment = Payment::find($id);
 
         return view('admin.penyewaan.detail',[
             'detail' => $detail,
             'total' => Payment::find($id)->total,
+            'status' => $payment->status,
         ]);
     }
 }

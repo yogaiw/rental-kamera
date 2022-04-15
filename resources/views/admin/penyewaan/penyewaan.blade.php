@@ -18,7 +18,9 @@
                         <tbody>
                             @foreach ($penyewaan as $item)
                                 <tr>
-                                    <td> {{ $item->no_invoice }}</td>
+                                    <td> {{ $item->no_invoice }} @if ($item->status == 1)
+                                        <span class="badge bg-warning">Perlu Ditinjau</span>
+                                    @endif</td>
                                     <td>{{ date('D, d M Y H:i', strtotime($item->created_at)) }}</td>
                                     <td><b>{{ $item->user->name }}</b> ({{ $item->user->email }})</td>
                                     <td>@money($item->total) &nbsp; <span class="badge bg-secondary">{{ $item->order->count() }} Alat</span></td>
