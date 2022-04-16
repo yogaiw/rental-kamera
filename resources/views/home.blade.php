@@ -96,9 +96,9 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="card-body">
+                            {{-- <div class="card-body">
                                 <div id="calendar"></div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         @if (!Auth::check())
@@ -122,13 +122,14 @@
                 var calendarEl = document.getElementById('calendar');
                 var calendar = new FullCalendar.Calendar(calendarEl, {
                     initialView: 'dayGridMonth',
+                    timeFormat: 'H(:mm)',
                     eventSources: [
                         {
                             url: '/api/kalender-alat', // use the `url` property
                             color: 'yellow',    // an option!
                             textColor: 'black'
                         }
-                    ]
+                    ],
                 });
                 calendar.render();
             });
