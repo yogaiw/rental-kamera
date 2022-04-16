@@ -8,6 +8,9 @@
         <title>Kancil Rental Kamera Purwokerto</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <link href="css/styles.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.css">
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.js"></script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -93,6 +96,9 @@
                                     @endforeach
                                 </div>
                             </div>
+                            <div class="card-body">
+                                <div id="calendar"></div>
+                            </div>
                         </div>
 
                         @if (!Auth::check())
@@ -111,6 +117,22 @@
         <footer class="py-5 bg-dark">
             <div class="container px-4"><p class="m-0 text-center text-white">&copy; 2022 Kancil Rental Kamera</p></div>
         </footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    eventSources: [
+                        {
+                            url: '/api/kalender-alat', // use the `url` property
+                            color: 'yellow',    // an option!
+                            textColor: 'black'
+                        }
+                    ]
+                });
+                calendar.render();
+            });
+        </script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
