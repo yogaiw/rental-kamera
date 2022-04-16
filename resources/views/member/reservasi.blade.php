@@ -10,7 +10,7 @@
                 <table id="dataTable">
                     <thead>
                         <tr>
-                            <th>Tanggal</th>
+                            <th>Tanggal Pengambilan</th>
                             <th>Total</th>
                             <th>Detail</th>
                         </tr>
@@ -18,7 +18,7 @@
                     <tbody>
                         @foreach ($reservasi as $item)
                             <tr>
-                                <td>{{ date('D, d M Y H:i', strtotime($item->created_at)) }}</td>
+                                <td>{{ date('D, d M Y H:i', strtotime($item->order->first()->starts)) }}</td>
                                 <td>@money($item->total) &nbsp; <span class="badge bg-secondary">{{ $item->order->count() }} Alat</span>
                                     @if ($item->status == 1)
                                         <span class="badge bg-warning">Sedang Ditinjau</span>

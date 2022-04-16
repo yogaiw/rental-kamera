@@ -9,7 +9,7 @@
                         <thead>
                             <tr>
                                 <th>No. Invoice</th>
-                                <th>Tanggal</th>
+                                <th>Tanggal Pengambilan</th>
                                 <th>User</th>
                                 <th>Total</th>
                                 <th>Detail</th>
@@ -21,7 +21,7 @@
                                     <td> {{ $item->no_invoice }} @if ($item->status == 1)
                                         <span class="badge bg-warning">Perlu Ditinjau</span>
                                     @endif</td>
-                                    <td>{{ date('D, d M Y H:i', strtotime($item->created_at)) }}</td>
+                                    <td>{{ date('D, d M Y H:i', strtotime($item->order->first()->starts)) }}</td>
                                     <td><b>{{ $item->user->name }}</b> ({{ $item->user->email }})</td>
                                     <td>@money($item->total) &nbsp; <span class="badge bg-secondary">{{ $item->order->count() }} Alat</span></td>
                                     <td><a href="{{ route('penyewaan.detail',['id' => $item->id]) }}" class="btn btn-outline-primary">Detail</a></td>
