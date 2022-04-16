@@ -50,7 +50,7 @@
         </div>
         <div class="row mb-4">
             <div class="col col-lg-6 col-sm-12">
-                <div id="calendar"></div>
+                @include('partials.kalender')
             </div>
             <div class="col col-lg-6 col-sm-12">
                 <div class="card mb-4 g-2">
@@ -105,21 +105,4 @@
         </div>
     </div>
 </main>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            timeFormat: 'H(:mm)',
-            eventSources: [
-                {
-                    url: '/api/kalender-alat', // use the `url` property
-                    color: 'yellow',    // an option!
-                    textColor: 'black'
-                }
-            ],
-        });
-        calendar.render();
-    });
-</script>
 @endsection
