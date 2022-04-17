@@ -3,6 +3,9 @@
 <div class="container-fluid px-4">
     <div class="row">
         <div class="col-md-12 mt-4">
+            <form action="{{ route('acc',['paymentId' => $detail->first()->payment->id]) }}" method="POST">
+                @method('PATCH')
+                @csrf
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
@@ -41,13 +44,12 @@
                                 <th>Alat</th>
                                 <th>Pengembalian</th>
                                 <th>Harga</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($detail as $item)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $loop->iteration }} <input type="checkbox" name="order[]" class="form-check-input" value="{{ $item->id }}"></td>
                                 <td>
                                     <div class="d-flex justify-content-between"></div>
                                     {{ $item->alat->nama_alat }}
@@ -56,25 +58,23 @@
                                 </td>
                                 <td>{{ date('d M Y H:i', strtotime($item->ends)) }}</td>
                                 <td style="text-align: right"><b>@money($item->harga)</b></td>
-                                <td><a href="" class="btn btn-sm-danger"><i class="fas fa-window-close"></i></a></td>
                             </tr>
                             @endforeach
                             <tr>
                                 <td colspan="2"></td>
                                 <td style="text-align: right"><b>Total</b></td>
                                 <td style="text-align: right"><b>@money($total)</b></td>
-                                <td></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="card-footer">
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="" class="btn btn-success">Acc</a>
-                        <a href="" class="btn btn-danger">Hapus</a>
+                        <button type="submit" class="btn btn-success">Acc</a>
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>
