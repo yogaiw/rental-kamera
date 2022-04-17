@@ -58,9 +58,9 @@ class OrderController extends Controller
         foreach($orders as $o) {
             Order::where('id', $o)->update(['status' => 2]);
         }
-        Order::where('payment_id', $paymentId)->where('status', 1)->delete();
-        $payment->where('id', $paymentId)->update(['total' => Order::where('payment_id', $paymentId)->sum('harga')]);
+        Order::where('payment_id', $paymentId)->where('status', 1)->update(['status' => 3]);
+        $payment->where('id', $paymentId)->update(['total' => Order::where('payment_id', $paymentId)->where('status', 2)->sum('harga')]);
 
-        return redirect(route('penyewaan.index'));
+        return back();
     }
 }
