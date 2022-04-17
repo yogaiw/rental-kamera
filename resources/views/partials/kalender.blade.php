@@ -8,6 +8,8 @@
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
+            selectable: true,
+            navLinks: true,
             eventSources: [
                 {
                     url: '/api/kalender-alat',
@@ -19,6 +21,10 @@
                 hour: 'numeric',
                 minute: '2-digit',
                 hour12: false
+            },
+            headerToolbar: {
+                left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                center: 'title',
             }
         });
         calendar.render();
