@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/kalender-alat', function() {
     $order = DB::table('orders')
     ->leftJoin('alats', 'alats.id','=','orders.alat_id')
+    ->where('status', 2)
     ->get(['nama_alat AS title','starts AS start','ends AS end']);
     return json_encode($order);
 });

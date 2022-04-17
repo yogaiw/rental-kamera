@@ -3,15 +3,14 @@
 <div class="container-fluid px-4">
     <div class="row">
         <div class="col-md-12 mt-4">
-            <form action="{{ route('acc',['paymentId' => $detail->first()->payment->id]) }}" method="POST">
-                @method('PATCH')
-                @csrf
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <a href="{{ route('penyewaan.index') }}"><i class="fas fa-arrow-left"></i></a> Detail
                         @if ($status == 1)
                             <span class="badge bg-warning">Perlu Ditinjau</span>
+                        @elseif ($status == 2)
+                            <span class="badge bg-info">Belum Bayar</span>
                         @endif
                     </div>
                 </div>
@@ -47,9 +46,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <form action="{{ route('acc',['paymentId' => $detail->first()->payment->id]) }}" method="POST">
+                            @method('PATCH')
+                            @csrf
                             @foreach($detail as $item)
                             <tr>
-                                <td>{{ $loop->iteration }} <input type="checkbox" name="order[]" class="form-check-input" value="{{ $item->id }}"></td>
+                                <td>
+                                    {{ $loop->iteration }}
+                                    @if ($status == 1)
+                                        <input type="checkbox" name="order[]" class="form-check-input" value="{{ $item->id }}">
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="d-flex justify-content-between"></div>
                                     {{ $item->alat->nama_alat }}
@@ -66,20 +73,24 @@
                             </tr>
                             @endforeach
                             <tr>
-                                <td colspan="2"></td>
+                                <td>
+                                    @if ($status == 1)
+                                        <button type="submit" class="btn btn-success">Acc</a>
+                                    @endif
+                                </td>
+                                <td></td>
                                 <td style="text-align: right"><b>Total</b></td>
                                 <td style="text-align: right"><b>@money($total)</b></td>
                             </tr>
+                        </form>
                         </tbody>
                     </table>
                 </div>
                 <div class="card-footer">
                     <div class="d-grid gap-2 d-md-block">
-                        <button type="submit" class="btn btn-success">Acc</a>
                     </div>
                 </div>
             </div>
-            </form>
         </div>
     </div>
 </div>

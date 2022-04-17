@@ -58,6 +58,7 @@ class OrderController extends Controller
         foreach($orders as $o) {
             Order::where('id', $o)->update(['status' => 2]);
         }
+        $payment->find($paymentId)->update(['status' => 2]);
         Order::where('payment_id', $paymentId)->where('status', 1)->update(['status' => 3]);
         $payment->where('id', $paymentId)->update(['total' => Order::where('payment_id', $paymentId)->where('status', 2)->sum('harga')]);
 

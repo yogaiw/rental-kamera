@@ -22,6 +22,8 @@
                                 <td>@money($item->total) &nbsp; <span class="badge bg-secondary">{{ $item->order->count() }} Alat</span>
                                     @if ($item->status == 1)
                                         <span class="badge bg-warning">Sedang Ditinjau</span>
+                                    @elseif ($item->status == 2)
+                                        <span class="badge bg-info">Belum Bayar</span>
                                     @endif
                                 </td>
                                 <td><a class="btn btn-primary" href="{{ route('order.detail',['id' => $item->id]) }}">Detail</a></td>
