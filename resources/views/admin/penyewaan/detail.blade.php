@@ -21,7 +21,11 @@
                             </tr>
                             <tr>
                                 <th>Penyewa</th>
-                                <td>{{ $detail->first()->user->name }} ({{ $detail->first()->user->email }})</td>
+                                <td><b>{{ $detail->first()->user->name }}</b> ({{ $detail->first()->user->email }})</td>
+                            </tr>
+                            <tr>
+                                <th>Telepon</th>
+                                <td>{{ $detail->first()->user->telepon }}</td>
                             </tr>
                             <tr>
                                 <th>Tanggal Pengambilan</th>
@@ -37,6 +41,7 @@
                                 <th>Alat</th>
                                 <th>Pengembalian</th>
                                 <th>Harga</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,13 +56,15 @@
                                 </td>
                                 <td>{{ date('d M Y H:i', strtotime($item->ends)) }}</td>
                                 <td style="text-align: right"><b>@money($item->harga)</b></td>
+                                <td><a href="" class="btn btn-sm-danger"><i class="fas fa-window-close"></i></a></td>
                             </tr>
-                        @endforeach
-                        <tr>
-                            <td colspan="2"></td>
-                            <td style="text-align: right"><b>Total</b></td>
-                            <td style="text-align: right"><b>@money($total)</b></td>
-                        </tr>
+                            @endforeach
+                            <tr>
+                                <td colspan="2"></td>
+                                <td style="text-align: right"><b>Total</b></td>
+                                <td style="text-align: right"><b>@money($total)</b></td>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
