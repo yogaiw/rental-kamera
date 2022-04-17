@@ -22,6 +22,9 @@
                                 @endforeach
                             </select>
                             <div class="mb-3">
+                                <textarea class="form-control" name="deskripsi" placeholder="Deskripsi singkat" rows="3">{{ $alat->deskripsi }}</textarea>
+                            </div>
+                            <div class="mb-3">
                                 <span class="form-text mb-2">Harga ditulis angka saja, tidak perlu tanda titik</span>
                                 <div class="row d-flex w-100 justify-content-start">
                                     <div class="input-group">

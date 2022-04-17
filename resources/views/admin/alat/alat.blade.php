@@ -62,42 +62,6 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table me-1"></i>
-                        Alat
-                    </div>
-                    <div class="card-body">
-                        <table id="dataTable">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Gambar</th>
-                                    <th>Nama Alat</th>
-                                    <th>Kategori</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($alats as $alat)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td></td>
-                                    <td> {{ $alat->nama_alat }} </td>
-                                    <td> {{ $alat->category->nama_kategori }} </td>
-                                    <td>
-                                        <a href="{{ route('alat.edit',['id' => $alat->id]) }}" type="button" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </main>
 
@@ -121,6 +85,9 @@
                             <option value="{{ $cat->id }}">{{ $cat->nama_kategori }}</option>
                         @endforeach
                     </select>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" name="deskripsi" rows="3" placeholder="Deskripsi singkat"></textarea>
                 </div>
                 <div class="mb-3">
                     <div class="row">

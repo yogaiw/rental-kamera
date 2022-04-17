@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <h4><span class="badge bg-warning">{{ $detail->category->nama_kategori }}</span></h4>
                             <h1><b>{{ $detail->nama_alat }}</b></h1>
-                            <p class="text-muted">Deskripsi menyusul</p>
+                            <p class="text-muted">{{ $detail->deskripsi }}</p>
                             <hr>
                             <h6><i>Daftar Pinjaman Mendatang</i></h6>
                             <table class="table">

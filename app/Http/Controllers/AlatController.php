@@ -52,6 +52,7 @@ class AlatController extends Controller
 
         $alat = new Alat();
         $alat->nama_alat = $request['nama'];
+        $alat->deskripsi = $request['deskripsi'];
         $alat->kategori_id = $request['kategori'];
         $alat->harga24 = $request['harga24'];
         $alat->harga12 = $request['harga12'];
@@ -81,6 +82,7 @@ class AlatController extends Controller
 
         $alat = Alat::find($id);
         $alat->nama_alat = $request['nama'];
+        $alat->deskripsi = $request['deskripsi'];
         $alat->kategori_id = $request['kategori'];
         $alat->harga24 = $request['harga24'];
         $alat->harga12 = $request['harga12'];

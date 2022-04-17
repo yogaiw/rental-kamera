@@ -15,7 +15,7 @@
 <div class="row">
     <div class="col col-md-8 col-sm-12">
         <div class="card h-100">
-            <div class="card-header"><b>Alat</b></div>
+            <div class="card-header"><small class="text-muted">klik nama alat untuk melihat detail</small></div>
             <div class="card-body">
                 <div style="height: 500px; overflow:scroll">
                     <div class="list-group">
@@ -25,7 +25,7 @@
                             <b><a href="{{ route('home.detail',['id' => $item->id]) }}" class="mb-1 link-dark">{{ $item->nama_alat }}</a></b>
                             <small><span class="badge bg-warning">{{ $item->category->nama_kategori }}</span></small>
                           </div>
-                          <p class="mb-1">Deskripsi</p>
+                          <p class="mb-1">{{ $item->deskripsi }}</p>
                           <form action="{{ route('cart.store',['id' => $item->id]) }}" method="POST">
                             @csrf
                             <div class="d-grid gap-2 d-md-block">
