@@ -80,8 +80,7 @@ class OrderController extends Controller
             $gambar->move(public_path('images/evidence'), $filename);
         }
         $payment->update([
-            'bukti' => $filename,
-            'status' => 3
+            'bukti' => $filename
         ]);
 
         return back();
