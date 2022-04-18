@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alat;
 use App\Models\Category;
+use App\Models\Order;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,8 @@ class HomeController extends Controller
         $detail = Alat::with(['category'])->find($id);
 
         return view('detail',[
-            'detail' => $detail
+            'detail' => $detail,
+            'order' => Order::where('alat_id', $id)->where('status', 2)->orderBy('id','DESC')->get()
         ]);
     }
 }
