@@ -24,6 +24,8 @@
                                         <span class="badge bg-warning">Sedang Ditinjau</span>
                                     @elseif ($item->status == 2)
                                         <span class="badge bg-info">Belum Bayar</span>
+                                    @elseif ($item->status == 3)
+                                        <span class="badge bg-success">Sudah Bayar</span>
                                     @endif
                                 </td>
                                 <td><a class="btn btn-primary" href="{{ route('order.detail',['id' => $item->id]) }}">Detail</a></td>

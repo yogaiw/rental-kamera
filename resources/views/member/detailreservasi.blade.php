@@ -10,6 +10,8 @@
                     <span class="badge bg-warning">Sedang Ditinjau</span>
                 @elseif ($paymentStatus == 2)
                     <span class="badge bg-info">Belum Bayar</span>
+                @elseif ($paymentStatus == 3)
+                    <span class="badge bg-success">Sudah Bayar</span>
                 @endif
             </div>
             <div class="card-body" style="overflow: auto">
@@ -54,14 +56,36 @@
                         Reservasi anda telah disetujui, silakan bayar sesuai dengan total yang tertera lalu upload bukti bayar dengan menekan tombol dibawah
                         <form action="">
                             <div class="d-flex">
-                                <input class="form-control w-50 mt-2 mx-3" type="file" name="bukti" required>
-                                <button class="btn btn-success" type="submit">Upload Bukti Bayar</a>
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#bayarModal">Bayar Sekarang</a>
                             </div>
                         </form>
                     </div>
+                @elseif ($paymentStatus == 3)
+                    <h5>Bukti Bayar</h5>
+                    <img src="{{ url('') }}/images/evidence/{{ $bukti }}" alt="" width="500px">
                 @endif
             </div>
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="bayarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Upload Bukti Bayar</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{{ route('bayar',['id' => $paymentId]) }}" method="POST" enctype="multipart/form-data">
+            @method('PATCH')
+            @csrf
+            <input type="file" name="bukti" class="form-control mb-2" required>
+            <button type="submit" class="btn btn-success">Upload</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection

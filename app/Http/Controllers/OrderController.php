@@ -23,7 +23,9 @@ class OrderController extends Controller
         return view('member.detailreservasi',[
             'detail' => $detail,
             'total' => Payment::find($id)->total,
-            'paymentStatus' => $detail->first()->payment->status
+            'paymentId' => Payment::find($id)->id,
+            'paymentStatus' => $detail->first()->payment->status,
+            'bukti' => Payment::find($id)->bukti
         ]);
     }
 
@@ -62,6 +64,25 @@ class OrderController extends Controller
         $payment->find($paymentId)->update(['status' => 2]);
         Order::where('payment_id', $paymentId)->where('status', 1)->update(['status' => 3]);
         $payment->where('id', $paymentId)->update(['total' => Order::where('payment_id', $paymentId)->where('status', 2)->sum('harga')]);
+
+        return back();
+    }
+
+    public function bayar(Request $request, $id) {
+        $this->validate($request, [
+            'bukti' => "image|mimes:png,jpg,svg,jpeg,gif|max:5000"
+        ]);
+
+        $payment = Payment::find($id);
+        if($request->hasFile('bukti')) {
+            $gambar = $request->file('bukti');
+            $filename = time().'-'.$gambar->getClientOriginalName();
+            $gambar->move(public_path('images/evidence'), $filename);
+        }
+        $payment->update([
+            'bukti' => $filename,
+            'status' => 3
+        ]);
 
         return back();
     }
