@@ -85,6 +85,26 @@
                         </form>
                         </tbody>
                     </table>
+                    @if ($status != 1)
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              Bukti Pembayaran
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                @if ($detail->first()->payment->bukti == NULL)
+                                    Belum melakukan upload bukti pembayaran
+                                @else
+                                    <img src="{{ url('') }}/images/evidence/{{ $detail->first()->payment->bukti }}" alt="" width="500px">
+                                @endif
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    @endif
                 </div>
                 <div class="card-footer">
                     <div class="d-grid gap-2 d-md-block">
