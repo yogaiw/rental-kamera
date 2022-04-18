@@ -22,7 +22,8 @@ class OrderController extends Controller
         $detail = Order::where('payment_id', $id)->get();
         return view('member.detailreservasi',[
             'detail' => $detail,
-            'total' => Payment::find($id)->total
+            'total' => Payment::find($id)->total,
+            'paymentStatus' => $detail->first()->payment->status
         ]);
     }
 

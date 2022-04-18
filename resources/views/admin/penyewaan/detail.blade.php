@@ -50,7 +50,7 @@
                             @method('PATCH')
                             @csrf
                             @foreach($detail as $item)
-                            <tr>
+                            <tr class="{{ ($item->status == 3) ? 'table-danger' : '' }}">
                                 <td>
                                     {{ $loop->iteration }}
                                     @if ($status == 1)

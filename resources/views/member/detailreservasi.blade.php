@@ -3,9 +3,14 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header d-flex">
+            <div class="card-header d-flex justify-content-between">
                 <a href="{{ route('order.show') }}"><i class="fas fa-arrow-left"></i></a> &nbsp;
                 <h5>Detail Reservasi</h5>
+                @if ($paymentStatus == 1)
+                    <span class="badge bg-warning">Sedang Ditinjau</span>
+                @elseif ($paymentStatus == 2)
+                    <span class="badge bg-info">Belum Bayar</span>
+                @endif
             </div>
             <div class="card-body" style="overflow: auto">
                 <b>Tanggal Pengambilan :</b> {{ date('d M Y H:i', strtotime($detail->first()->starts)) }}
@@ -20,13 +25,18 @@
                     </thead>
                     <tbody>
                         @foreach($detail as $item)
-                            <tr>
+                            <tr class="{{ ($item->status == 3) ? 'table-danger' : '' }}">
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
                                     <div class="d-flex justify-content-between"></div>
                                     {{ $item->alat->nama_alat }}
                                     <span class="badge bg-warning">{{ $item->alat->category->nama_kategori }}</span>
                                     <span class="badge bg-secondary">{{ $item->durasi }} Jam</span>
+                                    @if ($item->status === 3)
+                                        <span class="badge bg-danger">Ditolak</span>
+                                    @elseif ($item->status === 2)
+                                        <span class="badge bg-success">ACC</span>
+                                    @endif
                                 </td>
                                 <td>{{ date('d M Y H:i', strtotime($item->ends)) }}</td>
                                 <td style="text-align: right"><b>@money($item->harga)</b></td>
@@ -39,15 +49,17 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="alert alert-primary">
-                    Cara pembayaran akan dijelaskan disini.
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="d-flex justify-content-end">
-                    <input class="form-control w-50 mx-2" type="file" name="bukti">
-                    <button class="btn btn-success">Upload Bukti Bayar</a>
-                </div>
+                @if ($paymentStatus == 2)
+                    <div class="alert alert-primary">
+                        Reservasi anda telah disetujui, silakan bayar sesuai dengan total yang tertera lalu upload bukti bayar dengan menekan tombol dibawah
+                        <form action="">
+                            <div class="d-flex">
+                                <input class="form-control w-50 mt-2 mx-3" type="file" name="bukti" required>
+                                <button class="btn btn-success" type="submit">Upload Bukti Bayar</a>
+                            </div>
+                        </form>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
