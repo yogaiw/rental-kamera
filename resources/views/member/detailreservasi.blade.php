@@ -52,17 +52,16 @@
                     </tbody>
                 </table>
                 @if ($paymentStatus == 2)
-                    <div class="alert alert-primary">
-                        Reservasi anda telah disetujui, silakan bayar sesuai dengan total yang tertera lalu upload bukti bayar dengan menekan tombol dibawah
+                    <div class="alert {{ ($detail->first()->payment->bukti == NULL) ? 'alert-primary' : 'alert-success'}}">
+                        @if ($detail->first()->payment->bukti == NULL)
+                            Reservasi anda telah disetujui, silakan bayar sesuai dengan total yang tertera lalu upload bukti bayar dengan menekan tombol dibawah
+                        @else
+                            Bukti pembayaran telah di upload, silakan tunggu konfirmasi dari Admin
+                        @endif
                         <form action="">
-                            <div class="d-flex">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#bayarModal">Bayar Sekarang</a>
-                            </div>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#bayarModal">Bukti Pembayaran</a>
                         </form>
                     </div>
-                @elseif ($paymentStatus == 3)
-                    <h5>Bukti Bayar</h5>
-                    <img src="{{ url('') }}/images/evidence/{{ $bukti }}" alt="" width="500px">
                 @endif
             </div>
         </div>
@@ -78,12 +77,14 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="{{ route('bayar',['id' => $paymentId]) }}" method="POST" enctype="multipart/form-data">
-            @method('PATCH')
-            @csrf
-            <input type="file" name="bukti" class="form-control mb-2" required>
-            <button type="submit" class="btn btn-success">Upload</button>
-          </form>
+            <form action="{{ route('bayar',['id' => $paymentId]) }}" method="POST" enctype="multipart/form-data">
+                @method('PATCH')
+                @csrf
+                <input type="file" name="bukti" class="form-control mb-2" required>
+                <button type="submit" class="btn btn-success">Upload</button>
+            </form>
+            <h5 class="mt-2">Bukti Bayar</h5>
+            <img src="{{ url('') }}/images/evidence/{{ $bukti }}" alt="" width="500px">
         </div>
       </div>
     </div>
