@@ -20,7 +20,7 @@ class RentController extends Controller
 
         return view('admin.penyewaan.detail',[
             'detail' => $detail,
-            'total' => Payment::find($id)->total,
+            'total' => $payment->total,
             'status' => $payment->status,
         ]);
     }
