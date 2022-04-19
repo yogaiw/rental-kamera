@@ -23,7 +23,7 @@
                 hour12: false
             },
             headerToolbar: {
-                left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                left: 'dayGridMonth,timeGridDay',
                 center: 'title',
             }
         });

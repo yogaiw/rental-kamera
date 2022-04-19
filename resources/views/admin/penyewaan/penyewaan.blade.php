@@ -38,6 +38,13 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-12 mt-4">
+            <div class="card">
+                <div class="card-body">
+                    @include('partials.kalender')
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
