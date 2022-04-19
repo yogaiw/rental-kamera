@@ -30,6 +30,8 @@ class CartController extends Controller
 
         $cart->save();
 
+        $request->session()->flash('success', 'Berhasil ditambahkan ke keranjang');
+
         return redirect(route('member.index'));
     }
 

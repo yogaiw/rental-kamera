@@ -2,6 +2,12 @@
 @section('container')
 <div class="row mb-4">
     <div class="col col-sm-12">
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }} &nbsp; <a href="#keranjang">cek keranjang</a>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="d-flex w-100 justify-content-start" style="overflow: auto">
             <div class="btn-group" role="group">
                 <a class="btn btn-outline-primary" href="{{ route('member.index') }}">Semua</a>
