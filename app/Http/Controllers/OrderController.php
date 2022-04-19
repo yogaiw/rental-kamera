@@ -86,4 +86,14 @@ class OrderController extends Controller
 
         return back();
     }
+
+    public function accbayar($id) {
+        $payment = Payment::find($id);
+
+        $payment->update([
+            'status' => 3
+        ]);
+
+        return back();
+    }
 }

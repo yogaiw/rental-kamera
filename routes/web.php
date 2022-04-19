@@ -63,5 +63,6 @@ Route::post('/checkout',[OrderController::class,'create'])->middleware('auth')->
 Route::get('/reservasi',[OrderController::class,'show'])->middleware('auth')->name('order.show');
 Route::get('/reservasi/detail/{id}',[OrderController::class,'detail'])->middleware('auth')->name('order.detail');
 Route::patch('/bayar/{id}',[OrderController::class,'bayar'])->middleware('auth')->name('bayar');
+Route::patch('/accbayar/{id}',[OrderController::class,'accbayar'])->middleware('auth')->name('accbayar');
 
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');

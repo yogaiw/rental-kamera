@@ -23,6 +23,8 @@
                                             <span class="badge bg-warning">Perlu Ditinjau</span>
                                         @elseif ($item->status == 2)
                                             <span class="badge bg-info">Belum Bayar</span>
+                                        @elseif ($item->status == 3)
+                                            <span class="badge bg-success">Sudah Bayar</span>
                                         @endif
                                     </td>
                                     <td>{{ date('D, d M Y H:i', strtotime($item->order->first()->starts)) }}</td>

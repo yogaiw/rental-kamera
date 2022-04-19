@@ -11,6 +11,8 @@
                             <span class="badge bg-warning">Perlu Ditinjau</span>
                         @elseif ($status == 2)
                             <span class="badge bg-info">Belum Bayar</span>
+                        @elseif ($status == 3)
+                            <span class="badge bg-success">Sudah Bayar</span>
                         @endif
                     </div>
                 </div>
@@ -98,6 +100,11 @@
                                 @if ($detail->first()->payment->bukti == NULL)
                                     Belum melakukan upload bukti pembayaran
                                 @else
+                                    <form action="{{ route('accbayar',['id' => $detail->first()->payment->id]) }}" method="POST">
+                                        @method('PATCH')
+                                        @csrf
+                                        <button type="submit" class="btn btn-success mb-4" {{ ($status == 3) ? 'disabled' : '' }}>Acc Pembayaran</button>
+                                    </form>
                                     <img src="{{ url('') }}/images/evidence/{{ $detail->first()->payment->bukti }}" alt="" width="500px">
                                 @endif
                             </div>
