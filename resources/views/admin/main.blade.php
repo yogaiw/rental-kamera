@@ -41,13 +41,13 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <a class="nav-link" href="{{ route('admin.index') }}">
+                            <a class="nav-link {{ Route::is('admin.index') ? 'active' : '' }}" href="{{ route('admin.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Manajemen Penyewaan</div>
-                            <a class="nav-link" href="{{ route('penyewaan.index') }}">
+                            <a class="nav-link {{ Route::is('penyewaan.index') ? 'active' : '' }}" href="{{ route('penyewaan.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Reservasi
                             </a>
@@ -56,11 +56,11 @@
                                 Daftar Penyewa
                             </a>
                             <div class="sb-sidenav-menu-heading">Manajemen Alat</div>
-                            <a class="nav-link" href="{{ route('alat.index') }}">
+                            <a class="nav-link {{ Route::is('alat.index') ? 'active' : '' }}" href="{{ route('alat.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Alat
                             </a>
-                            <a class="nav-link" href="{{ route('kategori.index') }}">
+                            <a class="nav-link {{ Route::is('kategori.index') ? 'active' : '' }}" href="{{ route('kategori.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Kategori
                             </a>

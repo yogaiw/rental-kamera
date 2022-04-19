@@ -28,10 +28,10 @@
                 </div>
             </div>
         </nav>
-        <ul class="nav nav-tabs nav-fill bg-dark">
-            <li class="nav-item"><a class="nav-link link-light" href="{{ route('member.index') }}">Jelajah</a></li>
-            <li class="nav-item"><a class="nav-link link-light" href="{{ route('member.index') }}#keranjang" onclick="$('#keranjang').delay(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)">Keranjang Anda <span class="badge bg-secondary">{{ Auth::user()->cart->count() }}</span></a></li>
-            <li class="nav-item"><a class="nav-link link-light" href="{{ route('order.show') }}">Reservasi Anda <span class="badge bg-secondary">{{ Auth::user()->payment->count() }}</span></a></li>
+        <ul class="nav nav-tabs nav-fill">
+            <li class="nav-item"><a class="nav-link {{ Route::is('member.index') ? 'active': '' }}" href="{{ route('member.index') }}">Jelajah</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('member.index') }}#keranjang" onclick="$('#keranjang').delay(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)">Keranjang Anda <span class="badge bg-secondary">{{ Auth::user()->cart->count() }}</span></a></li>
+            <li class="nav-item"><a class="nav-link {{ Route::is('order.show') ? 'active': '' }}" href="{{ route('order.show') }}">Reservasi Anda <span class="badge bg-secondary">{{ Auth::user()->payment->count() }}</span></a></li>
         </ul>
         <div class="container-fluid px-4 mt-4">
             {{-- <div class="alert alert-success" role="alert">
