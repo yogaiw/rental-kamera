@@ -22,27 +22,35 @@
     <div class="col col-md-8 col-sm-12">
         <div class="card h-100">
             <div class="card-header"><small class="text-muted">klik nama alat untuk melihat detail</small></div>
-            <div class="card-body">
-                <div style="height: 500px; overflow:scroll">
-                    <div class="list-group">
-                        @foreach ($alat as $item)
-                        <div class="list-group-item list-group-item-action" aria-current="true">
-                          <div class="d-flex w-100 justify-content-between">
-                            <b><a href="{{ route('home.detail',['id' => $item->id]) }}" class="mb-1 link-dark">{{ $item->nama_alat }}</a></b>
-                            <small><span class="badge bg-warning">{{ $item->category->nama_kategori }}</span></small>
-                          </div>
-                          <p class="mb-1">{{ $item->deskripsi }}</p>
-                          <form action="{{ route('cart.store',['id' => $item->id]) }}" method="POST">
-                            @csrf
-                            <div class="d-grid gap-2 d-md-block">
-                                <button type="submit" class="btn btn-sm btn-outline-primary" name="btn" value="24"><i class="fas fa-shopping-cart"></i> @money($item->harga24) <b>24jam</b></button>
-                                <button type="submit" class="btn btn-sm btn-outline-primary" name="btn" value="12"><i class="fas fa-shopping-cart"></i> @money($item->harga12) <b>12jam</b></button>
-                                <button type="submit" class="btn btn-sm btn-outline-primary" name="btn" value="6"><i class="fas fa-shopping-cart"></i> @money($item->harga6) <b>6jam</b></button>
+            <div class="card-body" style="height: 500px; overflow:auto">
+                <div class="row row-cols-sm-2 row-cols-lg-4 g-2">
+                    @foreach ($alat as $item)
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="{{ url('') }}/images/{{ $item->gambar }}" style="height: 100px; object-fit: cover; " alt="">
+                            <div class="card-body">
+                                <span class="badge bg-warning">{{ $item->category->nama_kategori }}</span><br>
+                                <b>{{ $item->nama_alat }}</b>
+                                <small>{{ $item->deskripsi }}</small>
                             </div>
-                          </form>
+                            <div class="card-footer">
+                                <form action="{{ route('cart.store',['id' => $item->id]) }}" method="POST">
+                                    @csrf
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="addtocartdropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Tambah ke Keranjang
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="addtocartdropdown">
+                                            <li><button type="submit" class="dropdown-item" name="btn" value="24"><i class="fas fa-shopping-cart"></i> @money($item->harga24) <b>24jam</b></button></li>
+                                            <li><button type="submit" class="dropdown-item" name="btn" value="12"><i class="fas fa-shopping-cart"></i> @money($item->harga12) <b>12jam</b></button></li>
+                                            <li><button type="submit" class="dropdown-item" name="btn" value="6"><i class="fas fa-shopping-cart"></i> @money($item->harga6) <b>6jam</b></button></li>
+                                        </ul>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        @endforeach
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
