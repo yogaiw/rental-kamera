@@ -51,7 +51,7 @@
                                     </ul>
                                     <div class="card-footer">
                                         <div class="btn-group" role="group">
-                                            <a href="{{ route('alat.edit',['id' => $alat->id]) }}" class="btn btn-sm btn-primary">Detail</a>
+                                            <a href="{{ route('alat.edit',['id' => $alat->id]) }}" class="btn btn-sm btn-primary">Edit</a>
                                         </div>
                                     </div>
                                 </div>

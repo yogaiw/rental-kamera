@@ -39,6 +39,10 @@
                         <div class="alert alert-warning" role="alert">
                             Anda telah login sebagai <b>{{ Auth::user()->name }}</b>&nbsp; <a class="btn btn-success" href="{{ route('member.index') }}">Mulai Menyewa</a>
                         </div>
+                    @elseif (Auth::check() && Auth::user()->isAdmin == true)
+                        <div class="alert alert-warning" role="alert">
+                            Anda telah login sebagai Admin(<b>{{ Auth::user()->name }}</b>)&nbsp; <a class="btn btn-success" href="{{ route('admin.index') }}">Halaman Admin</a>
+                        </div>
                     @endif
                     <div class="col-lg-11">
                         <div class="card mb-4">
