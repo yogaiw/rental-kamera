@@ -3,18 +3,20 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header d-flex justify-content-between">
-                <a href="{{ route('order.show') }}"><i class="fas fa-arrow-left"></i></a> &nbsp;
-                <h5>Detail Reservasi</h5>
-                @if ($paymentStatus == 1)
-                    <span class="badge bg-warning">Sedang Ditinjau</span>
-                @elseif ($paymentStatus == 2)
-                    <span class="badge bg-info">Belum Bayar</span>
-                @elseif ($paymentStatus == 3)
-                    <span class="badge bg-success">Sudah Bayar</span>
-                @elseif ($paymentStatus == 4)
-                    <span class="badge bg-secondary">Selesai</span>
-                @endif
+            <div class="card-header">
+                <div class="d-flex justify-content-between">
+                    <a href="{{ route('order.show') }}"><i class="fas fa-arrow-left"></i></a>
+                    <b>Detail Reservasi</b>
+                    @if ($paymentStatus == 1)
+                        <span class="badge bg-warning">Sedang Ditinjau</span>
+                    @elseif ($paymentStatus == 2)
+                        <span class="badge bg-info">Belum Bayar</span>
+                    @elseif ($paymentStatus == 3)
+                        <span class="badge bg-success">Sudah Bayar</span>
+                    @elseif ($paymentStatus == 4)
+                        <span class="badge bg-secondary">Selesai</span>
+                    @endif
+                </div>
             </div>
             <div class="card-body" style="overflow: auto">
                 @if ($paymentStatus == 3)
@@ -68,7 +70,7 @@
                         </form>
                     </div>
                 @endif
-                @if ($paymentStatus == 3)
+                @if ($paymentStatus == 3 || $paymentStatus == 4)
                     <h5>Bukti Pembayaran :</h5>
                     <img src="{{ url('') }}/images/evidence/{{ $bukti }}" alt="" width="500px">
                 @endif
