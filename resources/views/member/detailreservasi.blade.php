@@ -12,6 +12,8 @@
                     <span class="badge bg-info">Belum Bayar</span>
                 @elseif ($paymentStatus == 3)
                     <span class="badge bg-success">Sudah Bayar</span>
+                @elseif ($paymentStatus == 4)
+                    <span class="badge bg-secondary">Selesai</span>
                 @endif
             </div>
             <div class="card-body" style="overflow: auto">
@@ -65,6 +67,10 @@
                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#bayarModal">Bukti Pembayaran</a>
                         </form>
                     </div>
+                @endif
+                @if ($paymentStatus == 3)
+                    <h5>Bukti Pembayaran :</h5>
+                    <img src="{{ url('') }}/images/evidence/{{ $bukti }}" alt="" width="500px">
                 @endif
             </div>
         </div>

@@ -13,6 +13,8 @@
                             <span class="badge bg-info">Belum Bayar</span>
                         @elseif ($status == 3)
                             <span class="badge bg-success">Sudah Bayar</span>
+                        @elseif ($status == 4)
+                            <span class="badge bg-secondary">Selesai</span>
                         @endif
                     </div>
                 </div>
@@ -33,7 +35,9 @@
                             </tr>
                             <tr>
                                 <th>Tanggal Pengambilan</th>
-                                <td>{{ date('d M Y H:i', strtotime($detail->first()->starts)) }}</td>
+                                <td>
+                                    {{ date('d M Y H:i', strtotime($detail->first()->starts)) }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -87,6 +91,13 @@
                         </form>
                         </tbody>
                     </table>
+                    @if ($status == 3)
+                    <form action="{{ route('selesai',['id' => $detail->first()->payment->id]) }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <button type="submit" class="btn btn-success mb-4">Sudah dikembalikan</button>
+                    </form>
+                    @endif
                     @if ($status != 1)
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">

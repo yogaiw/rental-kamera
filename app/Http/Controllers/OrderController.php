@@ -96,4 +96,12 @@ class OrderController extends Controller
 
         return back();
     }
+
+    public function alatkembali($id) {
+        Payment::find($id)->update([
+            'status' => 4
+        ]);
+
+        return back();
+    }
 }

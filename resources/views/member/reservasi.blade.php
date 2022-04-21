@@ -26,6 +26,8 @@
                                         <span class="badge bg-info">Belum Bayar</span>
                                     @elseif ($item->status == 3)
                                         <span class="badge bg-success">Sudah Bayar</span>
+                                    @elseif ($item->status == 4)
+                                        <span class="badge bg-secondary">Selesai</span>
                                     @endif
                                 </td>
                                 <td><a class="btn btn-primary" href="{{ route('order.detail',['id' => $item->id]) }}">Detail</a></td>
