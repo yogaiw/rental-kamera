@@ -15,6 +15,9 @@
                 @endif
             </div>
             <div class="card-body" style="overflow: auto">
+                @if ($paymentStatus == 3)
+                    <div class="alert alert-success">Silakan melakukan pengambilan alat pada tanggal yang tertera</div>
+                @endif
                 <b>Tanggal Pengambilan :</b> {{ date('d M Y H:i', strtotime($detail->first()->starts)) }}
                 <table class="table">
                     <thead>
