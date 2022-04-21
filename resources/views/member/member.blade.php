@@ -10,9 +10,9 @@
         @endif
         <div class="d-flex w-100 justify-content-start" style="overflow: auto">
             <div class="btn-group" role="group">
-                <a class="btn btn-outline-primary" href="{{ route('member.index') }}">Semua</a>
+                <a class="btn {{ (request('kategori') == null) ? 'btn-primary' : 'btn-outline-primary' }}" href="{{ route('member.index') }}">Semua</a>
                 @foreach ($kategori as $cat)
-                    <a class="btn btn-outline-primary" href="?kategori={{ $cat->id }}">{{ $cat->nama_kategori }}</a>
+                    <a class="btn {{ (request('kategori') == $cat->id) ? 'btn-primary' : 'btn-outline-primary' }}" href="?kategori={{ $cat->id }}">{{ $cat->nama_kategori }}</a>
                 @endforeach
             </div>
         </div>
