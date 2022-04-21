@@ -29,7 +29,7 @@ class HomeController extends Controller
 
         return view('detail',[
             'detail' => $detail,
-            'order' => Order::where('alat_id', $id)->where('status', 2)->orderBy('id','DESC')->get()
+            'order' => Order::where('alat_id', $id)->where('status', 2)->orderBy('starts','DESC')->get()
         ]);
     }
 }
