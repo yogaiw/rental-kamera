@@ -20,4 +20,14 @@ class AdminController extends Controller
             'total_penyewaan' => Payment::count(),
         ]);
     }
+
+    public function usermanagement() {
+
+        $user = User::with(['payment'])->get();
+
+        return view('admin.user.user',[
+            'penyewa' => $user->where('isAdmin', false),
+            'admin' => $user->where('isAdmin', true)
+        ]);
+    }
 }

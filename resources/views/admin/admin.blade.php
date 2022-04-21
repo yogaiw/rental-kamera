@@ -20,7 +20,7 @@
                         <h1>{{ $total_user }}</h1> <p>Penyewa</p>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">Kelola Penyewa</a>
+                        <a class="small text-white stretched-link" href="{{ route('admin.user') }}">Kelola Penyewa</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>

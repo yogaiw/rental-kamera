@@ -41,8 +41,10 @@
                                 <tbody>
                                     @foreach ($order as $item)
                                     <tr>
+                                        @if ($item->payment->status == 3)
                                         <td>{{ date('d M Y H:i', strtotime($item->starts)) }} <span class="badge bg-secondary">{{ $item->durasi }} Jam</span></td>
                                         <td>{{ date('d M Y H:i', strtotime($item->ends)) }}</td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>
