@@ -114,7 +114,7 @@
                                     <form action="{{ route('accbayar',['id' => $detail->first()->payment->id]) }}" method="POST">
                                         @method('PATCH')
                                         @csrf
-                                        <button type="submit" class="btn btn-success mb-4" {{ ($status == 3) ? 'disabled' : '' }}>Acc Pembayaran</button>
+                                        <button type="submit" class="btn btn-success mb-4" {{ ($status == 3 || $status == 4) ? 'disabled' : '' }}>Acc Pembayaran</button>
                                     </form>
                                     <img src="{{ url('') }}/images/evidence/{{ $detail->first()->payment->bukti }}" alt="" width="500px">
                                 @endif
