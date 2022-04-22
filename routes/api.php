@@ -29,3 +29,15 @@ Route::get('/kalender-alat', function() {
     ->get(['nama_alat AS title','starts AS start','ends AS end']);
     return json_encode($order);
 });
+
+Route::get('/kalender-alat/{id}', function($id) {
+    $order = DB::table('orders')
+    ->join('alats', 'alats.id','=','orders.alat_id')
+    ->join('payments','payments.id','=','orders.payment_id')
+    ->where('alats.id', $id)
+    ->where('orders.status', 2)
+    ->where('payments.status', 3)
+    ->get(['nama_alat AS title','starts AS start','ends AS end']);
+
+    return json_encode($order);
+});

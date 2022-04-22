@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        <link rel="stylesheet" href="/js/fullcalendar/main.css">
+        <script src="/js/fullcalendar/main.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
@@ -50,6 +52,9 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="card-body">
+                            <div id="calendar"></div>
+                        </div>
                         @if (Auth::check())
                             <div class="card-body">
                                 <form action="{{ route('cart.store',['id' => $detail->id]) }}" method="POST">
@@ -67,5 +72,36 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            var endpoint = "/api/kalender-alat/";
+            var param = {!! $detail->id !!};
+            var withParam = endpoint+param;
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    height: 500,
+                    selectable: true,
+                    navLinks: true,
+                    eventSources: [
+                        {
+                            url: withParam,
+                            color: 'yellow',
+                            textColor: 'black'
+                        }
+                    ],
+                    eventTimeFormat: {
+                        hour: 'numeric',
+                        minute: '2-digit',
+                        hour12: false
+                    },
+                    headerToolbar: {
+                        left: 'dayGridMonth,timeGridDay',
+                        center: 'title',
+                    }
+                });
+                calendar.render();
+            });
+        </script>
     </body>
 </html>
