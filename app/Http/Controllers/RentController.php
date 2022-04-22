@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Payment;
-use Illuminate\Http\Request;
 
 class RentController extends Controller
 {
     public function index() {
         return view('admin.penyewaan.penyewaan',[
-            'penyewaan' => Payment::orderBy('id','DESC')->get(),
+            'penyewaan' => Payment::where('status', '!=', 4)->get(),
         ]);
     }
 
@@ -22,6 +21,12 @@ class RentController extends Controller
             'detail' => $detail,
             'total' => $payment->total,
             'status' => $payment->status,
+        ]);
+    }
+
+    public function riwayat() {
+        return view('admin.penyewaan.riwayat',[
+            'penyewaan' => Payment::where('status', 4)->get()
         ]);
     }
 }

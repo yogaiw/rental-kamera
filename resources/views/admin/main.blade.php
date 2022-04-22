@@ -51,6 +51,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Reservasi
                             </a>
+                            <a class="nav-link {{ Route::is('riwayat-reservasi') ? 'active' : '' }}" href="{{ route('riwayat-reservasi') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Riwayat Reservasi
+                            </a>
                             <a class="nav-link {{ Route::is('admin.user') ? 'active' : '' }}" href="{{ route('admin.user') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
                                 Daftar Penyewa

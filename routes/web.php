@@ -10,6 +10,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RentController;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +50,7 @@ Route::middleware(['auth','admin'])->group(function () {
     //Penyewaan
     Route::get('/admin/penyewaan',[RentController::class, 'index'])->name('penyewaan.index');
     Route::get('/admin/penyewaan/detail/{id}',[RentController::class, 'detail'])->name('penyewaan.detail');
+    Route::get('/admin/riwayat-reservasi',[RentController::class,'riwayat'])->name('riwayat-reservasi');
     Route::patch('/acc/{paymentId}',[OrderController::class,'acc'])->name('acc');
     Route::patch('/admin/selesai/{id}',[OrderController::class,'alatkembali'])->name('selesai');
 
