@@ -3,7 +3,7 @@
 <div class="container-fluid px-4">
     <div class="row">
         <div class="col col-lg-6 col-md-12">
-            <div class="card mt-4">
+            <div class="card shadow mt-4">
                 <div class="card-header"><b>Penyewa</b></div>
                 <div class="card-body">
                     <table id="dataTable">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="col col-lg-6 col-md-12">
-            <div class="card mt-4">
+            <div class="card shadow mt-4">
                 <div class="card-header"><b>Admin</b></div>
                 <div class="card-body">
                     <table class="table">

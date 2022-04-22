@@ -8,7 +8,7 @@
         </ol>
         <div class="row">
             <div class="col-lg">
-                <div class="card mb-4">
+                <div class="card shadow mb-4">
                     <div class="card-header">
                         Alat
                     </div>

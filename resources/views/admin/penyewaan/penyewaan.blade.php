@@ -3,7 +3,7 @@
 <div class="container-fluid px-4">
     <div class="row">
         <div class="col-md-12 mt-4">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-body" style="overflow: auto">
                     <table id="dataTable">
                         <thead>

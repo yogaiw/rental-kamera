@@ -45,7 +45,7 @@
                         </div>
                     @endif
                     <div class="col-lg-11">
-                        <div class="card mb-4">
+                        <div class="card shadow mb-4">
                             <div class="card-header">
                                 @if (!Auth::check())
                                     <a class="link-dark" href="#login">Login</a> untuk penyewaan secara online
@@ -100,7 +100,7 @@
                         </div>
 
                         @if (!Auth::check())
-                            <div class="card mb-4" id="login">
+                            <div class="card shadow mb-4" id="login">
                                 <div class="card-header">Login</div>
                                 <div class="card-body">
                                     @include('partials.login')
