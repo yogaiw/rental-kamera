@@ -22,7 +22,8 @@
                 @if ($paymentStatus == 3)
                     <div class="alert alert-success">Silakan melakukan pengambilan alat pada tanggal yang tertera</div>
                 @endif
-                <b>Tanggal Pengambilan :</b> {{ date('d M Y H:i', strtotime($detail->first()->starts)) }}
+                <b>Tanggal Pengambilan :</b> {{ date('d M Y H:i', strtotime($detail->first()->starts)) }} <br>
+                <b>No. Invoice :</b> {{ $detail->first()->payment->no_invoice }}
                 <table class="table">
                     <thead>
                         <tr>
