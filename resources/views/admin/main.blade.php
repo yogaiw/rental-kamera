@@ -46,7 +46,7 @@
                                 Dashboard
                             </a>
 
-                            <div class="sb-sidenav-menu-heading">Manajemen Penyewaan</div>
+                            <div class="sb-sidenav-menu-heading">Manajemen Reservasi</div>
                             <a class="nav-link {{ Route::is('penyewaan.index') ? 'active' : '' }}" href="{{ route('penyewaan.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Reservasi
@@ -55,6 +55,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Riwayat Reservasi
                             </a>
+                            <div class="sb-sidenav-menu-heading">Manajemen Penyewa</div>
                             <a class="nav-link {{ Route::is('admin.user') ? 'active' : '' }}" href="{{ route('admin.user') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
                                 Daftar Penyewa
