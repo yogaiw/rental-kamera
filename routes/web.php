@@ -55,7 +55,8 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::patch('/admin/selesai/{id}',[OrderController::class,'alatkembali'])->name('selesai');
     Route::get('/admin/laporan/cetak',[OrderController::class,'cetak'])->name('cetak');
 
-    Route::get('admin/buat-reservasi/{userId}',[AdminController::class,'newOrderIndex'])->name('admin.buatreservasi');
+    Route::get('/admin/buat-reservasi/{userId}',[AdminController::class,'newOrderIndex'])->name('admin.buatreservasi');
+    Route::post('/admin/buat-reservasi/order/{userId}',[AdminController::class,'createNewOrder'])->name('admin.createorder');
 
     // Penyewa atau User
     Route::get('/admin/usermanagement',[AdminController::class,'usermanagement'])->name('admin.user');

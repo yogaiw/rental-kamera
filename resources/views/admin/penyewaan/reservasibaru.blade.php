@@ -84,7 +84,7 @@
                             <b>@money($total)</b>
                         </div>
                         <small>Tanggal Ambil</small>
-                        <form action="" method="POST">
+                        <form action="{{ route('admin.createorder',['userId' => $user->id]) }}" method="POST">
                             @csrf
                             <div class="d-flex w-100 justify-content-center mb-4">
                                 <input type="date" name="start_date" class="forn-control" required>

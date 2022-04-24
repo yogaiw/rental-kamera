@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Alat;
 use App\Models\Carts;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -59,5 +61,32 @@ class AdminController extends Controller
             'cart' => $cart,
             'total' => $cart->sum('harga')
         ]);
+    }
+
+    public function createNewOrder(Request $request, $userId) {
+        $cart = Carts::where('user_id', $userId)->get();
+        $pembayaran = new Payment();
+
+        $pembayaran->no_invoice = $userId."/".Carbon::now()->timestamp;
+        $pembayaran->user_id = $userId;
+        $pembayaran->status = 3;
+        $pembayaran->total = $cart->sum('harga');
+        $pembayaran->save();
+
+        foreach($cart as $c) {
+            Order::create([
+                'alat_id' => $c->alat_id,
+                'user_id' => $c->user_id,
+                'payment_id' => Payment::where('user_id',$userId)->orderBy('id','desc')->first()->id,
+                'durasi' => $c->durasi,
+                'starts' => date('Y-m-d H:i', strtotime($request['start_date'].$request['start_time'])),
+                'ends' => date('Y-m-d H:i', strtotime($request['start_date'].$request['start_time']."+".$c->durasi." hours")),
+                'harga' => $c->harga,
+                'status' => 2
+            ]);
+            $c->delete();
+        }
+
+        return redirect(route('penyewaan.index'));
     }
 }
