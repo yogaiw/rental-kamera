@@ -57,6 +57,7 @@ Route::middleware(['auth','admin'])->group(function () {
 
     // Penyewa atau User
     Route::get('/admin/usermanagement',[AdminController::class,'usermanagement'])->name('admin.user');
+    Route::post('/admin/usermanagement/new',[AdminController::class,'newUser'])->name('user.new');
 });
 
 Route::get('/memberarea',[MemberController::class,'index'])->middleware('auth')->name('member.index');

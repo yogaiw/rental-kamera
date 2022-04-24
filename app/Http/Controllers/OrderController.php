@@ -117,7 +117,7 @@ class OrderController extends Controller
             ->join('users','users.id','orders.user_id')
             ->whereBetween('orders.created_at',[$dari, $sampai])
             ->where('orders.status',2)
-            ->where('payments.status',3)
+            ->where('payments.status','>',2)
             ->get(['*','orders.created_at AS tanggal']);
 
         return view('admin.laporan',[
