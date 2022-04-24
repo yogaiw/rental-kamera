@@ -47,6 +47,9 @@
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Manajemen Reservasi</div>
+                            <button type="button" class="btn btn-success nav-link" data-bs-toggle="modal" data-bs-target="#cetakLaporanModal">
+                                <i class="fas fa-print"></i> &nbsp; Cetak Laporan
+                            </button>
                             <a class="nav-link {{ Route::is('penyewaan.index') ? 'active' : '' }}" href="{{ route('penyewaan.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Reservasi
@@ -91,6 +94,25 @@
                         </div>
                     </div>
                 </footer>
+            </div>
+        </div>
+        <div class="modal fade" id="cetakLaporanModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cetak Laporan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('cetak') }}" method="GET">
+                            <label class="form-label">Dari</label>
+                            <input type="date" class="form-control mb-4" name="dari">
+                            <label class="form-label">Sampai</label>
+                            <input type="date" class="form-control mb-4" name="sampai">
+                            <button type="submit" class="btn btn-success"><i class="fas fa-print"></i>  Cetak</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

@@ -53,6 +53,7 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::get('/admin/riwayat-reservasi',[RentController::class,'riwayat'])->name('riwayat-reservasi');
     Route::patch('/acc/{paymentId}',[OrderController::class,'acc'])->name('acc');
     Route::patch('/admin/selesai/{id}',[OrderController::class,'alatkembali'])->name('selesai');
+    Route::get('/admin/laporan/cetak',[OrderController::class,'cetak'])->name('cetak');
 
     // Penyewa atau User
     Route::get('/admin/usermanagement',[AdminController::class,'usermanagement'])->name('admin.user');

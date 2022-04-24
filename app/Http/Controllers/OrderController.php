@@ -8,6 +8,7 @@ use App\Models\Payment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -105,5 +106,23 @@ class OrderController extends Controller
         ]);
 
         return back();
+    }
+
+    public function cetak() {
+        $dari = request('dari');
+        $sampai = request('sampai');
+        $laporan = DB::table('orders')
+            ->join('payments','payments.id','orders.payment_id')
+            ->join('alats','alats.id','orders.alat_id')
+            ->join('users','users.id','orders.user_id')
+            ->whereBetween('orders.created_at',[$dari, $sampai])
+            ->where('orders.status',2)
+            ->where('payments.status',3)
+            ->get(['*','orders.created_at AS tanggal']);
+
+        return view('admin.laporan',[
+            'laporan' => $laporan,
+            'total' => $laporan->sum('harga')
+        ]);
     }
 }
