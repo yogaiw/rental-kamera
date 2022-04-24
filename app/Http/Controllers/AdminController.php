@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alat;
+use App\Models\Carts;
 use App\Models\Category;
 use App\Models\Payment;
 use App\Models\User;
@@ -49,9 +50,14 @@ class AdminController extends Controller
 
     public function newOrderIndex($userId) {
         $user = User::find($userId);
+        $alat = Alat::with(['category'])->get();
+        $cart = Carts::with(['user'])->where('user_id', $userId)->get();
 
         return view('admin.penyewaan.reservasibaru',[
-            'user' => $user
+            'user' => $user,
+            'alat' => $alat,
+            'cart' => $cart,
+            'total' => $cart->sum('harga')
         ]);
     }
 }
