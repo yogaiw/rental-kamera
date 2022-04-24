@@ -18,6 +18,7 @@
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Telepon</th>
+                                <th>Tindakan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,6 +28,17 @@
                                 <td>{{ $item->name }} <span class="badge bg-secondary">{{ $item->payment->count() }} Transaksi</span></td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->telepon }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                          Tindakan
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                          <li><a class="dropdown-item" href="{{ route('admin.buatreservasi',['userId' => $item->id]) }}">Buat Reservasi</a></li>
+                                          <li><a class="dropdown-item" href="#">Detail</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

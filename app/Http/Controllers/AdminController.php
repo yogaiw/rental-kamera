@@ -46,4 +46,12 @@ class AdminController extends Controller
 
         return redirect(route('admin.user'));
     }
+
+    public function newOrderIndex($userId) {
+        $user = User::find($userId);
+
+        return view('admin.penyewaan.reservasibaru',[
+            'user' => $user
+        ]);
+    }
 }
