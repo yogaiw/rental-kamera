@@ -55,19 +55,6 @@
                         <div class="card-body">
                             <div id="calendar"></div>
                         </div>
-                        @if (Auth::check())
-                            <div class="card-body">
-                                <form action="{{ route('cart.store',['id' => $detail->id]) }}" method="POST">
-                                    @csrf
-                                    <div class="d-grid gap-2 d-md-block">
-                                        <button type="submit" class="btn btn-sm btn-success" name="btn" value="24"><i class="fas fa-shopping-cart"></i> @money($detail->harga24) <b>24jam</b></button>
-                                        <button type="submit" class="btn btn-sm btn-success" name="btn" value="12"><i class="fas fa-shopping-cart"></i> @money($detail->harga12) <b>12jam</b></button>
-                                        <button type="submit" class="btn btn-sm btn-success" name="btn" value="6"><i class="fas fa-shopping-cart"></i> @money($detail->harga6) <b>6jam</b></button>
-                                    </div>
-                                </form>
-                                <small>Telah login sebagai {{ Auth::user()->name }}</small>
-                            </div>
-                        @endif
                     </div>
                 </div>
             </div>
