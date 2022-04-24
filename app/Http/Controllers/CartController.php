@@ -11,7 +11,7 @@ class CartController extends Controller
 {
     public function store(Request $request, $id) {
         $cart = new Carts();
-        $alat = Alat::find($id);
+        $alat = Alat::with(['alat','user'])->find($id);
 
         if($request['btn'] == '24') {
             $harga = $alat->harga24;

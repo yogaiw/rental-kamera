@@ -14,10 +14,10 @@ class OrderController extends Controller
 {
 
     public function show() {
-        $payment = Payment::where('user_id', Auth::id());
+        $payment = Payment::with(['user','order'])->where('user_id', Auth::id());
         return view('member.reservasi',[
             'reservasi' => $payment->where('status','!=', 4)->orderBy('id','DESC')->get(),
-            'riwayat' => Payment::where('user_id', Auth::id())->where('status', 4)->orderBy('id','DESC')->get()
+            'riwayat' => Payment::with(['user','order'])->where('user_id', Auth::id())->where('status', 4)->orderBy('id','DESC')->get()
         ]);
     }
 

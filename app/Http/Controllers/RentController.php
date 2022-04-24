@@ -9,12 +9,12 @@ class RentController extends Controller
 {
     public function index() {
         return view('admin.penyewaan.penyewaan',[
-            'penyewaan' => Payment::where('status', '!=', 4)->get(),
+            'penyewaan' => Payment::with(['user','order'])->where('status', '!=', 4)->get(),
         ]);
     }
 
     public function detail($id) {
-        $detail = Order::where('payment_id', $id)->get();
+        $detail = Order::with(['user','payment','alat'])->where('payment_id', $id)->get();
         $payment = Payment::find($id);
 
         return view('admin.penyewaan.detail',[
