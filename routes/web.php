@@ -55,6 +55,9 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::patch('/admin/selesai/{id}',[OrderController::class,'alatkembali'])->name('selesai');
     Route::get('/admin/laporan/cetak',[OrderController::class,'cetak'])->name('cetak');
 
+    Route::get('/admin/buat-reservasi/{userId}',[AdminController::class,'newOrderIndex'])->name('admin.buatreservasi');
+    Route::post('/admin/buat-reservasi/order/{userId}',[AdminController::class,'createNewOrder'])->name('admin.createorder');
+
     // Penyewa atau User
     Route::get('/admin/usermanagement',[AdminController::class,'usermanagement'])->name('admin.user');
     Route::post('/admin/usermanagement/new',[AdminController::class,'newUser'])->name('user.new');
@@ -63,7 +66,7 @@ Route::middleware(['auth','admin'])->group(function () {
 Route::get('/memberarea',[MemberController::class,'index'])->middleware('auth')->name('member.index');
 
 // Carts
-Route::post('/memberarea/store/{id}',[CartController::class,'store'])->middleware('auth')->name('cart.store');
+Route::post('/memberarea/store/{id}/{userId}',[CartController::class,'store'])->middleware('auth')->name('cart.store');
 Route::delete('/memberarea/delete/{id}',[CartController::class,'destroy'])->middleware('auth')->name('cart.destroy');
 
 // Orders
