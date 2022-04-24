@@ -34,7 +34,7 @@
                                 <small>{{ $item->deskripsi }}</small>
                             </div>
                             <div class="card-footer">
-                                <form action="{{ route('cart.store',['id' => $item->id]) }}" method="POST">
+                                <form action="{{ route('cart.store',['id' => $item->id, 'userId' => Auth::user()->id]) }}" method="POST">
                                     @csrf
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="addtocartdropdown" data-bs-toggle="dropdown" aria-expanded="false">

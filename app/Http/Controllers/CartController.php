@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function store(Request $request, $id) {
+    public function store(Request $request, $id, $userId) {
         $cart = new Carts();
         $alat = Alat::find($id);
 
@@ -23,7 +23,7 @@ class CartController extends Controller
             $harga = $alat->harga6;
         }
 
-        $cart->user_id = Auth::id();
+        $cart->user_id = $userId;
         $cart->alat_id = $alat->id;
         $cart->harga = $harga;
         $cart->durasi = $request['btn'];
@@ -32,13 +32,13 @@ class CartController extends Controller
 
         $request->session()->flash('success', 'Berhasil ditambahkan ke keranjang');
 
-        return redirect(route('member.index'));
+        return back();
     }
 
     public function destroy($id) {
         $alat = Carts::find($id);
         $alat->delete();
 
-        return redirect(route('member.index'));
+        return back();
     }
 }

@@ -13,7 +13,8 @@
     </head>
     <body>
     <div class="container-fluid px-4">
-        <div class="row mb-4 mt-4">
+        <div class="row mt-4"><div class="col-12"><a href="{{ route('admin.user') }}" class="btn btn-primary">Kembali</a></div></div>
+        <div class="row mb-4 mt-2">
             <div class="col-12">
                 <h4>Buat Reservasi untuk <b>{{ $user->name }}</b></h4>
             </div>
@@ -34,7 +35,7 @@
                                         <small>{{ $item->deskripsi }}</small>
                                     </div>
                                     <div class="card-footer">
-                                        <form action="" method="POST">
+                                        <form action="{{ route('cart.store',['id' => $item->id, 'userId' => $user->id]) }}" method="POST">
                                             @csrf
                                             <div class="d-block">
                                                 <button type="submit" class="btn btn-success w-100" name="btn" value="24"><i class="fas fa-shopping-cart"></i> @money($item->harga24) <b>24jam</b></button>
@@ -66,7 +67,7 @@
                                   </div>
                                   <div class="d-flex w-100 justify-content-between">
                                     <p class="mb-1">{{ $item->durasi }} Jam </p>
-                                    <form action="" method="POST">
+                                    <form action="{{ route('cart.destroy',['id' => $item->id]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button style="background: none" type="submit"><i class="fas fa-trash" style="color: gray"></i></a>
