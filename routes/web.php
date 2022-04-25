@@ -75,5 +75,6 @@ Route::get('/reservasi',[OrderController::class,'show'])->middleware('auth')->na
 Route::get('/reservasi/detail/{id}',[OrderController::class,'detail'])->middleware('auth')->name('order.detail');
 Route::patch('/bayar/{id}',[OrderController::class,'bayar'])->middleware('auth')->name('bayar');
 Route::patch('/accbayar/{id}',[OrderController::class,'accbayar'])->middleware('auth')->name('accbayar');
+Route::delete('/cancel/{id}',[OrderController::class,'destroy'])->middleware('auth')->name('cancel');
 
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');

@@ -59,6 +59,13 @@
                         </tr>
                     </tbody>
                 </table>
+                @if ($paymentStatus == 1)
+                    <form action="{{ route('cancel',['id' => $detail->first()->payment->id]) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger" style="float: right">Cancel Reservasi</button>
+                    </form>
+                @endif
                 @if ($paymentStatus == 2)
                     <div class="alert {{ ($detail->first()->payment->bukti == NULL) ? 'alert-primary' : 'alert-success'}}">
                         @if ($detail->first()->payment->bukti == NULL)

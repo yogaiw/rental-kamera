@@ -58,6 +58,14 @@ class OrderController extends Controller
         return redirect(route('order.show'));
     }
 
+    public function destroy($id) {
+        $payment = Payment::find($id);
+
+        $payment->delete();
+
+        return redirect(route('order.show'));
+    }
+
     public function acc(Request $request, $paymentId) {
         $orders = $request->order;
         $payment = new Payment();
