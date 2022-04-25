@@ -30,12 +30,18 @@
                                 <td>{{ $item->telepon }}</td>
                                 <td>
                                     <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
                                           Tindakan
                                         </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                          <li><a class="dropdown-item" href="{{ route('admin.buatreservasi',['userId' => $item->id]) }}">Buat Reservasi</a></li>
-                                          <li><a class="dropdown-item" href="#">Detail</a></li>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownUser">
+                                            <li><a class="dropdown-item" href="{{ route('admin.buatreservasi',['userId' => $item->id]) }}">Buat Reservasi</a></li>
+                                            <li>
+                                                <form action="{{ route('user.promote', ['id' => $item->id]) }}" method="POST">
+                                                    @method('PATCH')
+                                                    @csrf
+                                                    <button type="submit" class="dropdown-item">Jadikan Admin</a>
+                                                </form>
+                                            </li>
                                         </ul>
                                     </div>
                                 </td>
@@ -55,13 +61,25 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Nama</th>
+                                <th>Telepon</th>
+                                <th>Tindakan</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($admin as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->name }}</td>
+                                <td><b>{{ $item->name }}</b> ({{ $item->email }})</td>
+                                <td>{{ $item->telepon }}</td>
+                                <td>
+                                    @if ($item->id != Auth::user()->id)
+                                        <form action="{{ route('user.demote',['id' => $item->id]) }}" method="POST">
+                                            @method('PATCH')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Cabut Admin</button>
+                                        </form>
+                                    @endif
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

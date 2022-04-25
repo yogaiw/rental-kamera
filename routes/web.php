@@ -10,6 +10,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,6 +63,8 @@ Route::middleware(['auth','admin'])->group(function () {
     // Penyewa atau User
     Route::get('/admin/usermanagement',[AdminController::class,'usermanagement'])->name('admin.user');
     Route::post('/admin/usermanagement/new',[AdminController::class,'newUser'])->name('user.new');
+    Route::patch('admin/user/promote/{id}',[UserController::class,'promote'])->name('user.promote');
+    Route::patch('admin/user/demote/{id}',[UserController::class,'demote'])->name('user.demote');
 });
 
 Route::get('/memberarea',[MemberController::class,'index'])->middleware('auth')->name('member.index');
