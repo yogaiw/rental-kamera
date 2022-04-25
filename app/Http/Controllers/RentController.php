@@ -24,6 +24,14 @@ class RentController extends Controller
         ]);
     }
 
+    public function destroy($id) {
+        $payment = Payment::find($id);
+
+        $payment->delete();
+
+        return redirect(route('penyewaan.index'));
+    }
+
     public function riwayat() {
         return view('admin.penyewaan.riwayat',[
             'penyewaan' => Payment::where('status', 4)->get()

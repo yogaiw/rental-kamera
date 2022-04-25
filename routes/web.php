@@ -53,6 +53,7 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::patch('/acc/{paymentId}',[OrderController::class,'acc'])->name('acc');
     Route::patch('/admin/selesai/{id}',[OrderController::class,'alatkembali'])->name('selesai');
     Route::get('/admin/laporan/cetak',[OrderController::class,'cetak'])->name('cetak');
+    Route::delete('/admin/cancel/{id}',[RentController::class,'destroy'])->name('admin.penyewaan.cancel');
 
     Route::get('/admin/buat-reservasi/{userId}',[AdminController::class,'newOrderIndex'])->name('admin.buatreservasi');
     Route::post('/admin/buat-reservasi/order/{userId}',[AdminController::class,'createNewOrder'])->name('admin.createorder');

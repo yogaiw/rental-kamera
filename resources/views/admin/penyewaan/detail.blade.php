@@ -91,6 +91,13 @@
                         </form>
                         </tbody>
                     </table>
+                    @if ($status == 1)
+                        <form action="{{ route('admin.penyewaan.cancel',['id' => $detail->first()->payment->id]) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Cancel Reservasi</button>
+                        </form>
+                    @endif
                     @if ($status == 3)
                     <form action="{{ route('selesai',['id' => $detail->first()->payment->id]) }}" method="POST">
                         @csrf
