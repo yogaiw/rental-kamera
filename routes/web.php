@@ -80,4 +80,7 @@ Route::get('/reservasi/detail/{id}',[OrderController::class,'detail'])->middlewa
 Route::patch('/bayar/{id}',[OrderController::class,'bayar'])->middleware('auth')->name('bayar');
 Route::delete('/reservasi/cancel/{id}',[OrderController::class,'destroy'])->middleware('auth')->name('cancel');
 
+Route::get('/akun/pengaturan',[UserController::class,'edit'])->middleware('auth')->name('akun.pengaturan');
+Route::patch('/akun/pengaturan',[UserController::class,'update'])->middleware('auth')->name('akun.update');
+
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
