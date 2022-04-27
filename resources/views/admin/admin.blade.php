@@ -53,12 +53,13 @@
                 @include('partials.kalender')
             </div>
             <div class="col col-lg-6 col-sm-12">
-                <div class="card mb-4 g-2">
+                <div class="card shadow mb-4 g-2">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        Transaksi Terbanyak
+                        Statistik
                     </div>
                     <div class="card-body">
+                        <b><h5>5 Penyewa Terbanyak</h5></b>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -71,8 +72,27 @@
                                 @foreach ($top_user as $user)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $user->name }} <span class="badge bg-secondary">{{ $user->payment_count }} Transaksi</span></td>
+                                    <td class="d-flex justify-content-between">{{ $user->name }} <span class="badge bg-secondary">{{ $user->payment_count }} Transaksi</span></td>
                                     <td>{{ $user->telepon }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-body">
+                        <b><h5>5 Alat Terfavorit</h5></b>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Alat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($top_products as $product)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td class="d-flex justify-content-between">{{ $product->nama_alat }} <span class="badge bg-secondary">{{ $product->order_count }} Reservasi</span></td>
                                 </tr>
                                 @endforeach
                             </tbody>

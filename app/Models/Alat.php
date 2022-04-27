@@ -12,4 +12,8 @@ class Alat extends Model
     public function category() {
         return $this->belongsTo(Category::class, 'kategori_id');
     }
+
+    public function order() {
+        return $this->hasMany(Order::class,'alat_id','id');
+    }
 }

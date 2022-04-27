@@ -17,13 +17,15 @@ class AdminController extends Controller
 {
     public function index() {
         $topUser = User::withCount('payment')->orderBy('payment_count', 'DESC')->limit(5)->get();
+        $topProducts = Alat::withCount('order')->orderBy('order_count', "DESC")->limit(5)->get();
         return view('admin.admin',[
             'loggedUsername' => Auth::user()->name,
             'total_user' => User::where('isAdmin',0)->count(),
             'total_alat' => Alat::count(),
             'total_kategori' => Category::count(),
             'total_penyewaan' => Payment::count(),
-            'top_user' => $topUser
+            'top_user' => $topUser,
+            'top_products' => $topProducts
         ]);
     }
 
