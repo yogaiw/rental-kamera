@@ -56,47 +56,25 @@
                 <div class="card mb-4 g-2">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        DataTable Example
+                        Transaksi Terbanyak
                     </div>
                     <div class="card-body">
-                        <table id="dataTable">
+                        <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>#</th>
+                                    <th>Nama</th>
+                                    <th>Telepon</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
+                                @foreach ($top_user as $user)
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $user->name }} <span class="badge bg-secondary">{{ $user->payment_count }} Transaksi</span></td>
+                                    <td>{{ $user->telepon }}</td>
                                 </tr>
-                                <tr>
-                                    <td>Garrett Winters</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>63</td>
-                                    <td>2011/07/25</td>
-                                    <td>$170,750</td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
