@@ -3,6 +3,26 @@ PHP | Laravel | XAMPP |
 --- | --- | --- |
 v8.0.3 | v8.83.1 | v3.3.0 |
 
+## Installation
+#### Install via Composer
+```
+composer install
+```
+#### Config your Environment
+rename .env.example to .env, configure your env file
+#### Generate APP_KEY
+```
+php artisan key:generate
+```
+#### Databse Migration
+```
+php artisan migrate
+```
+#### Run
+```
+php artisan serve
+```
+
 ## Overview
 ![Dashboard](https://github.com/yogaiw/yogaiw.github.io/blob/master/content/kancilrentreadme/1.png)
 ![Memberarea](https://github.com/yogaiw/yogaiw.github.io/blob/master/content/kancilrentreadme/3.png)
