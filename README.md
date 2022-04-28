@@ -6,6 +6,9 @@ v8.0.3 | v8.83.1 | v3.3.0 |
 ## Overview
 ![Dashboard](https://github.com/yogaiw/yogaiw.github.io/blob/master/content/kancilrentreadme/1.png)
 ![Memberarea](https://github.com/yogaiw/yogaiw.github.io/blob/master/content/kancilrentreadme/3.png)
+![Schedule check](https://github.com/yogaiw/yogaiw.github.io/blob/master/content/kancilrentreadme/7.png)
+![Admin Dashboard](https://github.com/yogaiw/yogaiw.github.io/blob/master/content/kancilrentreadme/4.png)
+![Order Management](https://github.com/yogaiw/yogaiw.github.io/blob/master/content/kancilrentreadme/5.png)
 ![Admin](https://github.com/yogaiw/yogaiw.github.io/blob/master/content/kancilrentreadme/2.png)
 
 ## Status
