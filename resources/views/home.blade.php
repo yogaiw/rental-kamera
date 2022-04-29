@@ -27,7 +27,7 @@
             </div>
         </nav>
         <section id="katalog">
-            <div class="container px-2">
+            <div class="container">
                 <div class="row justify-content-center">
                     @if (session()->has('registrasi'))
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
