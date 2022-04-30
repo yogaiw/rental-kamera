@@ -7,7 +7,7 @@
     <div class="container mt-4">
         <div class="row mb-4">
             <h4>Laporan Reservasi dan Pemasukan</h4>
-            <small>from <b>{{ date('D, d M Y', strtotime($laporan->first()->tanggal)) }}</b> to <b>{{ date('D, d M Y', strtotime(request('sampai'))) }}</b></small>
+            <small>from <b>{{ date('D, d M Y', strtotime(request('dari'))) }}</b> to <b>{{ date('D, d M Y', strtotime(request('sampai'))) }}</b></small>
         </div>
         <div class="row">
             <table class="table">

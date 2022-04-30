@@ -103,7 +103,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('cetak') }}" method="GET">
+                        <form action="{{ route('cetak') }}" method="GET" target="_blank">
                             <label class="form-label">Dari</label>
                             <input type="date" class="form-control mb-4" name="dari">
                             <label class="form-label">Sampai</label>
