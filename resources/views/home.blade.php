@@ -52,7 +52,15 @@
                                 @endif
                             </div>
                             <div class="card-body">
-                                <div class="dropdown mb-4">
+                                <div class="d-flex w-100 justify-content-start mb-4" style="overflow: auto">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn {{ (request('kategori') == null) ? 'btn-primary' : 'btn-outline-primary' }}" href="{{ route('member.index') }}">Semua</a>
+                                        @foreach ($categories as $cat)
+                                            <a class="btn {{ (request('kategori') == $cat->id) ? 'btn-primary' : 'btn-outline-primary' }}" href="?kategori={{ $cat->id }}">{{ $cat->nama_kategori }}</a>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                {{-- <div class="dropdown mb-4">
                                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                       Kategori
                                     </a>
@@ -62,7 +70,7 @@
                                         <li><a class="dropdown-item" href="?kategori={{ $cat->id }}">{{ $cat->nama_kategori }}</a></li>
                                         @endforeach
                                     </ul>
-                                </div>
+                                </div> --}}
                                 <form action="">
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" width="25%" placeholder="Cari Alat" name="search">
