@@ -65,7 +65,7 @@
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-between"></div>
-                                    <a href="{{ route('home.detail',['id' => $item->alat->id]) }}" class="link">{{ $item->alat->nama_alat }}</a>
+                                    <a class="link-dark" href="{{ route('home.detail',['id' => $item->alat->id]) }}" class="link">{{ $item->alat->nama_alat }}</a>
                                     <span class="badge bg-warning">{{ $item->alat->category->nama_kategori }}</span>
                                     <span class="badge bg-secondary">{{ $item->durasi }} Jam</span>
                                     @if ($item->status === 3)

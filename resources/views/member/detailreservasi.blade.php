@@ -39,7 +39,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
                                     <div class="d-flex justify-content-between"></div>
-                                    {{ $item->alat->nama_alat }}
+                                    <a class="link-dark" href="{{ route('home.detail',['id' => $item->alat->id]) }}">{{ $item->alat->nama_alat }}</a>
                                     <span class="badge bg-warning">{{ $item->alat->category->nama_kategori }}</span>
                                     <span class="badge bg-secondary">{{ $item->durasi }} Jam</span>
                                     @if ($item->status === 3)
