@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Alat;
 use App\Models\Carts;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {

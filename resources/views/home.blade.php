@@ -60,17 +60,6 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                {{-- <div class="dropdown mb-4">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                      Kategori
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="{{ route('home') }}">Semua</a></li>
-                                        @foreach ($categories as $cat)
-                                        <li><a class="dropdown-item" href="?kategori={{ $cat->id }}">{{ $cat->nama_kategori }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </div> --}}
                                 <form action="">
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" width="25%" placeholder="Cari Alat" name="search">

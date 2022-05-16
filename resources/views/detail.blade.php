@@ -31,6 +31,17 @@
                             <h4><span class="badge bg-warning">{{ $detail->category->nama_kategori }}</span></h4>
                             <h1><b>{{ $detail->nama_alat }}</b></h1>
                             <p class="text-muted">{{ $detail->deskripsi }}</p>
+                            @if (Auth::check() && Auth::user()->isAdmin == false)
+                            <form action="{{ route('cart.store',['id' => $detail->id, 'userId' => Auth::user()->id]) }}" method="POST">
+                                @csrf
+                                <div class="d-flex">
+                                    <button type="submit" class="btn btn-success mx-2" name="btn" value="24"><i class="fas fa-shopping-cart"></i> @money($detail->harga24) <b>24jam</b></button>
+                                    <button type="submit" class="btn btn-success mx-2" name="btn" value="12"><i class="fas fa-shopping-cart"></i> @money($detail->harga12) <b>12jam</b></button>
+                                    <button type="submit" class="btn btn-success mx-2" name="btn" value="6"><i class="fas fa-shopping-cart"></i> @money($detail->harga6) <b>6jam</b></button>
+                                </div>
+                            </form>
+                            <p class="text-muted">Anda sedang login sebagai <b>{{ Auth::user()->name }}</b></p>
+                            @endif
                             <hr>
                             <h6><i>Daftar Pinjaman Mendatang</i></h6>
                             <table class="table">
