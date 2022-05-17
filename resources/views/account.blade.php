@@ -20,6 +20,9 @@
             @if (session('updated'))
                 <div class="alert alert-success">{{ session('updated') }}</div>
             @endif
+            @if (session('message'))
+                <div class="alert alert-danger">{{ session('message') }}</div>
+            @endif
             <div class="row justify-content-center text-center mb-4">
                 <h5>Pengaturan Akun</h5>
             </div>
@@ -41,6 +44,20 @@
                             <label for="floatingtelp">No Telepon</label>
                         </div>
                         <button type="submit" class="btn btn-success w-100 mt-4">Simpan</button>
+                    </form>
+                    <h5 class="mt-4">Ganti Password</h5>
+                    <form action="{{ route('changepassword') }}" method="POST">
+                        @method('PATCH')
+                        @csrf
+                        <div class="form-floating mb-1">
+                            <input type="password" name="oldPassword" class="form-control" id="floatingOld" required>
+                            <label for="floatingOld">Password Saat Ini</label>
+                        </div>
+                        <div class="form-floating mb-1">
+                            <input type="password" name="newPassword" class="form-control" id="floatingNew" required>
+                            <label for="floatingNew">Password Baru</label>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mt-4">Ganti Password</button>
                     </form>
                     @if (Auth::user()->isAdmin == true)
                     <a class="btn btn-danger w-100 mt-2" href="{{ route('admin.index') }}">Kembali</a>

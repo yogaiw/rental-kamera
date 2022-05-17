@@ -82,5 +82,6 @@ Route::delete('/reservasi/cancel/{id}',[OrderController::class,'destroy'])->midd
 
 Route::get('/akun/pengaturan',[UserController::class,'edit'])->middleware('auth')->name('akun.pengaturan');
 Route::patch('/akun/pengaturan',[UserController::class,'update'])->middleware('auth')->name('akun.update');
+Route::patch('/changepass',[UserController::class,'changePassword'])->middleware('auth')->name('changepassword');
 
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
