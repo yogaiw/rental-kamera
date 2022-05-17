@@ -54,9 +54,9 @@
                             <div class="card-body">
                                 <div class="d-flex w-100 justify-content-start mb-4" style="overflow: auto">
                                     <div class="btn-group" role="group">
-                                        <a class="btn {{ (request('kategori') == null) ? 'btn-primary' : 'btn-outline-primary' }}" href="{{ route('member.index') }}">Semua</a>
+                                        <a class="btn {{ (request('kategori') == null) ? 'btn-secondary' : 'btn-outline-secondary' }}" href="{{ route('member.index') }}">Semua</a>
                                         @foreach ($categories as $cat)
-                                            <a class="btn {{ (request('kategori') == $cat->id) ? 'btn-primary' : 'btn-outline-primary' }}" href="?kategori={{ $cat->id }}">{{ $cat->nama_kategori }}</a>
+                                            <a class="btn {{ (request('kategori') == $cat->id) ? 'btn-secondary' : 'btn-outline-secondary' }}" href="?kategori={{ $cat->id }}">{{ $cat->nama_kategori }}</a>
                                         @endforeach
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" width="25%" placeholder="Cari Alat" name="search">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="submit">Cari</button>
+                                            <button class="btn btn-secondary" type="submit">Cari</button>
                                         </div>
                                     </div>
                                 </form>
@@ -86,7 +86,7 @@
                                             </ul>
                                             <div class="card-footer">
                                                 <div class="btn-group" role="group">
-                                                    <a href="{{ route('home.detail',['id' => $alat->id]) }}" class="btn btn-sm btn-primary">Detail</a>
+                                                    <a href="{{ route('home.detail',['id' => $alat->id]) }}" class="btn btn-sm btn-secondary">Detail</a>
                                                 </div>
                                             </div>
                                         </div>
