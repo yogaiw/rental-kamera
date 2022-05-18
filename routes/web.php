@@ -68,6 +68,9 @@ Route::middleware(['auth','admin'])->group(function () {
 });
 
 Route::get('/memberarea',[MemberController::class,'index'])->middleware('auth')->name('member.index');
+Route::get('/memberarea/kalender', function() {
+    return view('member.kalender');
+})->middleware('auth')->name('member.kalender');
 
 // Carts
 Route::post('/memberarea/store/{id}/{userId}',[CartController::class,'store'])->middleware('auth')->name('cart.store');
