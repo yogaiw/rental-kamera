@@ -15,7 +15,15 @@
             <div class="row justify-content-center mt-4">
                 <div class="col-md-12 col-lg-4">
                     <div class="card mb-4">
-                        <div class="card-header"><i class="fas fa-arrow-left"></i> <a href="{{ url()->previous() }}" class="stretched-link link-dark">Kembali</a></div>
+                        <div class="card-header">
+                            @if (Auth::guest())
+                                <i class="fas fa-arrow-left"></i> <a href="{{ route('home') }}" class="link-dark">Kembali</a>
+                            @elseif (Auth::user()->isAdmin == false)
+                                <i class="fas fa-arrow-left"></i> <a href="{{ route('member.index') }}" class="link-dark">Kembali</a>
+                            @elseif (Auth::user()->isAdmin == true)
+                                <i class="fas fa-arrow-left"></i> <a href="{{ url()->previous() }}" class="link-dark">Kembali</a>
+                            @endif
+                        </div>
                         <img class="card-img-top" src="{{ url('') }}/images/{{ $detail->gambar }}" alt="">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">@money( $detail->harga24 )<span class="badge bg-light text-dark" style="float: right;">24 Jam</span></li>
