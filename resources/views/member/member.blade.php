@@ -8,9 +8,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        @if (session()->has('error'))
-            <div class="alert alert-danger">{{ session('error') }}</div>
-        @endif
         <div class="d-flex w-100 justify-content-start" style="overflow: auto">
             <div class="btn-group" role="group">
                 <a class="btn {{ (request('kategori') == null) ? 'btn-primary' : 'btn-outline-primary' }}" href="{{ route('member.index') }}">Semua</a>
@@ -97,7 +94,7 @@
                         <input type="date" name="start_date" class="forn-control" required>
                         <input type="time" name="start_time" class="form-control" required>
                     </div>
-                    <button type="submit" style="width:100%" class="btn btn-success">Checkout</a>
+                    <button type="submit" style="width:100%" class="btn btn-success" {{ (Auth::user()->cart->count() == 0) ? 'disabled' : ''  }}>Checkout</a>
                 </form>
             </div>
         </div>
