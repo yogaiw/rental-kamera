@@ -69,12 +69,15 @@
                 @if ($paymentStatus == 2)
                     <div class="alert {{ ($detail->first()->payment->bukti == NULL) ? 'alert-primary' : 'alert-success'}}">
                         @if ($detail->first()->payment->bukti == NULL)
-                            Reservasi anda telah disetujui, silakan bayar sesuai dengan total yang tertera lalu upload bukti bayar dengan menekan tombol dibawah
+                            Reservasi anda telah disetujui, silakan bayar sesuai dengan total yang tertera dengan cara transfer ke
+                            <h4><b>BNI xxxxxxxxxx</b></h5>
+                            <h6><b>a.n Dendra Kurnianto</b></h6>
+                            lalu upload bukti bayar dengan menekan tombol dibawah.
                         @else
                             Bukti pembayaran telah di upload, silakan tunggu konfirmasi dari Admin
                         @endif
                         <form action="">
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#bayarModal">Bukti Pembayaran</a>
+                            <button type="button" class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#bayarModal">Bukti Pembayaran</a>
                         </form>
                     </div>
                 @endif
