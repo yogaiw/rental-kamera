@@ -4,21 +4,23 @@ PHP | Laravel | XAMPP |
 v8.0.3 | v8.83.1 | v3.3.0 |
 
 ## Installation
-#### Install via Composer
+**Install with Composer**
 ```
 composer install
 ```
-#### Config your Environment
 rename .env.example to .env, configure your env file
-#### Generate APP_KEY
+
+**Generate APP_KEY**
 ```
 php artisan key:generate
 ```
-#### Databse Migration
+
+**Databse Migration**
 ```
 php artisan migrate
 ```
-#### Run
+
+**Run**
 ```
 php artisan serve
 ```
