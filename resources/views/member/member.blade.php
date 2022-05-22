@@ -27,10 +27,10 @@
                     @foreach ($alat as $item)
                     <div class="col">
                         <div class="card h-100">
-                            <img src="{{ url('') }}/images/{{ $item->gambar }}" style="height: 100px; object-fit: cover;filter: brightness(40%);" alt="">
+                            <img class="card-img-top" src="{{ url('') }}/images/{{ $item->gambar }}" style="height: 100px; object-fit: cover;filter: brightness(40%);" alt="">
                             <div class="card-body">
                                 <span class="badge bg-warning">{{ $item->category->nama_kategori }}</span><br>
-                                <b><a class="link-dark" href="{{ route('home.detail',['id' => $item->id]) }}">{{ $item->nama_alat }}</b></a>
+                                <b><a class="link-dark" href="{{ route('home.detail',['id' => $item->id]) }}">{{ $item->nama_alat }}</b></a><br>
                                 <small>{{ $item->deskripsi }}</small>
                             </div>
                             <div class="card-footer">
