@@ -82,7 +82,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/reservasi',[OrderController::class,'show'])->name('order.show');
     Route::get('/reservasi/detail/{id}',[OrderController::class,'detail'])->name('order.detail');
     Route::patch('/bayar/{id}',[OrderController::class,'bayar'])->name('bayar');
-    Route::delete('/reservasi/cancel/{id}',[OrderController::class,'destroy'])->middleware('auth')->name('cancel');
+    Route::delete('/reservasi/cancel/{id}',[OrderController::class,'destroy'])->name('cancel');
 
     Route::get('/akun/pengaturan',[UserController::class,'edit'])->name('akun.pengaturan');
     Route::patch('/akun/pengaturan',[UserController::class,'update'])->name('akun.update');
