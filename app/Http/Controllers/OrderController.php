@@ -24,13 +24,18 @@ class OrderController extends Controller
     public function detail($id) {
         $detail = Order::where('payment_id', $id)->get();
         $payment = Payment::find($id);
-        return view('member.detailreservasi',[
-            'detail' => $detail,
-            'total' => $payment->total,
-            'paymentId' => $payment->id,
-            'paymentStatus' => $detail->first()->payment->status,
-            'bukti' => $payment->bukti
-        ]);
+
+        if($payment->user_id == Auth::id()) {
+            return view('member.detailreservasi',[
+                'detail' => $detail,
+                'total' => $payment->total,
+                'paymentId' => $payment->id,
+                'paymentStatus' => $detail->first()->payment->status,
+                'bukti' => $payment->bukti
+            ]);
+        } else {
+            return abort(403, "Forbidden");
+        }
     }
 
     public function create(Request $request) {
