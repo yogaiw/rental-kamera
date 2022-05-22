@@ -67,24 +67,26 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::patch('admin/user/demote/{id}',[UserController::class,'demote'])->name('user.demote');
 });
 
-Route::get('/memberarea',[MemberController::class,'index'])->middleware('auth')->name('member.index');
-Route::get('/memberarea/kalender', function() {
-    return view('member.kalender');
-})->middleware('auth')->name('member.kalender');
+Route::middleware('auth')->group(function() {
+    Route::get('/memberarea',[MemberController::class,'index'])->name('member.index');
+    Route::get('/memberarea/kalender', function() {
+        return view('member.kalender');
+    })->name('member.kalender');
 
-// Carts
-Route::post('/memberarea/store/{id}/{userId}',[CartController::class,'store'])->middleware('auth')->name('cart.store');
-Route::delete('/memberarea/delete/{id}',[CartController::class,'destroy'])->middleware('auth')->name('cart.destroy');
+    // Carts
+    Route::post('/memberarea/store/{id}/{userId}',[CartController::class,'store'])->name('cart.store');
+    Route::delete('/memberarea/delete/{id}',[CartController::class,'destroy'])->name('cart.destroy');
 
-// Orders
-Route::post('/checkout',[OrderController::class,'create'])->middleware('auth')->name('order.create');
-Route::get('/reservasi',[OrderController::class,'show'])->middleware('auth')->name('order.show');
-Route::get('/reservasi/detail/{id}',[OrderController::class,'detail'])->middleware('auth')->name('order.detail');
-Route::patch('/bayar/{id}',[OrderController::class,'bayar'])->middleware('auth')->name('bayar');
-Route::delete('/reservasi/cancel/{id}',[OrderController::class,'destroy'])->middleware('auth')->name('cancel');
+    // Orders
+    Route::post('/checkout',[OrderController::class,'create'])->name('order.create');
+    Route::get('/reservasi',[OrderController::class,'show'])->name('order.show');
+    Route::get('/reservasi/detail/{id}',[OrderController::class,'detail'])->name('order.detail');
+    Route::patch('/bayar/{id}',[OrderController::class,'bayar'])->name('bayar');
+    Route::delete('/reservasi/cancel/{id}',[OrderController::class,'destroy'])->middleware('auth')->name('cancel');
 
-Route::get('/akun/pengaturan',[UserController::class,'edit'])->middleware('auth')->name('akun.pengaturan');
-Route::patch('/akun/pengaturan',[UserController::class,'update'])->middleware('auth')->name('akun.update');
-Route::patch('/changepass',[UserController::class,'changePassword'])->middleware('auth')->name('changepassword');
+    Route::get('/akun/pengaturan',[UserController::class,'edit'])->name('akun.pengaturan');
+    Route::patch('/akun/pengaturan',[UserController::class,'update'])->name('akun.update');
+    Route::patch('/changepass',[UserController::class,'changePassword'])->name('changepassword');
+});
 
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
