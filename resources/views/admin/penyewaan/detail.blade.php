@@ -95,7 +95,7 @@
                         <form action="{{ route('admin.penyewaan.cancel',['id' => $detail->first()->payment->id]) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-danger">Cancel Reservasi</button>
+                            <button type="submit" onclick="javascript: return confirm('Anda yakin akan membatalkan reservasi?');" class="btn btn-danger">Cancel Reservasi</button>
                         </form>
                     @endif
                     @if ($status == 3)

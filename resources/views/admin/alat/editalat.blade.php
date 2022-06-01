@@ -59,7 +59,7 @@
                             @method('DELETE')
                             @csrf
                             <div class="alert alert-danger">
-                                <b>Danger Zone: menghapus alat akan mempengaruhi transaksi yang telah dibuat</b>   <button class="btn btn-danger" type="submit">Hapus</button>
+                                <b>Danger Zone: menghapus alat akan mempengaruhi transaksi yang telah dibuat</b>   <button class="btn btn-danger" onclick="javascript: return confirm('Anda yakin akan menghapus alat ini?');" type="submit">Hapus</button>
                             </div>
                         </form>
                     </div>
