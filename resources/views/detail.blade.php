@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row justify-content-center mt-4">
                 <div class="col-md-12 col-lg-4">
-                    <div class="card mb-4">
+                    <div class="card mb-4 shadow">
                         <div class="card-header">
                             @if (Auth::guest())
                                 <i class="fas fa-arrow-left"></i> <a href="{{ route('home') }}" class="link-dark">Kembali</a>
@@ -33,8 +33,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-8 mb-4">
-                    <div class="card h-100">
-                        <div class="card-header"><b>Detail Info</b></div>
+                    <div class="card h-100 shadow">
                         <div class="card-body">
                             <h4><span class="badge bg-warning">{{ $detail->category->nama_kategori }}</span></h4>
                             <h1><b>{{ $detail->nama_alat }}</b></h1>
