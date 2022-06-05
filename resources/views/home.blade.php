@@ -19,6 +19,7 @@
                     <ul class="navbar-nav ms-auto">
                         @if (!Auth::check())
                             <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('daftar') }}">Daftar</a></li>
                         @else
                             <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
                         @endif
@@ -45,14 +46,12 @@
                         </div>
                     @endif
                     <div class="col-lg-11">
-                        <div class="card shadow mb-4">
-                            <div class="card-header">
+                        <div class="card mb-4">
+                            <div class="card-body">
                                 @if (!Auth::check())
                                     <a class="link-dark" href="#login">Login</a> untuk penyewaan secara online
                                 @endif
-                            </div>
-                            <div class="card-body">
-                                <div class="d-flex w-100 justify-content-start mb-4" style="overflow: auto">
+                                <div class="d-flex w-100 justify-content-start mb-4 mt-2" style="overflow: auto">
                                     <div class="btn-group" role="group">
                                         <a class="btn {{ (request('kategori') == null) ? 'btn-secondary' : 'btn-outline-secondary' }}" href="{{ route('member.index') }}">Semua</a>
                                         @foreach ($categories as $cat)
@@ -61,7 +60,7 @@
                                     </div>
                                 </div>
                                 <form action="">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group">
                                         <input type="text" class="form-control" width="25%" placeholder="Cari Alat" name="search">
                                         <div class="input-group-append">
                                             <button class="btn btn-secondary" type="submit">Cari</button>
@@ -69,7 +68,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="card-body" style="max-height: 500px; overflow:scroll;">
+                            <div class="card-body" style="max-height: 500px; overflow:auto;">
                                 <div class="row row-cols-sm-2 row-cols-lg-6 g-2">
                                     @foreach ($alats as $alat)
                                     <div class="col-6">
@@ -97,10 +96,17 @@
                         </div>
 
                         @if (!Auth::check())
-                            <div class="card shadow mb-4" id="login">
-                                <div class="card-header">Login</div>
+                            <div class="card mb-4" id="login">
                                 <div class="card-body">
-                                    @include('partials.login')
+                                    <div class="d-md-flex d-sm-block justify-content-around">
+                                        <div class="text-center my-auto">
+                                            <h5 class="fw-bold mb-3">Nikmati kemudahan dalam melakukan reservasi</h5>
+                                            <a href="{{ route('daftar') }}" class="btn btn-success mb-4">Daftar Sekarang</a>
+                                        </div>
+                                        <div>
+                                            @include('partials.login')
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         @endif

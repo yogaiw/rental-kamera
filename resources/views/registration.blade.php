@@ -29,11 +29,11 @@
                             <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                             <label for="floatingInput">Email</label>
                         </div>
-                        <div class="form-floating">
+                        <div class="form-floating mb-1">
                             <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                             <label for="floatingPassword">Password</label>
                         </div>
-                        <div class="form-floating">
+                        <div class="form-floating mb-1">
                             <input type="text" name="telepon" class="form-control" id="floatingtelp" placeholder="Nomor Telepon" required>
                             <label for="floatingtelp">No Telepon</label>
                         </div>
