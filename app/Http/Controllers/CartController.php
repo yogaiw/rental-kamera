@@ -29,9 +29,7 @@ class CartController extends Controller
 
         $cart->save();
 
-        $request->session()->flash('success', 'Berhasil ditambahkan ke keranjang');
-
-        return back();
+        return back()->with('success', 'Berhasil ditambahkan ke keranjang');
     }
 
     public function destroy($id) {

@@ -12,6 +12,12 @@
     </head>
     <body>
         <div class="container">
+            @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <div class="row justify-content-center mt-4">
                 <div class="col-md-12 col-lg-4">
                     <div class="card mb-4 shadow">

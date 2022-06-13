@@ -74,7 +74,7 @@
                             <form action="{{ route('cart.destroy',['id' => $item->id]) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <button style="background: none" type="submit"><i class="fas fa-trash" style="color: gray"></i></a>
+                                <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></a>
                             </form>
                             </div>
                         </div>

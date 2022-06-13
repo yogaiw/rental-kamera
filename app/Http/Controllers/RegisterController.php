@@ -22,8 +22,7 @@ class RegisterController extends Controller
 
         $validated['password'] = Hash::make($validated['password']);
         User::create($validated);
-        $request->session()->flash('registrasi', 'Registrasi Berhasil, Silakan login untuk mulai menyewa');
 
-        return redirect(route('home'));
+        return redirect(route('home'))->with('registrasi', 'Registrasi Berhasil, Silakan login untuk mulai menyewa');
     }
 }
