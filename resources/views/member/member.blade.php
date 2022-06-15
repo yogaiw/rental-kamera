@@ -31,7 +31,20 @@
                             <div class="card-body">
                                 <span class="badge bg-warning">{{ $item->category->nama_kategori }}</span><br>
                                 <b><a class="link-dark" href="{{ route('home.detail',['id' => $item->id]) }}">{{ $item->nama_alat }}</b></a><br>
-                                <small>{{ $item->deskripsi }}</small>
+                                <small>{{ $item->deskripsi }}</small><br>
+                                <hr>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <small class="mb-1"><b>@money($item->harga24)</b></small>
+                                    <small><b>24jam</b></small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <small class="mb-1"><b>@money($item->harga12)</b></small>
+                                    <small><b>12jam</b></small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <small class="mb-1"><b>@money($item->harga6)</b></small>
+                                    <small><b>6jam</b></small>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <form action="{{ route('cart.store',['id' => $item->id, 'userId' => Auth::user()->id]) }}" method="POST">
@@ -63,7 +76,7 @@
             <div class="card-body">
                 <div>
                     <div class="list-group">
-                        @foreach ($carts as $item)
+                        @forelse ($carts as $item)
                         <div class="list-group-item list-group-item-action" aria-current="true">
                           <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-1">{{ $item->alat->nama_alat }}</h6>
@@ -78,7 +91,9 @@
                             </form>
                             </div>
                         </div>
-                        @endforeach
+                        @empty
+                            <p class="text-center">Kamu belum menambahkan apapun kedalam keranjang</p>
+                        @endforelse
                     </div>
                 </div>
             </div>
