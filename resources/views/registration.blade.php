@@ -21,22 +21,32 @@
                 <div class="col col-md-5">
                     <form action="{{ route('register.store') }}" method="POST">
                         @csrf
-                        <div class="form-floating mb-1">
-                            <input type="text" name="name" class="form-control" id="floatingName" placeholder="Nama" required>
+                        <div class="form-floating mb-2">
+                            <input type="text" name="name" class="form-control" id="floatingName" placeholder="Nama" value="{{ old('name') }}" required>
                             <label for="floatingName">Nama Lengkap</label>
                         </div>
-                        <div class="form-floating mb-1">
+                        <div class="form-floating mb-2">
                             <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                             <label for="floatingInput">Email</label>
                         </div>
-                        <div class="form-floating mb-1">
+                        @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="form-floating mb-2">
                             <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                             <label for="floatingPassword">Password</label>
                         </div>
-                        <div class="form-floating mb-1">
-                            <input type="text" name="telepon" class="form-control" id="floatingtelp" placeholder="Nomor Telepon" required>
+                        @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <small class="text-muted">No Telepon disarankan menggunakan nomor yang terhubung dengan whastapp.</small>
+                        <div class="form-floating mb-2">
+                            <input type="text" name="telepon" class="form-control" id="floatingtelp" placeholder="Nomor Telepon" value="{{ old('telepon') }}" required>
                             <label for="floatingtelp">No Telepon</label>
                         </div>
+                        @error('telepon')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <button type="submit" class="btn btn-success w-100 mt-4">Daftar</button>
                     </form>
                     <div class="d-flex w-100">

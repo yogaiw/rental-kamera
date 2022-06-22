@@ -26,7 +26,7 @@ class AuthController extends Controller
                 return redirect(route('member.index'));
             }
         }
-        return back()->withErrors('GAGAL');
+        return back()->with('error', 'Login gagal: tidak ada user terdaftar pada sistem');
     }
 
     public function logout(Request $request) {
