@@ -20,7 +20,7 @@ class AdminController extends Controller
         $topProducts = Alat::withCount('order')->orderBy('order_count', "DESC")->limit(5)->get();
         return view('admin.admin',[
             'loggedUsername' => Auth::user()->name,
-            'total_user' => User::where('isAdmin',0)->count(),
+            'total_user' => User::where('role',0)->count(),
             'total_alat' => Alat::count(),
             'total_kategori' => Category::count(),
             'total_penyewaan' => Payment::count(),
@@ -34,8 +34,16 @@ class AdminController extends Controller
         $user = User::with(['payment'])->get();
 
         return view('admin.user.user',[
-            'penyewa' => $user->where('isAdmin', false),
-            'admin' => $user->where('isAdmin', true)
+            'penyewa' => $user->where('role', 0)
+        ]);
+    }
+
+    public function adminmanagement() {
+        $user = User::with(['payment'])->get();
+
+        return view('admin.user.admin_management',[
+            'admin' => $user->where('role', 1),
+            'user' => $user->where('role', 0)
         ]);
     }
 

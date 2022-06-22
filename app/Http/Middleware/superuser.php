@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class isAdmin
+class superuser
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,10 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->role != 0) {
+        if(Auth::user()->role == 2) {
             return $next($request);
         } else {
-            return redirect(route('member.index'));
+            return redirect(route('admin.index'));
         }
     }
 }

@@ -42,11 +42,11 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    @if (Auth::check() && Auth::user()->isAdmin == false)
+                    @if (Auth::check() && Auth::user()->role == 0)
                         <div class="alert alert-warning" role="alert">
                             Anda telah login sebagai <b>{{ Auth::user()->name }}</b>&nbsp; <a class="btn btn-success" href="{{ route('member.index') }}">Mulai Menyewa</a>
                         </div>
-                    @elseif (Auth::check() && Auth::user()->isAdmin == true)
+                    @elseif (Auth::check() && Auth::user()->role != 0)
                         <div class="alert alert-warning" role="alert">
                             Anda telah login sebagai Admin(<b>{{ Auth::user()->name }}</b>)&nbsp; <a class="btn btn-success" href="{{ route('admin.index') }}">Halaman Admin</a>
                         </div>

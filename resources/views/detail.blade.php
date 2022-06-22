@@ -24,9 +24,9 @@
                         <div class="card-header">
                             @if (Auth::guest())
                                 <i class="fas fa-arrow-left"></i> <a href="{{ route('home') }}" class="link-dark">Kembali</a>
-                            @elseif (Auth::user()->isAdmin == false)
+                            @elseif (Auth::user()->role == 0)
                                 <i class="fas fa-arrow-left"></i> <a href="{{ route('member.index') }}" class="link-dark">Kembali</a>
-                            @elseif (Auth::user()->isAdmin == true)
+                            @elseif (Auth::user()->role != 0)
                                 <i class="fas fa-arrow-left"></i> <a href="{{ url()->previous() }}" class="link-dark">Kembali</a>
                             @endif
                         </div>
@@ -44,7 +44,7 @@
                             <h4><span class="badge bg-warning">{{ $detail->category->nama_kategori }}</span></h4>
                             <h1><b>{{ $detail->nama_alat }}</b></h1>
                             <p class="text-muted">{{ $detail->deskripsi }}</p>
-                            @if (Auth::check() && Auth::user()->isAdmin == false)
+                            @if (Auth::check() && Auth::user()->role == 0)
                             <form action="{{ route('cart.store',['id' => $detail->id, 'userId' => Auth::user()->id]) }}" method="POST">
                                 @csrf
                                 <div class="d-flex">

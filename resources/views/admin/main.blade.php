@@ -62,6 +62,12 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
                                 Daftar Penyewa
                             </a>
+                            @if (Auth::user()->role == 2)
+                                <a class="nav-link {{ Route::is('superuser.admin') ? 'active' : '' }}" href="{{ route('superuser.admin') }}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
+                                    Manajemen Admin
+                                </a>
+                            @endif
                             <div class="sb-sidenav-menu-heading">Manajemen Alat</div>
                             <a class="nav-link {{ Route::is('alat.index') ? 'active' : '' }}" href="{{ route('alat.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

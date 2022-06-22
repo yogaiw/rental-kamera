@@ -12,7 +12,7 @@ class UserController extends Controller
     public function promote($id) {
         $user = User::find($id);
         $user->update([
-            'isAdmin' => true,
+            'role' => 1,
         ]);
 
         return back();
@@ -21,7 +21,7 @@ class UserController extends Controller
     public function demote($id) {
         $user = User::find($id);
         $user->update([
-            'isAdmin' => false,
+            'role' => 0,
         ]);
 
         return back();
