@@ -30,6 +30,10 @@ Route::post('/login',[AuthController::class, 'authenticate']);
 Route::get('/daftar',[RegisterController::class,'index'])->name('daftar');
 Route::post('/daftar',[RegisterController::class,'store'])->name('register.store');
 
+Route::middleware(['auth','superuser'])->group(function () {
+    Route::get('/admin/admin-management',[AdminController::class, 'adminmanagement'])->name('superuser.admin');
+});
+
 Route::middleware(['auth','admin'])->group(function () {
     Route::get('/admin', [AdminController::class,'index'])->name('admin.index');
 
