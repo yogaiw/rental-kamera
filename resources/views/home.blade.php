@@ -67,7 +67,7 @@
                                 </div>
                                 <form action="">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" width="25%" placeholder="Cari Alat" name="search">
+                                        <input type="text" class="form-control" width="25%" placeholder="Cari Alat" name="search" {{ (request()->get('search') != null) ? "value = ".request()->get('search')."" : "" }}>
                                         <div class="input-group-append">
                                             <button class="btn btn-secondary" type="submit">Cari</button>
                                         </div>

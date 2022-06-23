@@ -15,7 +15,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($reservasi as $item)
+                    @forelse ($reservasi as $item)
                         <tr>
                             <td>{{ date('D, d M Y H:i', strtotime($item->order->first()->starts)) }}</td>
                             <td>@money($item->total) &nbsp; <span class="badge bg-secondary">{{ $item->order->count() }} Alat</span>
@@ -29,7 +29,12 @@
                             </td>
                             <td><a class="btn btn-primary" href="{{ route('order.detail',['id' => $item->id]) }}">Detail</a></td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr><td class="text-center" colspan="3">
+                            <p>Anda belum melakukan reservasi apapun.</p>
+                            <a href="{{ route('member.index') }}" class="btn btn-success">Mulai Reservasi Sekarang</a>
+                        </td></tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
