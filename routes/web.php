@@ -32,17 +32,6 @@ Route::post('/daftar',[RegisterController::class,'store'])->name('register.store
 
 Route::middleware(['auth','superuser'])->group(function () {
     Route::get('/admin/admin-management',[AdminController::class, 'adminmanagement'])->name('superuser.admin');
-});
-
-Route::middleware(['auth','admin'])->group(function () {
-    Route::get('/admin', [AdminController::class,'index'])->name('admin.index');
-
-    // Kategori
-    Route::get('/admin/kategori',[CategoryController::class,'index'])->name('kategori.index');
-    Route::post('/admin/kategori',[CategoryController::class,'store'])->name('kategori.store');
-    Route::get('/admin/kategori/{id}/edit',[CategoryController::class,'edit'])->name('kategori.edit');
-    Route::patch('/admin/kategori/{id}',[CategoryController::class,'update'])->name('kategori.update');
-    Route::delete('/admin/kategori/{id}',[CategoryController::class,'destroy'])->name('kategori.destroy');
 
     // Alat
     Route::get('/admin/alat/{id?}',[AlatController::class, 'index'])->name('alat.index');
@@ -50,6 +39,17 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::patch('/admin/alat/{id}/detail',[AlatController::class,'update'])->name('alat.update');
     Route::delete('/admin/alat/{id}/detail',[AlatController::class,'destroy'])->name('alat.destroy');
     Route::post('/admin/alat',[AlatController::class, 'store'])->name('alat.store');
+
+    // Kategori
+    Route::get('/admin/kategori',[CategoryController::class,'index'])->name('kategori.index');
+    Route::post('/admin/kategori',[CategoryController::class,'store'])->name('kategori.store');
+    Route::get('/admin/kategori/{id}/edit',[CategoryController::class,'edit'])->name('kategori.edit');
+    Route::patch('/admin/kategori/{id}',[CategoryController::class,'update'])->name('kategori.update');
+    Route::delete('/admin/kategori/{id}',[CategoryController::class,'destroy'])->name('kategori.destroy');
+});
+
+Route::middleware(['auth','admin'])->group(function () {
+    Route::get('/admin', [AdminController::class,'index'])->name('admin.index');
 
     //Penyewaan
     Route::get('/admin/penyewaan',[RentController::class, 'index'])->name('penyewaan.index');
