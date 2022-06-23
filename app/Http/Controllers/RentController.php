@@ -9,7 +9,7 @@ class RentController extends Controller
 {
     public function index() {
         return view('admin.penyewaan.penyewaan',[
-            'penyewaan' => Payment::with(['user','order'])->where('status', '!=', 4)->get(),
+            'penyewaan' => Payment::with(['user','order'])->where('status', '!=', 4)->orderBy('id','DESC')->get(),
         ]);
     }
 
