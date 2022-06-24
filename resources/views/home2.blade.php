@@ -10,37 +10,33 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
-        <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    {{-- <a class="navbar-brand" href="#">Navbar</a> --}}
-                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-                            @if (!Auth::check())
-                            <li class="nav-item">
-                                <a type="button" class="nav-link" aria-current="page" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('daftar') }}">Daftar</a>
-                            </li>
-                            @else
-                            <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
-                            @endif
-                        </ul>
-                    </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                {{-- <a class="navbar-brand" href="#">Navbar</a> --}}
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+                        @if (!Auth::check())
+                        <li class="nav-item">
+                            <a type="button" class="nav-link" aria-current="page" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('daftar') }}">Daftar</a>
+                        </li>
+                        @else
+                        <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
+                        @endif
+                    </ul>
                 </div>
-            </nav>
-            <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-                <div class="col-md-5 p-lg-5 mx-auto my-3">
-                    <h1 class="display-4 fw-normal">Kancil Rental Online</h1>
-                    <p class="fw-normal">Cek Ketersediaan - Reservasi - Bayar - Ambil - Jangan lupa balikin</p>
-                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Coba Sekarang</button>
-                </div>
-                <div class="product-device shadow-sm d-none d-md-block"></div>
-                <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+            </div>
+        </nav>
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+            <div class="col-md-5 p-lg-5 mx-auto my-3">
+                <h1 class="display-4 fw-normal">Kancil Rental Online</h1>
+                <p class="fw-normal">Cek Ketersediaan - Reservasi - Bayar - Ambil - Jangan lupa balikin</p>
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Coba Sekarang</button>
             </div>
         </div>
         <div class="container">
