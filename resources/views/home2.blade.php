@@ -40,6 +40,7 @@
             </div>
         </div>
         <div class="container">
+            {{-- Feebacks --}}
             @if (session()->has('registrasi'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     {{ session('registrasi') }}
@@ -61,7 +62,9 @@
                     Anda telah login sebagai Admin(<b>{{ Auth::user()->name }}</b>)&nbsp; <a class="btn btn-success" href="{{ route('admin.index') }}">Halaman Admin</a>
                 </div>
             @endif
+            {{-- End ofFeebacks --}}
             <div class="row mx-3">
+                @if (request()->get('search') == null)
                 <div class="d-flex w-100 justify-content-start mb-4 mt-2" style="overflow: auto">
                     <div class="btn-group" role="group">
                         <a class="btn {{ (request('kategori') == null) ? 'btn-secondary' : 'btn-outline-secondary' }}" href="{{ route('member.index') }}">Semua</a>
@@ -70,6 +73,9 @@
                         @endforeach
                     </div>
                 </div>
+                @else
+                <p>Menampilkan hasil pencarian <b>{{ request()->get('search') }}</b>. <a class="link" href="{{ route('home') }}">Kembali tampilkan semua.</a></p>
+                @endif
                 <form action="">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" width="25%" placeholder="Cari Alat" name="search" {{ (request()->get('search') != null) ? "value = ".request()->get('search')."" : "" }}>
