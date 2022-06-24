@@ -18,7 +18,7 @@ class HomeController extends Controller
             $alats = Alat::with(['category'])->where('kategori_id','=',request('kategori'))->get();
         }
 
-        return view('home',[
+        return view('home2',[
             'alats' => $alats,
             'categories' => Category::all()
         ]);
