@@ -14,6 +14,10 @@ class MemberController extends Controller
         $alat = Alat::with(['category'])->get();
         $carts = Carts::where('user_id','=',Auth::id());
 
+        if(request('search')) {
+            $key = request('search');
+            $alat =  Alat::with(['category'])->where('nama_alat','LIKE','%'.$key.'%')->get();
+        }
         if(request('kategori')) {
             $alat = Alat::with(['category'])->where('kategori_id','=',request('kategori'))->get();
         }

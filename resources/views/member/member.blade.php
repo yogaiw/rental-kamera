@@ -1,6 +1,6 @@
 @extends('member.main')
 @section('container')
-<div class="row mb-4">
+<div class="row mb-2">
     <div class="col col-sm-12">
         @if (session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -8,7 +8,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <div class="d-flex w-100 justify-content-start" style="overflow: auto">
+        @if (request()->get('search') == null)
+        <div class="d-flex w-100 justify-content-start mb-4" style="overflow: auto">
             <div class="btn-group" role="group">
                 <a class="btn {{ (request('kategori') == null) ? 'btn-primary' : 'btn-outline-primary' }}" href="{{ route('member.index') }}">Semua</a>
                 @foreach ($kategori as $cat)
@@ -16,6 +17,17 @@
                 @endforeach
             </div>
         </div>
+        @else
+        <p>Menampilkan hasil pencarian <b>{{ request()->get('search') }}</b>. <a class="link" href="{{ route('member.index') }}">Kembali tampilkan semua.</a></p>
+        @endif
+        <form action="">
+            <div class="input-group">
+                <input type="text" class="form-control" width="25%" placeholder="Cari Alat" name="search" {{ (request()->get('search') != null) ? "value = ".request()->get('search')."" : "" }}>
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="submit">Cari</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <div class="row">
