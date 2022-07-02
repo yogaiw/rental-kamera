@@ -36,7 +36,9 @@
             <div class="col-md-5 p-lg-5 mx-auto my-3">
                 <h1 class="display-4 fw-normal">Kancil Rental Online</h1>
                 <p class="fw-normal">Cek Ketersediaan - Reservasi - Bayar - Ambil - Jangan lupa balikin</p>
+                @if (!Auth::check())
                 <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Coba Sekarang</button>
+                @endif
             </div>
         </div>
         <div class="container">

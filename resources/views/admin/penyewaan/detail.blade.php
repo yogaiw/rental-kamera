@@ -91,18 +91,18 @@
                         </form>
                         </tbody>
                     </table>
-                    @if ($status == 1)
+                    @if ($status == 1 || $status == 2)
                         <form action="{{ route('admin.penyewaan.cancel',['id' => $detail->first()->payment->id]) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" onclick="javascript: return confirm('Anda yakin akan membatalkan reservasi?');" class="btn btn-danger">Cancel Reservasi</button>
+                            <button type="submit" onclick="javascript: return confirm('Anda yakin akan membatalkan reservasi?');" class="btn btn-danger mb-3">Cancel Reservasi</button>
                         </form>
                     @endif
                     @if ($status == 3)
                     <form action="{{ route('selesai',['id' => $detail->first()->payment->id]) }}" method="POST">
                         @csrf
                         @method('PATCH')
-                        <button type="submit" class="btn btn-success mb-4">Sudah dikembalikan</button>
+                        <button type="submit" class="btn btn-success mb-4" onclick="javascript: return confirm('Pastikan alat sudah dikembalikan semua, jika yakin lanjutkan');">Sudah dikembalikan</button>
                     </form>
                     @endif
                     @if ($status != 1)
