@@ -9,7 +9,7 @@
             </div>
         @endif
         @if (request()->get('search') == null)
-        <div class="d-flex w-100 justify-content-start mb-4" style="overflow: auto">
+        <div class="d-flex w-100 justify-content-start mb-2" style="overflow: auto">
             <div class="btn-group" role="group">
                 <a class="btn {{ (request('kategori') == null) ? 'btn-primary' : 'btn-outline-primary' }}" href="{{ route('member.index') }}">Semua</a>
                 @foreach ($kategori as $cat)
@@ -20,18 +20,18 @@
         @else
         <p>Menampilkan hasil pencarian <b>{{ request()->get('search') }}</b>. <a class="link" href="{{ route('member.index') }}">Kembali tampilkan semua.</a></p>
         @endif
+    </div>
+</div>
+<div class="row">
+    <div class="col col-md-8 col-sm-12">
         <form action="">
-            <div class="input-group">
+            <div class="input-group mb-3">
                 <input type="text" class="form-control" width="25%" placeholder="Cari Alat" name="search" {{ (request()->get('search') != null) ? "value = ".request()->get('search')."" : "" }}>
                 <div class="input-group-append">
                     <button class="btn btn-secondary" type="submit">Cari</button>
                 </div>
             </div>
         </form>
-    </div>
-</div>
-<div class="row">
-    <div class="col col-md-8 col-sm-12">
         <div class="card shadow h-100">
             <div class="card-header"><small class="text-muted">klik nama alat untuk melihat detail</small></div>
             <div class="card-body" style="height: 500px; overflow:auto">
