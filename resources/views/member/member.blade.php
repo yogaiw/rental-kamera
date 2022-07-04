@@ -114,13 +114,12 @@
                     <b>Total</b>
                     <b>@money($total)</b>
                 </div>
-                <small>Tanggal Ambil</small>
                 <form action="{{ route('order.create') }}" method="POST">
                     @csrf
-                    <div class="d-flex w-100 justify-content-center mb-4">
-                        <input type="date" name="start_date" class="forn-control" required>
-                        <input type="time" name="start_time" class="form-control" required>
-                    </div>
+                        <small>Tanggal Pengambilan</small>
+                        <input type="date" name="start_date" class="form-control mb-2" required>
+                        <small>Jam Pengambilan</small>
+                        <input type="time" name="start_time" class="form-control mb-3" required>
                     <button type="submit" style="width:100%" class="btn btn-success" {{ (Auth::user()->cart->count() == 0) ? 'disabled' : ''  }}>Checkout</a>
                 </form>
             </div>
