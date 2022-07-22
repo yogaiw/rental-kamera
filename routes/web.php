@@ -5,6 +5,7 @@ use App\Http\Controllers\AlatController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OrderController;
@@ -29,6 +30,9 @@ Route::get('/detail/{id}',[HomeController::class, 'detail'])->name('home.detail'
 Route::post('/login',[AuthController::class, 'authenticate']);
 Route::get('/daftar',[RegisterController::class,'index'])->name('daftar');
 Route::post('/daftar',[RegisterController::class,'store'])->name('register.store');
+
+Route::get('/forget-password',[ForgetPasswordController::class,'index'])->name('forgetpassword.index');
+Route::post('/forget-password',[ForgetPasswordController::class,'sendResetLink'])->name('forgetpassword.sendlink');
 
 Route::middleware(['auth','superuser'])->group(function () {
     Route::get('/admin/admin-management',[AdminController::class, 'adminmanagement'])->name('superuser.admin');
