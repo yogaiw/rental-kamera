@@ -34,6 +34,9 @@ Route::post('/daftar',[RegisterController::class,'store'])->name('register.store
 Route::get('/forget-password',[ForgetPasswordController::class,'index'])->name('forgetpassword.index');
 Route::post('/forget-password',[ForgetPasswordController::class,'sendResetLink'])->name('forgetpassword.sendlink');
 
+Route::get('/reset/{token}',[ForgetPasswordController::class,'resetPasswordIndex']);
+Route::post('/reset',[ForgetPasswordController::class,'resetPassword'])->name('resetpassword');
+
 Route::middleware(['auth','superuser'])->group(function () {
     Route::get('/admin/admin-management',[AdminController::class, 'adminmanagement'])->name('superuser.admin');
 
