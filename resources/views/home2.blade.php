@@ -37,7 +37,7 @@
                 <h1 class="display-4 fw-normal">Kancil Rental Online</h1>
                 <p class="fw-normal">Cek Ketersediaan - Reservasi - Bayar - Ambil - Jangan lupa balikin</p>
                 @if (!Auth::check())
-                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Coba Sekarang</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Login / Daftar</button>
                 @endif
             </div>
         </div>
@@ -46,6 +46,12 @@
             @if (session()->has('registrasi'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     {{ session('registrasi') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            @if (session()->has('success_reset_password'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ session('success_reset_password') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
@@ -64,7 +70,7 @@
                     Anda telah login sebagai Admin(<b>{{ Auth::user()->name }}</b>)&nbsp; <a class="btn btn-success" href="{{ route('admin.index') }}">Halaman Admin</a>
                 </div>
             @endif
-            {{-- End ofFeebacks --}}
+            {{-- End of Feedbacks --}}
             <div class="row mx-3">
                 @if (request()->get('search') == null)
                 <div class="d-flex w-100 justify-content-start mb-4 mt-2" style="overflow: auto">
@@ -129,6 +135,7 @@
                                 <h5 class="fw-bold mb-3">Nikmati kemudahan dalam melakukan reservasi</h5>
                                 <a href="{{ route('daftar') }}" class="btn btn-success mb-4">Daftar Sekarang</a>
                             </div>
+                            <small>Sudah punya akun? silakan login</small>
                             <div>
                                 @include('partials.login')
                             </div>

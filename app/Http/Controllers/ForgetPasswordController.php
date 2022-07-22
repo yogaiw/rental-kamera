@@ -34,7 +34,7 @@ class ForgetPasswordController extends Controller
             $message->subject('Kancil Rental Online: Permintaan Reset Password');
         });
 
-        return back()->with('message', 'Email telah dikirim untuk melakukan reset password');
+        return back()->with('message', 'Silakan cek email anda');
     }
 
     public function resetPasswordIndex($token) {
