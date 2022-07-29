@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderAccepted;
 use App\Models\Carts;
 use App\Models\Order;
 use App\Models\Payment;
@@ -9,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -81,6 +83,8 @@ class OrderController extends Controller
         $payment->find($paymentId)->update(['status' => 2]);
         Order::where('payment_id', $paymentId)->where('status', 1)->update(['status' => 3]);
         $payment->where('id', $paymentId)->update(['total' => Order::where('payment_id', $paymentId)->where('status', 2)->sum('harga')]);
+
+        Mail::to($payment->find($paymentId)->user->email)->send(new OrderAccepted($payment->find($paymentId)));
 
         return back();
     }
