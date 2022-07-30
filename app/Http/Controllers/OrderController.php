@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\OrderAccepted;
+use App\Mail\OrderPaid;
 use App\Models\Carts;
 use App\Models\Order;
 use App\Models\Payment;
@@ -114,6 +115,7 @@ class OrderController extends Controller
             'status' => 3
         ]);
 
+        Mail::to($payment->user->email)->send(new OrderPaid($payment));
         return back();
     }
 
