@@ -24,7 +24,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/detail/{id}',[HomeController::class, 'detail'])->name('home.detail');
 Route::post('/login',[AuthController::class, 'authenticate']);
