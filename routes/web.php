@@ -12,6 +12,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RentController;
 use App\Http\Controllers\UserController;
+use App\Mail\OrderAccepted;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +25,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/mailtest', function () {
+    $payment = new App\Models\Payment;
+    return new OrderAccepted($payment->find(6));
+});
 Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/detail/{id}',[HomeController::class, 'detail'])->name('home.detail');
 Route::post('/login',[AuthController::class, 'authenticate']);

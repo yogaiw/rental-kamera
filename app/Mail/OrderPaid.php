@@ -2,26 +2,23 @@
 
 namespace App\Mail;
 
-use App\Models\Payment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderAccepted extends Mailable
+class OrderPaid extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $payment;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Payment $payment)
+    public function __construct()
     {
-        $this->payment = $payment;
+        //
     }
 
     /**
@@ -31,8 +28,6 @@ class OrderAccepted extends Mailable
      */
     public function build()
     {
-        return $this->from('support@kanciltest.tigasumbu.xyz', 'Kancil Rental Online')
-                    ->subject('Reservasi Anda Disetujui!')
-                    ->markdown('emails.orderaccepted');
+        return $this->markdown('emails.orderpaid');
     }
 }

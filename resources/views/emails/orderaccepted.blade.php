@@ -1,43 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <style>
-            body {
-                background-color: grey;
-            }
-            .header {
-                margin-top: 5px;
-                background-color: white;
-                align-content: center;
-                justify-content: center;
-            }
-            .body {
-                background-color: white;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="header">
-            <h3>Reservasi Anda telah Disetujui!</h3>
-        </div>
-        <div class="body">
-            <p>Alat anda telah dikonfirmasi oleh admin, langkah selanjutnya lakukan upload bukti pembayaran pada website</p><br>
-            <small>Rincian reservasi :</small><br>
-            <b>Tanggal Pengambilan Alat : {{ $payment->order->first()->starts }}</b>
-            <table>
-                <tr>
-                    <td>Alat</td>
-                    <td>Durasi</td>
-                    <td>Tanggal Pengembalian</td>
-                </tr>
-                @foreach($payment->order->all() as $item)
-                <tr>
-                    <td>{{ $item->alat->nama_alat }}</td>
-                    <td>{{ $item->durasi }} Jam</td>
-                    <td>{{ date('d M Y H:i', strtotime($item->ends))  }}</td>
-                </tr>
-                @endforeach
-            </table>
-        </div>
-    </body>
-</html>
+@component('mail::message')
+# Reservasi Anda telah Disdetujui!
+Reservasi anda telah disetujui oleh Admin.
+langkah selanjutnya adalah nelakukan pembayaran melalui transfer melalui ATM ke rekening :
+
+## BNI xxxxxxxxxx a/n Dendra Kurnianto
+## Jumlah Pembayaran : @money($payment->total)
+
+setelah pembayaran, silakan upload bukti bayar pada website
+
+# Detail Reservasi
+<b>No Invoice : {{ $payment->no_invoice }}</b> <br>
+<b>Tanggal Pengambilan : {{ date('d M Y H:i', strtotime($payment->order->first()->starts)) }}</b>
+@component('mail::table')
+| Alat       | Durasi         | Harga  |
+| ------------- |:-------------:| --------:|
+@foreach ($payment->order as $item)
+| {{$item->alat->nama_alat}} | {{ $item->durasi }} Jam | @money($item->harga) |
+@endforeach
+@endcomponent
+
+Thanks,<br>
+{{ config('app.name') }}
+@endcomponent
