@@ -67,7 +67,7 @@ class AlatController extends Controller
 
         $alat->save();
 
-        return redirect(route('alat.index'));
+        return redirect(route('alat.index'))->with('message', 'Alat berhasil ditambah!');
     }
 
     public function update(Request $request, $id) {
@@ -103,7 +103,7 @@ class AlatController extends Controller
         $cart->where('alat_id',$id)->where('durasi',12)->update(['harga' => $alat->harga12]);
         $cart->where('alat_id',$id)->where('durasi',6)->update(['harga' => $alat->harga6]);
 
-        return redirect(route('alat.index'));
+        return redirect(route('alat.index'))->with('message', 'Alat berhasil diperbarui!');
     }
 
     public function destroy($id) {
@@ -122,6 +122,6 @@ class AlatController extends Controller
         }
 
         $alat->delete();
-        return redirect(route('alat.index'));
+        return redirect(route('alat.index'))->with('message', 'Alat berhasil dihapus!');
     }
 }

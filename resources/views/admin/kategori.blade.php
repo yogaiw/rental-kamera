@@ -7,6 +7,12 @@
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
         <div class="row">
+            @if (session()->has('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('message') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <div class="col-lg-6">
                 <div class="card shadow mb-4">
                     <div class="card-header">
@@ -51,7 +57,7 @@
                                         <form action="{{ route('kategori.destroy',['id'=>$cat->id]) }}" method="POST" style="display: inline-block">
                                             @method('DELETE')
                                             @csrf
-                                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="javascript: return confirm('Anda yakin akan menghapus alat ini?');"><i class="fas fa-trash"></i></a>
                                         </form>
                                     </td>
                                 </tr>

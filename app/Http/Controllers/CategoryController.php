@@ -28,7 +28,7 @@ class CategoryController extends Controller
         $kategori = new Category();
         $kategori->nama_kategori = $request['nama'];
         $kategori->save();
-        return redirect(route('kategori.index'));
+        return redirect(route('kategori.index'))->with('message', 'Kategori berhasil ditambah!');
     }
 
     public function update(Request $request, $id) {
@@ -38,12 +38,12 @@ class CategoryController extends Controller
         $kategori = Category::find($id);
         $kategori->nama_kategori = $request['nama'];
         $kategori->save();
-        return redirect(route('kategori.index'));
+        return redirect(route('kategori.index'))->with('message', 'Kategori berhasil diperbarui!');
     }
 
     public function destroy($id) {
         $kategori = Category::find($id);
         $kategori->delete();
-        return redirect(route('kategori.index'));
+        return redirect(route('kategori.index'))->with('message', 'Kategori berhasil dihapus!');
     }
 }

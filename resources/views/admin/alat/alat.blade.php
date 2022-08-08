@@ -7,6 +7,12 @@
             <li class="breadcrumb-item active">Manajemen Alat</li>
         </ol>
         <div class="row">
+            @if (session()->has('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('message') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <div class="col-lg">
                 <div class="card shadow mb-4">
                     <div class="card-header">
