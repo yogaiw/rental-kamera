@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col col-md-8 col-sm-12">
-                <div class="card shadow h-100" style="max-height: 500px; overflow:auto">
+                <div class="card shadow h-100" style="max-height: 100%; overflow:auto">
                     <div class="card-header"><small class="text-muted">klik nama alat untuk melihat detail</small></div>
                     <div class="card-body">
                         <div class="row row-cols-sm-2 row-cols-lg-4 g-2">
