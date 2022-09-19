@@ -15,9 +15,10 @@ rename .env.example to .env, configure your env file
 php artisan key:generate
 ```
 
-**Databse Migration**
+**Databse Migration and Seeding**
 ```
 php artisan migrate
+php artisan db:seed
 ```
 
 **Run**
