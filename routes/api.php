@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Alat;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,16 @@ use Illuminate\Support\Facades\DB;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::prefix('v1')->group(function () {
+    Route::get('/alat', function () {
+        $alat = DB::table('alats')
+                ->join('categories', 'categories.id','alats.kategori_id')
+                ->get(['nama_alat','harga24','harga12','harga6','nama_kategori']);
+        return response($alat, 200)
+                ->header('Content-Type', 'application/json');
+    });
 });
 
 Route::get('/kalender-alat', function() {
