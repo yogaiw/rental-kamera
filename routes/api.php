@@ -24,7 +24,10 @@ Route::prefix('v1')->group(function () {
         $alat = DB::table('alats')
                 ->join('categories', 'categories.id','alats.kategori_id')
                 ->get(['alats.id','kategori_id','nama_alat','harga24','harga12','harga6','nama_kategori']);
-        return response($alat, 200, [
+        return response()->json([
+            'message' => 'success',
+            'data' => $alat
+        ],200, [
             'Content-Type' => 'application/json'
         ]);
     });
