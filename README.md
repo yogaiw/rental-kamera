@@ -37,3 +37,36 @@ php artisan serve
 ## Status
 Payment {1: Ditinjau, 2: Belum Bayar, 3: Pengambilan, 4: Selesai}
 Order {1: Ditinjau, 2: ACC, 3: Ditolak}
+
+## API
+Android Retrofit Consume API example : https://github.com/yogaiw/rental-mobile <br>
+***
+**ENDPOINT** /api/v1 <br>
+
+**GET** /alat
+```json
+{
+    "message": "success",
+    "data": [
+        {
+            "id": 1,
+            "kategori_id": 1,
+            "nama_alat": "Sony a7ii Body Only",
+            "harga24": 200000,
+            "harga12": 175000,
+            "harga6": 125000,
+            "nama_kategori": "Kamera"
+        },
+        {
+            "id": 2,
+            "kategori_id": 1,
+            "nama_alat": "Sony a6000",
+            "harga24": 100000,
+            "harga12": 80000,
+            "harga6": 50000,
+            "nama_kategori": "Kamera"
+        },
+        ....
+    ]
+}
+```
