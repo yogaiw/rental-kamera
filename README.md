@@ -4,27 +4,13 @@ PHP | Laravel | XAMPP |
 v8.0.3 | v8.83.1 | v3.3.0 |
 
 ## Installation
-**Install with Composer**
-```
-composer install
-```
-rename .env.example to .env, configure your env file
-
-**Generate APP_KEY**
-```
-php artisan key:generate
-```
-
-**Databse Migration and Seeding**
-```
-php artisan migrate
-php artisan db:seed
-```
-
-**Run**
-```
-php artisan serve
-```
+1. Clone this repo
+2. install dependecies `composer install`
+3. copy `example.env` and rename it to `.env`
+4. generate app key `php artisan key:generate`
+5. run migration `php artisan migrate`
+6. run seeder `php artisan db:seed`
+7. Last, Run the app `php artisan serve`
 
 ## Overview
 ![Dashboard](https://github.com/yogaiw/yogaiw.github.io/blob/master/content/kancilrentreadme/1.png)
@@ -43,7 +29,7 @@ Android Retrofit Consume API example : https://github.com/yogaiw/rental-mobile <
 ***
 **ENDPOINT** /api/v1 <br>
 
-**GET** /alat
+### **GET** /alat
 ```json
 {
     "message": "success",
@@ -66,7 +52,28 @@ Android Retrofit Consume API example : https://github.com/yogaiw/rental-mobile <
             "harga6": 50000,
             "nama_kategori": "Kamera"
         },
-        ....
+        {
+            // ...
+        }
+    ]
+}
+```
+### **GET** /category
+```json
+{
+    "message": "success",
+    "data": [
+        {
+            "id": 1,
+            "nama_kategori": "Kamera"
+        },
+        {
+            "id": 2,
+            "nama_kategori": "Lensa"
+        },
+        {
+            // ...
+        }
     ]
 }
 ```
