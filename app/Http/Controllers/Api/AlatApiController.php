@@ -57,7 +57,7 @@ class AlatApiController extends Controller
             ->where('alats.id', $id)
             ->where('orders.status', 2)
             ->where('payments.status', 3)
-            ->get(['starts AS start','ends AS end']);
+            ->get(['starts AS start','ends AS end','durasi']);
 
 
         return response()->json([
