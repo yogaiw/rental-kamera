@@ -27,7 +27,8 @@ Android Retrofit Consume API example : https://github.com/yogaiw/rental-mobile <
 ***
 **ENDPOINT** /api/v1 <br>
 
-### **GET** /alat
+### **GET** `/alat`
+### **GET** `/alat?category={id}`
 ```json
 {
     "message": "success",
@@ -56,7 +57,35 @@ Android Retrofit Consume API example : https://github.com/yogaiw/rental-mobile <
     ]
 }
 ```
-### **GET** /category
+### **GET** `/alat/{id}`
+```json
+{
+    "message": "success",
+    "data": {
+        "id": 1,
+        "kategori_id": 1,
+        "nama_alat": "Sony a7ii Body Only",
+        "harga24": 200000,
+        "harga12": 175000,
+        "harga6": 125000
+    },
+    "booked": [
+        {
+            "start": "2022-07-09 21:00:00",
+            "end": "2022-07-10 21:00:00"
+        },
+        {
+            "start": "2022-07-08 13:00:00",
+            "end": "2022-07-09 01:00:00"
+        },
+        {
+            "start": "2022-09-20 14:01:00",
+            "end": "2022-09-21 14:01:00"
+        }
+    ]
+}
+```
+### **GET** `/category`
 ```json
 {
     "message": "success",

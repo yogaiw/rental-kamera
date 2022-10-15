@@ -23,6 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('v1')->group(function () {
     Route::prefix('/alat')->group(function () {
         Route::get('/', [AlatApiController::class, 'showAllAlat']);
+        Route::get('/{id}',[AlatApiController::class, 'detail']);
     });
 
     Route::prefix('/category')->group(function () {

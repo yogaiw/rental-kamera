@@ -47,4 +47,23 @@ class AlatApiController extends Controller
             'data' => Category::all(['id','nama_kategori'])
         ]);
     }
+
+    public function detail($id) {
+        $alat = Alat::find($id, ['id', 'kategori_id', 'nama_alat', 'harga24', 'harga12', 'harga6']);
+
+        $booked = DB::table('orders')
+            ->join('alats', 'alats.id','=','orders.alat_id')
+            ->join('payments','payments.id','=','orders.payment_id')
+            ->where('alats.id', $id)
+            ->where('orders.status', 2)
+            ->where('payments.status', 3)
+            ->get(['starts AS start','ends AS end']);
+
+
+        return response()->json([
+            "message" => "success",
+            "data" => $alat,
+            "booked" => $booked
+        ], 200);
+    }
 }
