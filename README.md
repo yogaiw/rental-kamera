@@ -11,6 +11,7 @@ v8.0.3 | v8.83.1 | v3.3.0 |
 5. run migration `php artisan migrate`
 6. run seeder `php artisan db:seed`
 7. Last, Run the app `php artisan serve`
+8. Login with existing user password, check [here (Database Seeder)](https://github.com/yogaiw/rental-kamera/blob/main/database/seeders/DatabaseSeeder.php)
 
 ## Overview
 ![Dashboard](https://github.com/yogaiw/yogaiw.github.io/blob/master/content/kancilrentreadme/1.png)
