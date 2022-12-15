@@ -24,7 +24,7 @@ Payment {1: Ditinjau, 2: Belum Bayar, 3: Pengambilan, 4: Selesai}
 Order {1: Ditinjau, 2: ACC, 3: Ditolak}
 
 ## API
-Android Retrofit Consume API example : https://github.com/yogaiw/rental-mobile <br>
+Android Retrofit Consume API example : https://github.com/yogaiw/rental-kamera-android <br>
 ***
 **ENDPOINT** /api/v1 <br>
 
