@@ -6,7 +6,7 @@ v8.0.3 | v8.83.1 | v3.3.0 |
 ## UPDATE
 if you get an error after clicking order or something, delete this line
 
-https://github.com/yogaiw/rental-kamera/blob/563bcb866198c4fb6f2b29deb8f2929510a05ee0/app/Http/Controllers/OrderController.php#L88C9-L88C112
+https://github.com/yogaiw/rental-kamera/blob/563bcb866198c4fb6f2b29deb8f2929510a05ee0/app/Http/Controllers/OrderController.php#L88
 
 and this
 
